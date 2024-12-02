@@ -279,3 +279,17 @@ h2::after {
     height: 475px;
   }
 } 
+@media (max-width:375px){
+  .carousel-item1 img{
+    height: 425px;
+  }
+  .w-100 {
+    width: 140% !important;
+}
+  .carousel-item2 img{
+    height: 425px;
+  }
+  .carousel-item3 img{
+    height: 425px;
+  }
+} 

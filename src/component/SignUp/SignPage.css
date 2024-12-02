@@ -1,4 +1,4 @@
-
+/* 
 .register-photo {
     background:#f1f7fc;
     padding:80px 0;
@@ -91,4 +91,102 @@
     text-decoration:none;
   }
   
+   /* Overall popup styling */
+
+  .Login-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+  }
   
+  
+
+/* Container for the popup */
+.login-popup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: clamp(330px, 23vw, 400px);
+  background-color: white;
+  color: #808080;
+  gap: 24px;
+  padding: 25px 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Title section */
+/* .login-popup-titel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+} */
+
+.login-popup-titel h2 {
+  font-size: 2rem;
+}
+
+/* Input fields */
+.login-popup-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-popup-inputs input {
+  border: 1px solid #ddd;
+  outline: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Button styling */
+.Sign_button {
+  border: none;
+  padding: 10px;
+  color: white;
+  background-color: #ff6347;
+  font-size: 16px;
+  width:300px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.Sign_button:hover {
+  background-color: #ff5533;
+}
+
+/* Checkbox section */
+.login-popup-condtation {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: -15px;
+}
+
+.login-popup-condtation input {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.login-popup-condtation p {
+  font-size: 14px;
+}
+
+/* Link section */
+.login-popup-inputs span {
+  cursor: pointer;
+  color: #ff6347;
+  font-weight: 500;
+}
+
+.login-popup-inputs span:hover {
+  text-decoration: underline;
+}

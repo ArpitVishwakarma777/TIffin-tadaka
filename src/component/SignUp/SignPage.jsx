@@ -1,90 +1,87 @@
 import React from "react";
 import "./SignPage.css";
-function SignPage() {
-  let [name, setName] = React.useState("");
-  let [password, setPassword] = React.useState("");
-  let [rPassword, setRPassword] = React.useState("");
-  let [trm, setTrm] = React.useState("");
-let [haveAccount ,setAccount]= React.useState(false);
-  function beforeSubmit() {
-    if (password !== rPassword) {
-      alert("Password dosn't match");
-    } 
-    // else if (password=="" || rPassword=="" || trm=="" || name == "") {
-    //   alert("Please Enter all details");
-    // }
-    // else{
-    //   alert("Account is Created");
-    //   setAccount(true);
-    //   console.log(name);
-    //   console.log(password);
-    //   console.log(rPassword);
-    //   console.log(trm);
-    //   console.log(haveAccount);
-    // }
+import { useState } from "react";
 
+import { CrossIcon } from "../../Helper/Icon";
 
-    
-  }
+function SignPage({ setShowLogin }) {
+  const [currState, setCurrState] = useState("Login");
+
   return (
-    <div>
-      <div className="register-photo">
-        <div className="form-container">
-          <div className="image-holder" />
-          <form onSubmit={(e) => e.preventDefault()} method="post">
-            <h2 className="text-center">
-              <strong>Create</strong> an account.
-            </h2>
-            <div className="form-group">
+    <div className="Login-popup">
+      <form className="login-popup-container">
+        {/* <div className="login-popup-titel d-flex
+        ">
+         <span> </span>
+          <span className="d-flex justify-content-end">cross</span>
+        </div> */}
+        <div className="container">
+          <div className="row d-flex ">
+            <div className="col-md-6"><h2>{currState}</h2></div>
+            <div  className="col-md-6 d-flex justify-content-end">cross</div>
+          </div>
+        </div>
+        <div className="login-popup-inputs">
+          {currState === "Login" ? (
+            <div>
               <input
-                onChange={(e) => setName(e.target.value)}
-                className="form-control name-i"
-                type="name"
-                placeholder="User Name"
+                className="my-2 mx-1 w-100"
+                type="email"
+                placeholder="Enter Your Email"
+                required
+              />
+              <input
+                className="my-2 mx-1 w-100"
+                type="password"
+                placeholder="Enter Your Password"
                 required
               />
             </div>
-            <div className="form-group">
+          ) : (
+            <div>
               <input
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-control pass-i"
+                className="my-2 mx-1 w-100"
+                type="text"
+                placeholder="Enter Your Name"
+                required
+              />
+              <input
+                className="my-2 mx-1 w-100"
+                type="email"
+                placeholder="Enter Your Email"
+                required
+              />
+              <input
+                className="my-2 mx-1 w-100"
                 type="password"
-                name="password" required
-                placeholder="Password"
+                placeholder="Enter Password"
+                required
               />
             </div>
-            <div className="form-group">
-              <input
-                onChange={(e) => setRPassword(e.target.value)}
-                className="form-control repass-i"
-                type="password"
-                name="password-repeat" required
-                placeholder="Password (Confirm)"
-              />
-            </div>
-            <div className="form-group">
-              <div className="form-check">
-                <label className=" mt-3 form-check-label">
-                  <input
-                    onChange={(e) => setTrm(e.target.checked)}
-                    className=" trm-i form-check-input"
-                    type="checkbox"
-                  />
-                  I agree to the license terms.
-                </label>
-              </div>
-            </div>
-            <div className="form-group">
-              <button onClick={beforeSubmit} className="btn SignUp">
-                Sign Up
-              </button>
-            </div>
-            <a href="#" className="already">
-              You already have an account? Login here.
-            </a>
-          </form>
+          )}
         </div>
-      </div>
+        <button tyep='submit' onClick={(e)=>{
+e.preventDefault()
+
+        }} className="Sign_button">
+          {currState === "Sign Up" ? "Create Account" : "Login"}
+        </button>
+        <div className="login-popup-condtation">
+          <input type="checkbox" required />
+          <p>By Continuing, I Agree to the terms of use & privacy policy.</p>
+        </div>
+        {currState === "Login" ? (
+          <p>
+            Create a new account?{" "}
+            <span onClick={() => setCurrState("Sign Up")}>Click Here</span>
+          </p>
+        ) : (
+          <p>
+            Already have an account?{" "}
+            <span onClick={() => setCurrState("Login")}>Login Here</span>
+          </p>
+        )}
+      </form>
     </div>
   );
 }

@@ -45,45 +45,45 @@ export default function Footer() {
         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <h5 className=" main-teaxt text-uppercase fw-bold mb-4">Products</h5>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="/Home" className="text-reset">
             Home
             </Link>
           </p>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="/Menu" className="text-reset">
            Tiffin
             </Link>
           </p>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="/About" className="text-reset">
               About
             </Link>
           </p>
           <p>
-            <Link href="#!" className="text-reset">
-            Conatact Us
+            <Link to="/Contact" className="text-reset">
+            Contact Us
             </Link>
           </p>
         </div>
         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <h5 className="text-uppercase fw-bold mb-4">Useful links</h5>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="" className="text-reset">
               Pricing
             </Link>
           </p>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="" className="text-reset">
               Settings
             </Link>
           </p>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="" className="text-reset">
               Orders
             </Link>
           </p>
           <p>
-            <Link href="#!" className="text-reset">
+            <Link to="" className="text-reset">
               Help
             </Link>
           </p>
