@@ -1,0 +1,13 @@
+@media (min-width: 992px) {
+  .media_text {
+    display: flex;
+    padding-top: 0.5rem;
+  }
+}
+
+.btn_footer:hover {
+  background: #f9d903;  border-radius: 30px;
+}
+.text-reset{
+text-decoration: none;
+}
