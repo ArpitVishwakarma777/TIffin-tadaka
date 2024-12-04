@@ -15,8 +15,14 @@ import Aman from "../../assets/image/carousel3.png";
 import Arpit from "../../assets/image/carousel3.png";
 import Tarun from "../../assets/image/carousel3.png";
 import Helper_Template from "../../assets/image/Helper_Template.jpg";
-
-
+import fImage from "../../assets/small banner/helper_image.svg";
+import fImage2 from "../../assets/small banner/helper_image2.svg";
+import fImage3 from "../../assets/small banner/helper_image3.svg";
+import Testimonial from "./Testimonial";
+import mobileImage from "../../assets/small banner/download-app.avif";
+import playStoreButton from "../../assets/small banner/google-play-button.svg";
+import appStoreButton from "../../assets/small banner/google-play.svg";
+import mobile from "../../assets/small banner/mobileImage.svg";
 const carddata = [
   {
     src: Dalbati,
@@ -47,6 +53,18 @@ const carddata = [
     title: "Full-thali",
     textClass: "card_text5",
     text: " India flavors in one plate Roti, Sabji, Dahi, Salad, and more complete thali.",
+  },
+  {
+    src: MakkaChapati,
+    title: "Chapati special",
+    textClass: "card_text3",
+    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+  },
+  {
+    src: MakkaChapati,
+    title: "Chapati special",
+    textClass: "card_text3",
+    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
   },
   {
     src: MakkaChapati,
@@ -163,30 +181,26 @@ export default function Home() {
       </div>
 
       {/* For Cards */}
-      <div className="container">
+      <div className="container card-container py-2">
         <div className="row">
           {carddata.map((card) => {
             return (
-              <div className="col-sm-4 col-lg-3 col-xs-6 pb-sm-3 py-3 py-sm-0">
+              <div className=" card-box col-sm-4 col-lg-3 col-xs-6 pb-sm-3  px-3 py-3 ">
                 <div className="card box-shadow">
                   <img src={card.src} className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title">{card.title}</h5>
                     <p className={card.textClass}>
-                      {
-                      readMore ?card.text : null
-                      }
- <button
-                      style={{ textDecoration: "none", border: "none" }}
-                      className=" btn-link"
-                      onClick={() => setReadMore(!readMore)}
-                    >
-                      {readMore ? "Read Less" : "Read More"}
-                    </button>
-                      </p>
-                  
+                      {readMore ? card.text : null}
+                      <button
+                        style={{ textDecoration: "none", border: "none" }}
+                        className=" btn-link"
+                        onClick={() => setReadMore(!readMore)}
+                      >
+                        {readMore ? "Read Less" : "Read More"}
+                      </button>
+                    </p>
 
-                   
                     <Link href="#" className="btn  btn-primary">
                       Add Card
                     </Link>
@@ -197,13 +211,64 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className="container mt-lg-2">
+      {/* helper template */}
+      <div className="container my-5 helper_template ">
+        <div className="row d-flex  ">
+          <div className="col-sm-4  d-flex flex-column align-items-center justify-content-center">
+            <img src={fImage} alt="" />
+            <h3>Home delivery</h3>
+          </div>
+          <div className="col-sm-4  d-flex flex-column align-items-center  justify-content-center">
+            <img src={fImage2} alt="" />
+            <h3>Nearest tore</h3>
+          </div>
+          <div className="col-sm-4  d-flex align-items-center  flex-column justify-content-center">
+            <img src={fImage3} alt="" />
+            <h3>Mantain Temprature</h3>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="container  mt-lg-2">
         <div className="row">
           <img src={Helper_Template} alt="" />
         </div>
+      </div> */}
+
+      <div className="contianer">
+        <div className="row d-flex">
+         
+          <div className=" col-6 d-flex justify-content-center align-items-center">
+           
+            <div className="d-flex flex-column align-items-center">   
+            <div className="d-flex justify-content-center">
+              <img src={mobile} alt="" />
+            </div>
+              <h2>Download the app </h2>
+              <div>
+                Order Indian food online from the comfort of your home.{" "}
+              </div>
+              <div>
+                <div>
+                  <span>
+                    <img src={playStoreButton} alt="" />
+                  </span>
+                  <span>
+                    <img src={appStoreButton} alt="" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-6 h-50 ">
+            <img  style={{height:'70%', width:'100%'}} src={mobileImage} alt="" />
+          </div>
+        </div>
       </div>
+
       {/*For textimonials*/}
-      <div className="container-lg mt-lg-2">
+      <Testimonial />
+      {/* <div className="container-lg mt-lg-2">
         <div className="row">
           <div className="col-sm-12">
             <div
@@ -215,7 +280,7 @@ export default function Home() {
               <h2>
                 Collbrate<b></b> with Owner
               </h2>
-              {/* Carousel indicators */}
+             
               <ol className="carousel-indicators">
                 <li
                   data-target="#myCarousel"
@@ -224,7 +289,7 @@ export default function Home() {
                 />
                 <li data-target="#myCarousel" data-slide-to={1} />
               </ol>
-              {/* Wrapper for carousel items */}
+             
               <div className="carousel-inner">
                 {testimonialsData.map((data, index) => {
                   return (
@@ -286,8 +351,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <br />
+      </div> */}
+      {/* <br /> */}
     </>
   );
 }

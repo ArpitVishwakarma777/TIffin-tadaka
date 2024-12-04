@@ -1,15 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBagShopping,
-  faUser,
-  faLock,
-  faEnvelope,
-  faHeart,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-import { faGoogle, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-
 export function HeartIcon({ color }) {
   return (
     <FontAwesomeIcon

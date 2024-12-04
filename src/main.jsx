@@ -4,9 +4,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Home from "./component/Home/Home.jsx";
 import About from "./component/About/About.jsx";
+import Contact from "./component/Contact/Contact.jsx";
 import SignPage from "./component/SignUp/SignPage.jsx";
 import Layout from "./Layout.jsx";
-  
+import Menu from './component/Menu/Menu.jsx'
 import {
   Route,
   RouterProvider,
@@ -19,14 +20,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { path: "", element: <Home /> },
-      { path: "about", element: <About /> },
+      { path: "/", element: <Home /> },
+      { path: "/About", element: <About /> },
+      {path:'/Menu',element:<Menu/>},
+      {path:'/Contact',element:<Contact/>},
+      
     ],
   },
-  {
-    path: "SignUp",
-    element: <SignPage />,
-  },
+  
 ]);
 // const router = createBrowserRouter(
 //   createRoutesFromElements(

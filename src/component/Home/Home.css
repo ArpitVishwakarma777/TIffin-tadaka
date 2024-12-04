@@ -62,21 +62,35 @@
         content: "A plate with 4-5 soft rotis with crispy gram flour noodles curry and salad.";
       }
     }
-    
-    /*For scroll bar*/
-    /* Base styles for the container and columns */
-    .container {
-      overflow-x: auto;
+    /* @media (max-width:768px) { */
+      .card-container {
+        overflow-x:scroll;
     }
-    
     .row {
       display: flex;
       flex-wrap: nowrap;
-    }
-    .container::-webkit-scrollbar{
+    } */
+      .container::-webkit-scrollbar{
       width:0;
+   
+    } 
+    .card-box {
+      transition: transform 0.3s ease; /* Smooth transition for transform */
     }
     
+    
+    .card-box:hover{
+      transform: scale(1.03 )
+    }
+  /* } */
+    /*For scroll bar*/
+    /* Base styles for the container and columns */
+    /*
+    } */
+    
+    
+    
+
     .carousel-item1{
       position: relative;
     }

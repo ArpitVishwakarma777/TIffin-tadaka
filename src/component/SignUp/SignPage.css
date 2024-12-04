@@ -91,18 +91,17 @@
     text-decoration:none;
   }
   
-   /* Overall popup styling */
+   /* Overall popup styling */  
 
   .Login-popup {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
+    z-index: 1000;
   }
   
-  
-
 /* Container for the popup */
 .login-popup-container {
   display: flex;
@@ -154,7 +153,7 @@
   color: white;
   background-color: #ff6347;
   font-size: 16px;
-  width:300px;
+  width:17rem;
   border-radius: 25px;
   cursor: pointer;
 }
@@ -189,4 +188,21 @@
 
 .login-popup-inputs span:hover {
   text-decoration: underline;
+}
+.mx-1 {
+  margin-right: .25rem !important;
+  margin-left: 1.25rem !important;
+}
+/* body {
+    overflow: hidden; 
+} */
+
+.background-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px); /* Adjust the blur intensity */
+    z-index: 999; /* Make sure this is below the SignPage */
 }
