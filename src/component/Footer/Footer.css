@@ -11,3 +11,9 @@
 .text-reset{
 text-decoration: none;
 }
+:root{
+  --fs-6:'14px'
+}
+.bg-color{
+  background: rgb(236,236,234);
+}

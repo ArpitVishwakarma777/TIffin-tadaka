@@ -176,6 +176,27 @@ export default function Home() {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+
+      <div className="container-fluid py-5  my-5 helper_template ">
+        <div className="row d-flex   flex-wrap ">
+          <div className=" d-flex my-lg-3 justify-content-center">
+            <h1 style={{ color: "rgb(218, 165, 32)" }}>What We Offer !</h1>
+          </div>
+          <div className="col-md-4  my-sm-5 my-md-0 d-flex  flex-column align-items-center justify-content-center">
+            <img src={fImage} alt="" />
+            <h3>Quick & Reliable </h3>
+          </div>
+          <div className="col-md-4  d-flex flex-column align-items-center  justify-content-center">
+            <img src={fImage2} alt="" />
+            <h3>Find Nearby </h3>
+          </div>
+          <div className="col-md-4 my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
+            <img src={fImage3} alt="" />
+            <h3>Find Nearby </h3>
+          </div>
+        </div>
+      </div>
+
       <div className="d-flex justify-content-center my-sm-4">
         <h1 className="One-day-special">One day special</h1>
       </div>
@@ -211,23 +232,7 @@ export default function Home() {
           })}
         </div>
       </div>
-      {/* helper template */}
-      <div className="container my-5 helper_template ">
-        <div className="row d-flex  ">
-          <div className="col-sm-4  d-flex flex-column align-items-center justify-content-center">
-            <img src={fImage} alt="" />
-            <h3>Home delivery</h3>
-          </div>
-          <div className="col-sm-4  d-flex flex-column align-items-center  justify-content-center">
-            <img src={fImage2} alt="" />
-            <h3>Nearest tore</h3>
-          </div>
-          <div className="col-sm-4  d-flex align-items-center  flex-column justify-content-center">
-            <img src={fImage3} alt="" />
-            <h3>Mantain Temprature</h3>
-          </div>
-        </div>
-      </div>
+      {/* Advantage Banner */}
 
       {/* <div className="container  mt-lg-2">
         <div className="row">
@@ -235,40 +240,43 @@ export default function Home() {
         </div>
       </div> */}
 
-      <div className="contianer">
-        <div className="row d-flex">
-         
-          <div className=" col-6 d-flex justify-content-center align-items-center">
-           
-            <div className="d-flex flex-column align-items-center">   
-            <div className="d-flex justify-content-center">
-              <img src={mobile} alt="" />
-            </div>
-              <h2>Download the app </h2>
-              <div>
-                Order Indian food online from the comfort of your home.{" "}
-              </div>
-              <div>
-                <div>
-                  <span>
-                    <img src={playStoreButton} alt="" />
-                  </span>
-                  <span>
-                    <img src={appStoreButton} alt="" />
-                  </span>
+      {/* Download option template */}
+      <div className="container my-5">
+        <div className="row d-flex  flex-sm-column-reverse flex-md-row flex-wrap justify-content-center">
+          <div className=" col-sm-12 col-xs-12 col-md-6 d-flex justify-content-lg-center align-items-md-center">
+            <div className="d-flex flex-column align-items-center">
+              <div className="d-flex  align-items-center d-md-block">
+                <div className="d-flex justify-content-center">
+                  <img src={mobile} alt="" />
                 </div>
+                <h1>Download the app </h1>
+              </div>
+              <div className="d-flex py-2  align-items-center">
+                <span>
+                  {" "}
+                  Order Indian food online from the comfort of your home.{" "}
+                </span>
+              </div>
+              <br />
+              <div className="d-flex justify-content-center align-items-center">
+                <span>
+                  <img src={playStoreButton} alt="" />
+                </span>
+                <span>
+                  <img src={appStoreButton} alt="" />
+                </span>
               </div>
             </div>
           </div>
-          <div className="col-6 h-50 ">
-            <img  style={{height:'70%', width:'100%'}} src={mobileImage} alt="" />
+          <div className="col-6  d-none d-md-flex d-sm-none justify-content-end h-50 ">
+            <img style={{ width: "70%" }} src={mobileImage} alt="" />
           </div>
         </div>
       </div>
 
       {/*For textimonials*/}
       <Testimonial />
-      {/* <div className="container-lg mt-lg-2">
+      {/* <div className="container-md mt-md-2">
         <div className="row">
           <div className="col-sm-12">
             <div

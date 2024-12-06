@@ -37,22 +37,22 @@ export default function Header() {
           >
             <ul className="navbar-nav me-lg-auto  mb-2 mb-lg-0">
               <li className="nav-item ms-xxl-4">
-                <Link className="nav-link " aria-current="page" to="/">
+                <Link className="nav-link fs-3 " aria-current="page" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item ms-xxl-4">
-                <Link className="nav-link" to="/Menu">
+                <Link className="nav-link fs-3" to="/Menu">
                   Menu
                 </Link>
               </li>
               <li className="nav-item ms-xxl-4">
-                <Link className="nav-link" to="/About">
+                <Link className="nav-link fs-3" to="/About">
                   About
                 </Link>
               </li>
               <li className="nav-item ms-xxl-4">
-                <Link className="nav-link" to="/Contact" tabIndex={-1}>
+                <Link className="nav-link fs-3" to="/Contact" tabIndex={-1}>
                   Contact Us
                 </Link>
               </li>

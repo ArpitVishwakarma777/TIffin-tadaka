@@ -11,7 +11,7 @@ function SignPage() {
   // console.log(showLogin);
   return (
     <div className="Login-popup">
-      <form className="login-popup-container">
+      <form  className="login-popup-container d-flex flex-column align-items-center justify-content-center align-self-center">
         {/* <div className="login-popup-titel d-flex
         ">
          <span> </span>

@@ -1,0 +1,18 @@
+@media (min-width:992px){
+  .map{
+    margin-top: 150px;
+    width: 40vw;
+    height: 500px;
+  }
+}
+@media (max-width:992px){
+  .map{
+    
+    width: 85vw;
+    height: 50vh;
+  }
+}
+.map{
+    border: black 1px solid;
+    border-radius: 10px;
+}
