@@ -44,6 +44,7 @@
   border: 1px solid #ddd;
   outline: none;
   padding: 10px;
+  width: 15.6rem;
   border-radius: 8px;
   font-size: 14px;
 }
@@ -52,6 +53,7 @@
 .Sign_button {
   border: none;
   padding: 10px;
+  margin-bottom: 20px;
   color: white;
   background-color: #ff6347;
   font-size: 16px;
@@ -107,4 +109,7 @@
     bottom: 0;
     backdrop-filter: blur(8px); /* Adjust the blur intensity */
     z-index: 999; /* Make sure this is below the SignPage */
+}
+input{
+  width: 100px;
 }

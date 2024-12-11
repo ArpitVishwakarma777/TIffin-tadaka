@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 import Dalbati from "../../assets/image/Dal Bati.jpeg";
 import Sev from "../../assets/image/Sev.jpeg";
@@ -23,6 +23,8 @@ import mobileImage from "../../assets/small banner/download-app.avif";
 import playStoreButton from "../../assets/small banner/google-play-button.svg";
 import appStoreButton from "../../assets/small banner/google-play.svg";
 import mobile from "../../assets/small banner/mobileImage.svg";
+
+
 const carddata = [
   {
     src: Dalbati,
@@ -92,9 +94,11 @@ const testimonialsData = [
   ],
 ];
 export default function Home() {
+  const navigate = useNavigate();
   const [readMore, setReadMore] = React.useState(false);
   return (
     <>
+    
       {/* For Carousels */}
       <div
         id="carouselExampleCaptions"
@@ -131,7 +135,9 @@ export default function Home() {
             <div className="caption1 h-50 w">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
-              <button type="button" class="btn mx-4 px-4 btn-danger">
+              <button onClick={()=>{
+                navigate('/Menu')
+              }} type="button" class="btn mx-4 px-4 btn-danger">
                 Order Now
               </button>
             </div>

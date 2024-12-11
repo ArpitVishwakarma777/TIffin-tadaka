@@ -1,6 +1,8 @@
 import React from "react";
 import "./Contact.css";
+
 function Contact() {
+  const [isLoad, setload] = React.useState(false);
   return (
     <section className="bg-light py-3 pb-md-5">
       <div className="container">
@@ -9,9 +11,7 @@ function Contact() {
             <div className="row justify-content-xl-center">
               <div className="col-12 col-xl-11">
                 <div className=" d-flex justify-content-end">
-                  <h2 className="fs-1 mb-5  ">
-                    Contact Us
-                  </h2>
+                  <h2 className="fs-1 mb-5  ">Contact Us</h2>
                 </div>
                 <p className="lead fs-4 text-secondary mb-5">
                   We're always on the lookout to work with new clients. If
@@ -103,12 +103,19 @@ function Contact() {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 d-flex justify-content-center">
+          <div className="col-lg-6 d-flex  align-items-center justify-content-center">
+            {isLoad === false && (
+             
+                <div class="spinner-border position-relative  top-100 start-50  " role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+           
+            )}
             <iframe
-              className="map  "
+              className="map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d890.0870227425262!2d77.08867732052424!3d22.340670425536857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397d70da30805abf%3A0x1368c14a9092d58b!2sHarda%2C%20Madhya%20Pradesh%20461331!5e0!3m2!1sen!2sin!4v1733383118109!5m2!1sen!2sin"
+              onLoad={()=>{setload(true)}}
               allowFullScreen
-              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>

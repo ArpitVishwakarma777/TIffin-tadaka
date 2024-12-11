@@ -8,12 +8,14 @@ import Contact from "./component/Contact/Contact.jsx";
 import SignPage from "./component/SignUp/SignPage.jsx";
 import Layout from "./Layout.jsx";
 import Menu from './component/Menu/Menu.jsx'
+import Profile from './component/Profile/Profile.jsx'
 import {
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import Protected from "./component/SignUp/Protected.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +23,11 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
-      {path:'/Menu',element:<Menu/>},
+      {path:'/Menu',element:<Protected Component={<Menu/>}/>},
       {path:'/Contact',element:<Contact/>},
-      
+      // {path:'/Home/:Component',element:<Home/>}
     ],
   },
   

@@ -1,0 +1,79 @@
+@media (min-width: 1200px) {
+  .profile-popup {
+    position: fixed;
+    top: 43%;
+    left: 88%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    z-index: 1000;
+  }
+}
+@media (max-width: 1200px) {
+  .profile-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    z-index: 1000;
+  }
+}
+
+
+/* Container for the popup */
+.profile-popup-container {
+  width: clamp(380px, 23vw, 400px);
+  background-color: rgb(330, 128, 46);
+  color: #808080;
+  gap: 24px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+
+.profile-popup-titel h2 {
+  font-size: 2rem;
+}
+
+/* Input fields */
+.profile-popup-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-popup-inputs input {
+  border: 1px solid #ddd;
+  outline: none;
+  padding: 7px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+
+/* Link section */
+
+.profile-popup-inputs span:hover {
+  text-decoration: underline;
+}
+.mx-1 {
+  margin-right: 0.25rem !important;
+  margin-left: 1.25rem !important;
+}
+/* body {
+    overflow: hidden; 
+} */
+
+label {
+  font-weight: 500;
+  font-size: large;
+  color: black;
+}
+ /* input #mobile{
+margin-left: -20px;
+} */
+ input{
+  width: 200px;
+ }

@@ -1,17 +1,27 @@
 import React from "react";
-import "./SignPage.css";
+import "./SignPage.css";  
+import {toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { RxCross1 } from "react-icons/rx";
-import { setShowLogin } from "../../RTK/slices";
+import { setShowLogin, setLogout, setSignUp } from "../../RTK/slices";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 function SignPage() {
   const [currState, setCurrState] = useState("Login");
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   // const showLogin = useSelector((state) => state.manageLoginStatus.showLogin);
   // console.log(showLogin);
+  function handleButton(e) {
+    toast("login Successfully")
+dispatch(setShowLogin(false))
+dispatch(setLogout())
+   e.preventDefault();
+  }
+  
   return (
     <div className="Login-popup">
-      <form  className="login-popup-container d-flex flex-column align-items-center justify-content-center align-self-center">
+      <form onSubmit={handleButton} className="login-popup-container d-flex flex-column align-items-center justify-content-center align-self-center">
         {/* <div className="login-popup-titel d-flex
         ">
          <span> </span>
@@ -22,10 +32,16 @@ function SignPage() {
             <div className="col-6 ">
               <h2>{currState}</h2>
             </div>
-            <div className="col-6 d-flex justify-content-end"><span onClick={()=>{
-         dispatch(setShowLogin(false))
-              
-            }}><RxCross1 /></span></div>
+            <div className="col-6 d-flex justify-content-end">
+              <span
+                onClick={() => {
+                  dispatch(setShowLogin(false));
+                }}
+              >
+                <RxCross1 />
+              </span>
+             
+            </div>
           </div>
         </div>
         <div className="login-popup-inputs">
@@ -67,13 +83,7 @@ function SignPage() {
             </div>
           )}
         </div>
-        <button
-          tyep="submit"
-          onClick={(e) => {
-            
-          }}
-          className="Sign_button"
-        >
+        <button  className="Sign_button">
           {currState === "Sign Up" ? "Create Account" : "Login"}
         </button>
         <div className="login-popup-condtation">
@@ -92,6 +102,7 @@ function SignPage() {
           </p>
         )}
       </form>
+      
     </div>
   );
 }
