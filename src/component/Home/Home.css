@@ -61,16 +61,12 @@
   }
 }
 /* @media (max-width:768px) { */
-.card-container {
-  overflow-x: scroll;
-}
+
 .row {
   display: flex;
   flex-wrap: nowrap;
 }
-*/ .container::-webkit-scrollbar {
-  width: 0;
-}
+
 
 .card-box {
   transition: transform 0.3s ease; /* Smooth transition for transform */

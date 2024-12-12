@@ -1,0 +1,13 @@
+.oneday_price{
+    /* border:2px black solid ; */
+  border-radius:20px;
+  background: rgb(241, 241, 124);
+  padding: 7px 11px 7px 11px;
+    
+}
+.card-container {
+    overflow-x: scroll;
+  }
+   .card-container::-webkit-scrollbar {
+    width: 0;
+  }

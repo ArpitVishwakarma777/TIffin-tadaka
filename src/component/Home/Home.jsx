@@ -1,12 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
-import Dalbati from "../../assets/image/Dal Bati.jpeg";
-import Sev from "../../assets/image/Sev.jpeg";
-import Paratha from "../../assets/image/aloo parratha.jpeg";
-import Poori from "../../assets/image/Poori.jpeg";
-import FullThal from "../../assets/image/Indian veg thali.jpeg";
-import MakkaChapati from "../../assets/image/Makki Ki Roti Sarson Ka Saag.png";
+
 import Carousel1 from "../../assets/image/carousel1.png";
 import Carousel2 from "../../assets/image/carousel2.png";
 import Carousel3 from "../../assets/image/carousel3.png";
@@ -14,7 +9,7 @@ import Anikesh from "../../assets/image/carousel3.png";
 import Aman from "../../assets/image/carousel3.png";
 import Arpit from "../../assets/image/carousel3.png";
 import Tarun from "../../assets/image/carousel3.png";
-import Helper_Template from "../../assets/image/Helper_Template.jpg";
+
 import fImage from "../../assets/small banner/helper_image.svg";
 import fImage2 from "../../assets/small banner/helper_image2.svg";
 import fImage3 from "../../assets/small banner/helper_image3.svg";
@@ -23,58 +18,57 @@ import mobileImage from "../../assets/small banner/download-app.avif";
 import playStoreButton from "../../assets/small banner/google-play-button.svg";
 import appStoreButton from "../../assets/small banner/google-play.svg";
 import mobile from "../../assets/small banner/mobileImage.svg";
-
-
-const carddata = [
-  {
-    src: Dalbati,
-    title: "Dal-Bati",
-    textClass: "card_text1",
-    text: " A plate with 5 ghee-soaked Batis, served with a bowl of hot Dal and fresh salad.",
-  },
-  {
-    src: Paratha,
-    title: "Dahi-Paratha",
-    textClass: "card_text2",
-    text: "(Panjabi Tad)A serving of 5 soft parathas with fresh yogurt and flavorful spices.",
-  },
-  {
-    src: Sev,
-    title: "sev-veg & more",
-    textClass: "card_text3",
-    text: "A plate with 4-5 soft rotis, extra crispy gram flour noodles curry,and salad.",
-  },
-  {
-    src: Poori,
-    title: "Poori special",
-    textClass: "card_text4",
-    text: " Enjoy 5 fluffy puris paired with a flavorful potato curry and a side of fresh salad.",
-  },
-  {
-    src: FullThal,
-    title: "Full-thali",
-    textClass: "card_text5",
-    text: " India flavors in one plate Roti, Sabji, Dahi, Salad, and more complete thali.",
-  },
-  {
-    src: MakkaChapati,
-    title: "Chapati special",
-    textClass: "card_text3",
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-  },
-  {
-    src: MakkaChapati,
-    title: "Chapati special",
-    textClass: "card_text3",
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-  },
-  {
-    src: MakkaChapati,
-    title: "Chapati special",
-    textClass: "card_text3",
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-  },
-];
+import Cards from "../../Helper/Cards.jsx";
+// const carddata = [
+//   {
+//     src: Dalbati,
+//     title: "Dal-Bati",
+//     textClass: "card_text1",
+//     text: " A plate with 5 ghee-soaked Batis, served with a bowl of hot Dal and fresh salad.",
+//   },
+//   {
+//     src: Paratha,
+//     title: "Dahi-Paratha",
+//     textClass: "card_text2",
+//     text: "(Panjabi Tad)A serving of 5 soft parathas with fresh yogurt and flavorful spices.",
+//   },
+//   {
+//     src: Sev,
+//     title: "sev-veg & more",
+//     textClass: "card_text3",
+//     text: "A plate with 4-5 soft rotis, extra crispy gram flour noodles curry,and salad.",
+//   },
+//   {
+//     src: Poori,
+//     title: "Poori special",
+//     textClass: "card_text4",
+//     text: " Enjoy 5 fluffy puris paired with a flavorful potato curry and a side of fresh salad.",
+//   },
+//   {
+//     src: FullThal,
+//     title: "Full-thali",
+//     textClass: "card_text5",
+//     text: " India flavors in one plate Roti, Sabji, Dahi, Salad, and more complete thali.",
+//   },
+//   {
+//     src: MakkaChapati,
+//     title: "Chapati special",
+//     textClass: "card_text3",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//   },
+//   {
+//     src: MakkaChapati,
+//     title: "Chapati special",
+//     textClass: "card_text3",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//   },
+//   {
+//     src: MakkaChapati,
+//     title: "Chapati special",
+//     textClass: "card_text3",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//   },
+// ];
 const testimonialsData = [
   [
     { src: Anikesh, name: "Anikesh", position: "Owner" },
@@ -95,10 +89,9 @@ const testimonialsData = [
 ];
 export default function Home() {
   const navigate = useNavigate();
-  const [readMore, setReadMore] = React.useState(false);
+
   return (
     <>
-    
       {/* For Carousels */}
       <div
         id="carouselExampleCaptions"
@@ -135,9 +128,13 @@ export default function Home() {
             <div className="caption1 h-50 w">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
-              <button onClick={()=>{
-                navigate('/Menu')
-              }} type="button" class="btn mx-4 px-4 btn-danger">
+              <button
+                onClick={() => {
+                  navigate("/Menu");
+                }}
+                type="button"
+                class="btn mx-4 px-4 btn-danger"
+              >
                 Order Now
               </button>
             </div>
@@ -208,36 +205,7 @@ export default function Home() {
       </div>
 
       {/* For Cards */}
-      <div className="container card-container py-2">
-        <div className="row">
-          {carddata.map((card) => {
-            return (
-              <div className=" card-box col-sm-4 col-lg-3 col-xs-6 pb-sm-3  px-3 py-3 ">
-                <div className="card box-shadow">
-                  <img src={card.src} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">{card.title}</h5>
-                    <p className={card.textClass}>
-                      {readMore ? card.text : null}
-                      <button
-                        style={{ textDecoration: "none", border: "none" }}
-                        className=" btn-link"
-                        onClick={() => setReadMore(!readMore)}
-                      >
-                        {readMore ? "Read Less" : "Read More"}
-                      </button>
-                    </p>
-
-                    <Link href="#" className="btn  btn-primary">
-                      Add Card
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <Cards  />
       {/* Advantage Banner */}
 
       {/* <div className="container  mt-lg-2">

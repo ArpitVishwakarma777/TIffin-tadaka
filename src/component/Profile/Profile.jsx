@@ -65,12 +65,12 @@ function Profile() {
                 >
                   <FaPencilAlt />
                 </span>
-                <span
+                <span className="mt-3"
                   onClick={() => {
                     dispatch(setShowProfile(false));
                   }}
                 >
-                  <RxCross1 />
+                  <RxCross1 color="black" />
                 </span>
               </div>
             </div>

@@ -1,7 +1,7 @@
 @media (min-width: 1200px) {
   .profile-popup {
     position: fixed;
-    top: 43%;
+    top: 40%;
     left: 88%;
     transform: translate(-50%, -50%);
     display: grid;
@@ -18,12 +18,12 @@
     z-index: 1000;
   }
 }
-
+  
 
 /* Container for the popup */
 .profile-popup-container {
   width: clamp(380px, 23vw, 400px);
-  background-color: rgb(330, 128, 46);
+  background-color: rgb(204, 212, 204);
   color: #808080;
   gap: 24px;
   padding: 10px 20px;
@@ -74,6 +74,4 @@ label {
  /* input #mobile{
 margin-left: -20px;
 } */
- input{
-  width: 200px;
- }
+ 
