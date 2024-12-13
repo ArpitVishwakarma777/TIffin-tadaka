@@ -3,7 +3,7 @@ import "./Menu.css";
 import { Link } from "react-router-dom";
 import { NewCard, carddata } from "../../Helper/Cards.jsx";
 import menuBanner from "../../assets/Menu-contain/Menu_Template.png";
-import titleImage from "../../assets/Menu-contain/title-shape.png";
+import designing from "../../assets/Menu-contain/title-shape.png";
 import welcomeImage from '../../assets/Menu-contain/welcome.jpg'
 function Menu() {
   const [onedayBtn, setOnedayBtn] = React.useState(false);
@@ -32,57 +32,58 @@ function Menu() {
           alt="banner"
         />
       </div>
-      <div className="d-flex flex-column justify-content-center align-items-center my-5">
-        <span style={{ width: "150px" }}>
+      <div className="d-flex flex-column justify-content-center align-items-center my-4">
+        <span style={{ width: "170px" }}>
           <img
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            src={titleImage}
+            src={designing}
             alt="banner"
           />
         </span>
 
         <div className="d-flex justify-content-center flex-column flex-sm-row">
           <span
-            style={{ fontSize: "5rem", fontFamily: "Ubuntu" }}
-            className="me-3"
+            style={{fontFamily: "Ubuntu" }}
+            className=" second-title me-3"
           >
             Indian{" "}
           </span>
           <span
-            style={{ fontFamily: "Ubuntu", color: "red", fontSize: "5rem" }}
+          className="second-title"
+            style={{ fontFamily: "Ubuntu", color: "red" }}
           >
             {" "}
             Foods
           </span>
         </div>
 
-        <div className="d-flex justify-content-center">
-          <p className="col-8  fs-4">
+        <div className="d-flex  justify-content-center flex-lg-row flex-column-reverse align-items-center">
+          <p className="col-lg-8 col-sm-10 col-9   fs-4">
             <p className="fs-3">
               {" "}
               Enjoy the flavours of India served hot in true Indian style: in a
               tiffin box.
             </p>
             Welcome to <span className="fw-bold text-warning">Tiffin Tadaka</span> Discover
-            our carefully crafted menu featuring fresh, homemade, and delicious
+              our carefully crafted menu featuring fresh, homemade, and delicious
             meals. We offer a variety of vegetarian and non-vegetarian options,
             along with special diet plans and customizable meal packages to suit
             your needs. . Order now and enjoy healthy, homely
             food delivered straight to your doorstep!
           </p>
-          <div style={{width:'270px',height:'250px'}} className="col-4 pb-lg-4 ps-lg-4 ">
+          <div style={{width:'290px',height:'250px'}} className="col-4 pb-lg-4 ps-lg-4 ">
             <img style={{width:'100%',height:'100%'}} src={welcomeImage} alt="" />
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-center flex-column align-items-center flex-sm-row">
+      <div className=" d-flex  justify-content-center flex-column align-items-center flex-sm-row">
         <span
-          style={{ fontSize: "5rem", color: "red", fontFamily: "Ubuntu" }}
-          className="me-3"
+          style={{     color: "red", fontFamily: "Ubuntu" }}
+          className="first-title me-3 "
         >
           Tiffin{" "}
         </span>
-        <span style={{ fontFamily: "Ubuntu", fontSize: "5rem",color:'darkGreen  ' }}> Category</span>
+        <span className='first-title' style={{ fontFamily: "Ubuntu", color:'darkGreen  ' }}> Category</span>
       </div>
       <div className="container mt-3">
         <div
