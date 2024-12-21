@@ -1,0 +1,10 @@
+.chapati-box {
+  border: 5px black solid;
+  border-radius: 60px;
+  overflow-x: scroll;
+  padding: 0px,15px;
+  margin: 0px;
+}
+.chapati-box::-webkit-scrollbar {
+  width: 0;
+}

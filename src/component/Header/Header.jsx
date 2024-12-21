@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { ToastContainer, toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { FaBagShopping } from "react-icons/fa6";
 import { IoMdContact } from "react-icons/io";
-import { setShowLogin, setSignUp, setLogout, setShowProfile } from "../../RTK/slices.js";
+import { DicriptionPopup } from "../../Helper/Cards.jsx";
+import {
+  setShowLogin,
+  setSignUp,
+  setLogout,
+  setShowProfile,
+} from "../../RTK/slices.js";
+
 import webLogo from "../../assets/logo/web-logo 1.png";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +21,10 @@ import SignPage from "../SignUp/SignPage.jsx";
 import Profile from "../Profile/Profile.jsx";
 export default function Header() {
   const navigate = useNavigate();
- 
+  const location = useLocation();
+  //Popup data
+  const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
+
   const dispatch = useDispatch();
   const loginStatus = useSelector(
     (state) => state.manageLoginStatus.loginStatus
@@ -21,11 +32,12 @@ export default function Header() {
   const showProfile = useSelector(
     (state) => state.manageProfileStatus.showProfile
   );
-
+  const listCount = useSelector(
+    (state) => state.manageWishlistStatus.list.length
+  );
   const showLogin = useSelector((state) => state.manageLoginStatus.showLogin);
-  console.log(showProfile);
+
   function handleButton(e) {
-    // navigate("/SignUp");
     e.preventDefault();
     if (loginStatus === "SignUp") {
       dispatch(setShowLogin(true));
@@ -36,14 +48,16 @@ export default function Header() {
   }
   return (
     <>
+      {/* discription box */}
+
       {/* Toast Component */}
       <ToastContainer />
 
       {/* Profile Component */}
 
-     <div className={showProfile === true ? "background-blur" : null}>
-     {showProfile === true ? <Profile /> : null}
-     </div>
+      <div className={showProfile === true ? "background-blur" : null}>
+        {showProfile === true ? <Profile /> : null}
+      </div>
       {/* SignUp Component */}
       <div className={showLogin === true ? "background-blur" : null}>
         {" "}
@@ -91,19 +105,22 @@ export default function Header() {
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
               <div className="contain  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
-                <button style={{ border: "none" }}>
+                <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={25} color="green" />
-                  <span>1</span>
-                </button>
+                  <span className="text-dark">{listCount}</span>
+                </Link>
                 <br />
               </div>
               <div className="contain  mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
-                <button onClick={()=>{
-                  dispatch(setShowProfile(true))
-                }} style={{ border: "none" }}>
+                <button
+                  onClick={() => {
+                    dispatch(setShowProfile(true));
+                  }}
+                  style={{ border: "none" }}
+                >
                   <IoMdContact color="green" size={35} />
-                </button >
+                </button>
               </div>
               <div className="contain  mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button

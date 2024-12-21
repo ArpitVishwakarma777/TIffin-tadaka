@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Cards.css";
 import { Link } from "react-router-dom";
 import Dalbati from "../assets/image/Dal Bati.jpeg";
-import DalChaval from '../assets/image/dal_chaval.jpg'
+import DalChaval from "../assets/image/dal_chaval.jpg";
 import Sev from "../assets/image/Sev.jpeg";
 import Paratha from "../assets/image/aloo parratha.jpeg";
 import Poori from "../assets/image/Poori.jpeg";
 import FullThal from "../assets/image/Indian veg thali.jpeg";
 import MakkaChapati from "../assets/image/Makki Ki Roti Sarson Ka Saag.png";
-export const carddata = [
+import { useSelector, useDispatch } from "react-redux";
+import { addlist, setshowPopup, setHiddenPopup } from "../RTK/slices";
+import Chef from "../assets/Menu-contain/ChefImage.jpg";
+import { useLocation } from "react-router-dom";
+export const dailydata = [
   {
+    id: 0,
     src: Dalbati,
     title: "Dal-Bati",
     textClass: "card_text1",
@@ -18,6 +23,7 @@ export const carddata = [
   },
 
   {
+    id: 2,
     src: Paratha,
     title: "Dahi-Paratha",
     textClass: "card_text2",
@@ -25,6 +31,7 @@ export const carddata = [
     price: 200,
   },
   {
+    id: 2,
     src: Sev,
     title: "sev-veg & more",
     textClass: "card_text3",
@@ -32,6 +39,7 @@ export const carddata = [
     price: 200,
   },
   {
+    id: 3,
     src: Poori,
     title: "Poori special",
     textClass: "card_text4",
@@ -39,6 +47,7 @@ export const carddata = [
     price: 200,
   },
   {
+    id: 4,
     src: FullThal,
     title: "Full-thali",
     textClass: "card_text5",
@@ -46,6 +55,7 @@ export const carddata = [
     price: 200,
   },
   {
+    id: 5,
     src: MakkaChapati,
     title: "Chapati special",
     textClass: "card_text3",
@@ -53,6 +63,7 @@ export const carddata = [
     price: 200,
   },
   {
+    id: 6,
     src: MakkaChapati,
     title: "Chapati special",
     textClass: "card_text3",
@@ -60,11 +71,52 @@ export const carddata = [
     price: 200,
   },
   {
-    src:DalChaval,
+    id: 7,
+    src: DalChaval,
     title: "Chapati special",
     textClass: "card_text3",
     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
     price: 200,
+  },
+];
+export const weeklydata = [
+  { id: 0, src: Chef, title: "Weekly Subscription", text: {}, price: 999 },
+  { id: 1, src: Chef, title: "Weekly Subscription", text: {}, price: 985 },
+  { id: 2, src: Chef, title: "Weekly Subscription", text: {}, price: 900 },
+  { id: 3, src: Chef, title: "Weekly Subscription", text: {}, price: 950 },
+];
+export const monthlydata = [
+  {
+    id: 0,
+    src: Chef,
+    title: "Monthly Subscription",
+
+    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+    price: 1800,
+  },
+  {
+    id: 1,
+    src: Chef,
+    title: "Monthly Subscription",
+
+    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+    price: 1600,
+  },
+  {
+    id: 2,
+    src: Chef,
+    title: "Monthly Subscription",
+
+    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+    price: 1700,
+  },
+  {
+    id: 3,
+    src: Chef,
+    title: "Monthly Subscription",
+
+    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+    price: 2000,
   },
 ];
 function Cards() {
@@ -73,7 +125,7 @@ function Cards() {
     <>
       <div className="container card-container py-2">
         <div className="row">
-          {carddata.map((card) => {
+          {dailydata.map((card) => {
             return (
               <div className=" card-box col-sm-4 col-lg-3 col-xs-6 pb-sm-3  px-3 py-3 ">
                 <div className="card box-shadow">
@@ -93,7 +145,7 @@ function Cards() {
                     <div>
                       <span>
                         {" "}
-                        <Link to={'/Menu'} className="btn me-5  btn-primary">
+                        <Link to={"/Menu"} className="btn me-5  btn-primary">
                           Add Card
                         </Link>
                       </span>
@@ -110,11 +162,29 @@ function Cards() {
 }
 export const NewCard = ({ card }) => {
   const [readMore, setReadMore] = React.useState(false);
+  const data = useSelector((state) => state.manageWishlistStatus.list);
+  console.log(data);
+  const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
+  const dispatch = useDispatch();
+  const [PopupId,setPopupId]=useState(null)
+  const location = useLocation();
+  function handleImageClick(e) {
+    dispatch(setshowPopup());
+    setPopupId(e.target.id)
+
+  }
   return (
     <>
+      {showPopup ? <DicriptionPopup card={card} id={PopupId} /> : null}
       <div className=" card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3  px-3 py-3 ">
         <div className="card box-shadow">
-          <img src={card.src} className="card-img-top" alt="..." />
+          <img
+            id={card.id}
+            onClick={handleImageClick}
+            src={card.src}
+            className="card-img-top"
+            alt="..."
+          />
           <div className="card-body">
             <h5 className="card-title">{card.title}</h5>
             <p className={card.textClass}>
@@ -129,17 +199,42 @@ export const NewCard = ({ card }) => {
             </p>
             <div>
               <span>
-                {" "} 
-                <Link href="#" className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5  btn-primary">
+                {" "}
+                <button
+                  onClick={() => {
+                    // console.log(card)
+
+                    dispatch(addlist(card));
+                  }}
+                  className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5  btn-primary"
+                >
                   Add Card
-                </Link>
+                </button>
               </span>
-              <span className="oneday_price ms-xxl-4 ">${card.price}</span>
+              <span className="oneday_price ms-xxl-4 ">₹{card.price}</span>
             </div>
           </div>
         </div>
       </div>
     </>
+  );
+};
+
+export const DicriptionPopup = ({ card, id }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <div className="dicriptionPopup">
+      <span>text {id}</span> {/* This will now correctly print the id */}
+      <button
+        className=""
+        onClick={() => {
+          dispatch(setHiddenPopup());
+        }}
+      >
+        ok
+      </button>
+    </div>
   );
 };
 

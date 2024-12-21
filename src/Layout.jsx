@@ -10,10 +10,9 @@ import store from './RTK/store.js'
 function Layout() {
   return (
     <Provider store = {store}> 
- 
     <Header/>
     <Outlet/>
-    {/* <Footer/> */}
+    <Footer/>
     </Provider>
   )
 }

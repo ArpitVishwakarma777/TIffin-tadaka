@@ -5,10 +5,13 @@ import "./index.css";
 import Home from "./component/Home/Home.jsx";
 import About from "./component/About/About.jsx";
 import Contact from "./component/Contact/Contact.jsx";
-import SignPage from "./component/SignUp/SignPage.jsx";
+import Wishlist from "./component/Wishlist/Wishlist.jsx";
 import Layout from "./Layout.jsx";
 import Menu from './component/Menu/Menu.jsx'
-import Profile from './component/Profile/Profile.jsx'
+import DailyTiffin from "./Tiffin Categories/DailyTiffin.jsx";
+import WeeklyTiffin from "./Tiffin Categories/WeeklyTiffin.jsx";
+import MonthlySubscription from "./Tiffin Categories/MonthlyTiffin.jsx";
+
 import {
   Route,
   RouterProvider,
@@ -25,7 +28,14 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
-      {path:'/Menu',element:<Protected Component={<Menu/>}/>},
+      {path:'/Wishlist',element:<Wishlist/>},
+      {path:'/Menu',element:<Protected Component={<Menu/>}/>,
+    children:[
+      {path:'/Menu/Daily',element:<DailyTiffin/>},
+      {path:'/Menu/Weekly',element:<WeeklyTiffin/>},
+      {path:'/Menu/Monthly',element:<MonthlySubscription/>},
+    ]
+    },
       {path:'/Contact',element:<Contact/>},
       // {path:'/Home/:Component',element:<Home/>}
     ],

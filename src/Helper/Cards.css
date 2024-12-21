@@ -8,6 +8,17 @@
 .card-container {
     overflow-x: scroll;
   }
-   .card-container::-webkit-scrollbar {
+   /* .card-container::-webkit-scrollbar {
     width: 0;
+  } */
+  .dicriptionPopup{
+    background: rgb(71, 66, 66,0.9);
+    height: 50%;
+    width:50% ;
+    position: fixed;
+    top:50%;
+    left:50% ;
+     transform: translate(-50%,-50%); 
+  
+   z-index:1000;
   }
