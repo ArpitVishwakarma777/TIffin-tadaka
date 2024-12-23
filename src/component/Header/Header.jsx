@@ -43,7 +43,7 @@ export default function Header() {
       dispatch(setShowLogin(true));
     } else {
       dispatch(setSignUp());
-      toast("Logout successfully ");
+      toast.success("Logout successfully ");
     }
   }
   return (
@@ -113,7 +113,7 @@ export default function Header() {
                 <br />
               </div>
               <div className="contain  mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
-                <button
+                <button className={loginStatus!=="LogOut"&& "d-none"  }
                   onClick={() => {
                     dispatch(setShowProfile(true));
                   }}

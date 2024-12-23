@@ -69,6 +69,7 @@ import Cards from "../../Helper/Cards.jsx";
 //     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
 //   },
 // ];
+
 const testimonialsData = [
   [
     { src: Anikesh, name: "Anikesh", position: "Owner" },
