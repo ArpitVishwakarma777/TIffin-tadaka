@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Menu.css";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
-import menuBanner from "../../assets/Menu-contain/Menu_Template.png";
-import designing from "../../assets/Menu-contain/title-shape.png";
-import welcomeImage from "../../assets/Menu-contain/welcome.jpg";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 function Menu() {
   const [onedayBtn, setOnedayBtn] = React.useState(false);
   const [weeklyBtn, setWeeklyBtn] = React.useState(false);
@@ -14,6 +11,7 @@ function Menu() {
     "bg-success",
     "bg-success",
   ]);
+
   const navigate = useNavigate();
   function handleTiffin(e) {
     const array = [...TiffinBtnColor];
@@ -61,7 +59,9 @@ function Menu() {
         </span>
         <img
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          src={menuBanner}
+          src={
+            "https://res.cloudinary.com/drzc94rvk/image/upload/v1734967920/Menu_Template_e2dmd6.png"
+          }
           alt="banner"
         />
       </div>
@@ -69,7 +69,9 @@ function Menu() {
         <span style={{ width: "170px" }}>
           <img
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            src={designing}
+            src={
+              "https://res.cloudinary.com/drzc94rvk/image/upload/v1734966535/title-shape_qukibh.png"
+            }
             alt="banner"
           />
         </span>
@@ -108,7 +110,9 @@ function Menu() {
           >
             <img
               style={{ width: "100%", height: "100%" }}
-              src={welcomeImage}
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734966535/welcome_tnfqq3.jpg"
+              }
               alt=""
             />
           </div>

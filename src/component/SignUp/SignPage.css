@@ -111,3 +111,7 @@
     z-index: 999; /* Make sure this is below the SignPage */
 }
 
+.login-heading{
+  color:#527119;
+
+}

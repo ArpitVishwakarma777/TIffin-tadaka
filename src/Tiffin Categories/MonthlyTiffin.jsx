@@ -1,7 +1,23 @@
 import React from "react";
-import { NewCard, monthlydata } from "../Helper/Cards.jsx";
+import axios from 'axios'
+import { NewCard } from "../Helper/Cards.jsx";
 function MonthlyTiffin() {
-  return monthlydata.map((card) => {
+  const [monthlyData, setMonthlyData] = React.useState([]);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/Menu/monthlyCard"
+        );
+        console.log(response.data);
+        setMonthlyData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+  return monthlyData.map((card) => {
     return <NewCard card={card} />;
   });
 }

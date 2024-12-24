@@ -12,9 +12,12 @@
     width: 0;
   } */
   .dicriptionPopup{
-    background: rgb(71, 66, 66,0.9);
-    height: 50%;
-    width:50% ;
+    background: rgba(249, 247, 247, 0.9);
+    height: 60%;
+    width:65% ;
+    border:2px black solid;
+    border-radius: 20px;
+
     position: fixed;
     top:50%;
     left:50% ;

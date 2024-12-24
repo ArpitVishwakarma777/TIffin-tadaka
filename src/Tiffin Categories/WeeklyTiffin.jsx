@@ -1,7 +1,23 @@
 import React from "react";
-import { NewCard, weeklydata } from "../Helper/Cards.jsx";
+import axios from "axios";
+import { NewCard} from "../Helper/Cards.jsx";
 function WeeklyTiffin() {
-  return weeklydata.map((card) => {
+  const [weeklyData, setWeeklyData] = React.useState([]);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/Menu/weeklyCard"
+        );
+        console.log(response.data);
+        setWeeklyData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+  return weeklyData.map((card) => {
     return <NewCard card={card} />;
   });
 }

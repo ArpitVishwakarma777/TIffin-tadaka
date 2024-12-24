@@ -1,131 +1,153 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Cards.css";
 import { Link } from "react-router-dom";
-import Dalbati from "../assets/image/Dal Bati.jpeg";
-import DalChaval from "../assets/image/dal_chaval.jpg";
-import Sev from "../assets/image/Sev.jpeg";
-import Paratha from "../assets/image/aloo parratha.jpeg";
-import Poori from "../assets/image/Poori.jpeg";
-import FullThal from "../assets/image/Indian veg thali.jpeg";
-import MakkaChapati from "../assets/image/Makki Ki Roti Sarson Ka Saag.png";
 import { useSelector, useDispatch } from "react-redux";
 import { addlist, setshowPopup, setHiddenPopup } from "../RTK/slices";
-import Chef from "../assets/Menu-contain/ChefImage.jpg";
 import { useLocation } from "react-router-dom";
-export const dailydata = [
-  {
-    id: 0,
-    src: Dalbati,
-    title: "Dal-Bati",
-    textClass: "card_text1",
-    text: " A plate with 5 ghee-soaked Batis, served with a bowl of hot Dal and fresh salad.",
-    price: 200,
-  },
+// export const dailydata = [
+//   {
+//     id: 0,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965823/Dal_Bati_qrlxlm.jpg",
+//     title: "Dal-Bati",
+//     textClass: "card_text1",
+//     text: " A plate with 5 ghee-soaked Batis, served with a bowl of hot Dal and fresh salad.",
+//     price: 200,
+//   },
+//   {
+//     id: 2,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965822/aloo_parratha_suznnf.jpg",
+//     title: "Dahi-Paratha",
+//     textClass: "card_text2",
+//     text: "(Panjabi Tad)A serving of 5 soft parathas with fresh yogurt and flavorful spices.",
+//     price: 200,
+//   },
+//   {
+//     id: 2,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965828/Sev_zkhtof.jpg",
+//     title: "sev-veg & more",
+//     textClass: "card_text3",
+//     text: "A plate with 4-5 soft rotis, extra crispy gram flour noodles curry,and salad.",
+//     price: 200,
+//   },
+//   {
+//     id: 3,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965829/Poori_zmjxw1.jpg",
+//     title: "Poori special",
+//     textClass: "card_text4",
+//     text: " Enjoy 5 fluffy puris paired with a flavorful potato curry and a side of fresh salad.",
+//     price: 200,
+//   },
+//   {
+//     id: 4,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965828/Indian_veg_thali_btxk1o.jpg",
+//     title: "Full-thali",
+//     textClass: "card_text5",
+//     text: " India flavors in one plate Roti, Sabji, Dahi, Salad, and more complete thali.",
+//     price: 200,
+//   },
+//   {
+//     id: 5,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965829/Makki_Ki_Roti_Sarson_Ka_Saag_qknxho.png",
+//     title: "Chapati special",
+//     textClass: "card_text3",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//     price: 200,
+//   },
 
-  {
-    id: 2,
-    src: Paratha,
-    title: "Dahi-Paratha",
-    textClass: "card_text2",
-    text: "(Panjabi Tad)A serving of 5 soft parathas with fresh yogurt and flavorful spices.",
-    price: 200,
-  },
-  {
-    id: 2,
-    src: Sev,
-    title: "sev-veg & more",
-    textClass: "card_text3",
-    text: "A plate with 4-5 soft rotis, extra crispy gram flour noodles curry,and salad.",
-    price: 200,
-  },
-  {
-    id: 3,
-    src: Poori,
-    title: "Poori special",
-    textClass: "card_text4",
-    text: " Enjoy 5 fluffy puris paired with a flavorful potato curry and a side of fresh salad.",
-    price: 200,
-  },
-  {
-    id: 4,
-    src: FullThal,
-    title: "Full-thali",
-    textClass: "card_text5",
-    text: " India flavors in one plate Roti, Sabji, Dahi, Salad, and more complete thali.",
-    price: 200,
-  },
-  {
-    id: 5,
-    src: MakkaChapati,
-    title: "Chapati special",
-    textClass: "card_text3",
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 200,
-  },
-  {
-    id: 6,
-    src: MakkaChapati,
-    title: "Chapati special",
-    textClass: "card_text3",
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 200,
-  },
-  {
-    id: 7,
-    src: DalChaval,
-    title: "Chapati special",
-    textClass: "card_text3",
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 200,
-  },
-];
-export const weeklydata = [
-  { id: 0, src: Chef, title: "Weekly Subscription", text: {}, price: 999 },
-  { id: 1, src: Chef, title: "Weekly Subscription", text: {}, price: 985 },
-  { id: 2, src: Chef, title: "Weekly Subscription", text: {}, price: 900 },
-  { id: 3, src: Chef, title: "Weekly Subscription", text: {}, price: 950 },
-];
-export const monthlydata = [
-  {
-    id: 0,
-    src: Chef,
-    title: "Monthly Subscription",
+//   {
+//     id: 6,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734965826/dal_chaval_v9aqrk.jpg",
+//     title: "Basmati chaval",
+//     textClass: "card_text3",
+//     text: "Taste tradition with Basmati chaval and dal with masala and salad",
+//     price: 200,
+//   },
+// ];
+// export const weeklydata = [
+//   {
+//     id: 0,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Weekly Subscription",
+//     text: {},
+//     price: 999,
+//   },
+//   {
+//     id: 1,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Weekly Subscription",
+//     text: {},
+//     price: 985,
+//   },
+//   {
+//     id: 2,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Weekly Subscription",
+//     text: {},
+//     price: 900,
+//   },
+//   {
+//     id: 3,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Weekly Subscription",
+//     text: {},
+//     price: 950,
+//   },
+// ];
+// export const monthlydata = [
+//   {
+//     id: 0,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Monthly Subscription",
 
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 1800,
-  },
-  {
-    id: 1,
-    src: Chef,
-    title: "Monthly Subscription",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//     price: 1800,
+//   },
+//   {
+//     id: 1,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Monthly Subscription",
 
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 1600,
-  },
-  {
-    id: 2,
-    src: Chef,
-    title: "Monthly Subscription",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//     price: 1600,
+//   },
+//   {
+//     id: 2,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Monthly Subscription",
 
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 1700,
-  },
-  {
-    id: 3,
-    src: Chef,
-    title: "Monthly Subscription",
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//     price: 1700,
+//   },
+//   {
+//     id: 3,
+//     src: "https://res.cloudinary.com/drzc94rvk/image/upload/f_auto,q_auto/v1734966536/ChefImage_ga7wvl.jpg",
+//     title: "Monthly Subscription",
 
-    text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-    price: 2000,
-  },
-];
+//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
+//     price: 2000,
+//   },
+// ];
 function Cards() {
   const [readMore, setReadMore] = React.useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/home/card");
+        setData(response.data); // Store the fetched data in state.
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData(); // Call the fetch function
+  }, []); // Empty dependency array to run only once
+
   return (
     <>
       <div className="container card-container py-2">
         <div className="row">
-          {dailydata.map((card) => {
+          {data.map((card) => {
             return (
               <div className=" card-box col-sm-4 col-lg-3 col-xs-6 pb-sm-3  px-3 py-3 ">
                 <div className="card box-shadow">
@@ -146,7 +168,7 @@ function Cards() {
                       <span>
                         {" "}
                         <Link to={"/Menu"} className="btn me-5  btn-primary">
-                          Add Card
+                          buy now !
                         </Link>
                       </span>
                     </div>
@@ -163,15 +185,13 @@ function Cards() {
 export const NewCard = ({ card }) => {
   const [readMore, setReadMore] = React.useState(false);
   const data = useSelector((state) => state.manageWishlistStatus.list);
-  console.log(data);
   const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
   const dispatch = useDispatch();
-  const [PopupId,setPopupId]=useState(null)
+  const [PopupId, setPopupId] = useState(null);
   const location = useLocation();
   function handleImageClick(e) {
     dispatch(setshowPopup());
-    setPopupId(e.target.id)
-
+    setPopupId(e.target.id);
   }
   return (
     <>
@@ -208,7 +228,7 @@ export const NewCard = ({ card }) => {
                   }}
                   className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5  btn-primary"
                 >
-                  Add Card
+                  buy now !
                 </button>
               </span>
               <span className="oneday_price ms-xxl-4 ">₹{card.price}</span>

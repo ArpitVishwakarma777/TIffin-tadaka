@@ -17,7 +17,7 @@ export default function About() {
   <div className="container">
     <div className="row gy-4 gy-lg-0 d-flex flex-wrap align-items-lg-center">
       <div className="col-lg-6">
-        <img className="img-fluid rounded border w-100 border-dark" src={AboutImage} alt="About Us" />
+        <img className="img-fluid rounded border w-100 border-dark" src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/About_image_h3fswk.jpg"} alt="About Us" />
       </div>
       <div className="col-lg-6 ">
         <div className="row justify-content-lg-end">

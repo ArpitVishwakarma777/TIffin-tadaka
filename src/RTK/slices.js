@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  loginStatus: "SignUp",
+  loginStatus: "LogOut",
   showLogin: false,
   showProfile: false,
   showPopup: false,

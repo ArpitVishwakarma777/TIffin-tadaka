@@ -93,8 +93,8 @@ function SignPage() {
       >
         <div className="container">
           <div className="row d-flex">
-            <div className="col-6">
-              <h2>{currState === "Login" ? "Login" : "Sign Up"}</h2>
+            <div className="col-6 d-flex  justify-content-center">
+              <h2 className="login-heading">{currState === "Login" ? "Login" : "Sign Up"}</h2>
             </div>
             <div className="col-6 d-flex justify-content-end">
               <span

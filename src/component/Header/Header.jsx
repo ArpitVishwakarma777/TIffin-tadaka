@@ -59,7 +59,7 @@ export default function Header() {
         {showProfile === true ? <Profile /> : null}
       </div>
       {/* SignUp Component */}
-      <div className={showLogin === true ? "background-blur" : null}>
+      <div className={showLogin === true ||showPopup===true ? "background-blur" : null}>
         {" "}
         {showLogin === true ? <SignPage /> : null}
       </div>

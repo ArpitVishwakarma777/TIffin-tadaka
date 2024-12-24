@@ -17,7 +17,7 @@ import Testimonial from "./Testimonial";
 import mobileImage from "../../assets/small banner/download-app.avif";
 import playStoreButton from "../../assets/small banner/google-play-button.svg";
 import appStoreButton from "../../assets/small banner/google-play.svg";
-import mobile from "../../assets/small banner/mobileImage.svg";
+
 import Cards from "../../Helper/Cards.jsx";
 // const carddata = [
 //   {
@@ -69,25 +69,24 @@ import Cards from "../../Helper/Cards.jsx";
 //     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
 //   },
 // ];
-
-const testimonialsData = [
-  [
-    { src: Anikesh, name: "Anikesh", position: "Owner" },
-    {
-      src: Aman,
-      name: "Aman",
-      position: "Owner",
-    },
-  ],
-  [
-    { src: Arpit, name: "Arpit", position: "Owner" },
-    {
-      src: Tarun,
-      name: "Tarun",
-      position: "Owner",
-    },
-  ],
-];
+// const testimonialsData = [
+//   [
+//     { src: Anikesh, name: "Anikesh", position: "Owner" },
+//     {
+//       src: Aman,
+//       name: "Aman",
+//       position: "Owner",
+//     },
+//   ],
+//   [
+//     { src: Arpit, name: "Arpit", position: "Owner" },
+//     {
+//       src: Tarun,
+//       name: "Tarun",
+//       position: "Owner",
+//     },
+//   ],
+// ];
 export default function Home() {
   const navigate = useNavigate();
 
@@ -98,7 +97,7 @@ export default function Home() {
         id="carouselExampleCaptions"
         className="carousel slide"
         data-bs-ride="carousel"
-        data-bs-inteval="3000"
+        data-bs-interval="2500"
       >
         <div className="carousel-indicators">
           <button
@@ -125,7 +124,7 @@ export default function Home() {
 
         <div className="carousel-inner">
           <div className="carousel-item1 carousel-item active ">
-            <img src={Carousel1} className="d-block  h-lg-50 w-100" alt="..." />
+            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel1_f3p4jv.png"} className="d-block  h-lg-50 w-100" alt="..." />
             <div className="caption1 h-50 w">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
@@ -141,7 +140,7 @@ export default function Home() {
             </div>
           </div>
           <div className=" carousel-item2 carousel-item">
-            <img src={Carousel2} className="d-block  h-lg-50 w-100" alt="..." />
+            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel2_uopdug.png"} className="d-block  h-lg-50 w-100" alt="..." />
             <div className="caption2 d-none d-md-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
@@ -151,7 +150,7 @@ export default function Home() {
             </div>
           </div>
           <div className="carousel-item carousel-item3 ">
-            <img src={Carousel3} className="d-block  h-lg-50 w-100" alt="..." />
+            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734965826/carousel3_zvoohu.png"} className="d-block  h-lg-50 w-100" alt="..." />
             <div className="caption3 d-none d-md-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
@@ -187,22 +186,22 @@ export default function Home() {
             <h1 style={{ color: "rgb(218, 165, 32)" }}>What We Offer !</h1>
           </div>
           <div className="col-md-4  my-sm-5 my-md-0 d-flex  flex-column align-items-center justify-content-center">
-            <img src={fImage} alt="" />
+            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/helper_image_lczl9b.svg"} alt="" />
             <h3>Quick & Reliable </h3>
           </div>
           <div className="col-md-4  d-flex flex-column align-items-center  justify-content-center">
-            <img src={fImage2} alt="" />
+            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image2_wvycp9.svg"} alt="" />
             <h3>Find Nearby </h3>
           </div>
           <div className="col-md-4 my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
-            <img src={fImage3} alt="" />
+            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image3_xdo9dk.svg"} alt="" />
             <h3>Find Nearby </h3>
           </div>
         </div>
       </div>
 
       <div className="d-flex justify-content-center my-sm-4">
-        <h1 className="One-day-special">One day special</h1>
+        <h1 className="One-day-special">spna day special</h1>
       </div>
 
       {/* For Cards */}
@@ -222,7 +221,7 @@ export default function Home() {
             <div className="d-flex flex-column align-items-center">
               <div className="d-flex  align-items-center d-md-block">
                 <div className="d-flex justify-content-center">
-                  <img src={mobile} alt="" />
+                  <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947445/mobileImage_zcl0hm.svg"} alt="" />
                 </div>
                 <h1>Download the app </h1>
               </div>
@@ -235,16 +234,16 @@ export default function Home() {
               <br />
               <div className="d-flex justify-content-center align-items-center">
                 <span>
-                  <img src={playStoreButton} alt="" />
+                  <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/google-play-button_fnx7bh.svg"} alt="" />
                 </span>
                 <span>
-                  <img src={appStoreButton} alt="" />
+                  <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/app-store-button_n1npgq.svg"} alt="" />
                 </span>
               </div>
             </div>
           </div>
           <div className="col-6  d-none d-md-flex d-sm-none justify-content-end h-50 ">
-            <img style={{ width: "70%" }} src={mobileImage} alt="" />
+            <img style={{ width: "70%" }} src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/download-app_b98mjs.avif"} alt="" />
           </div>
         </div>
       </div>
