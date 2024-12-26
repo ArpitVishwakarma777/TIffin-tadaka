@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./SignPage.css";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -10,13 +10,42 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RxCross1 } from "react-icons/rx";
-import { setShowLogin, setLogout } from "../../RTK/slices";
-import { useDispatch } from "react-redux";
+import { setShowLogin, setLogout, setUser } from "../../RTK/slices";
+import { useDispatch, useSelector } from "react-redux";
 import app from "../../firebase";
 
 function SignPage() {
   const [currState, setCurrState] = useState("Sign Up"); // "Login" or "Sign Up"
   const dispatch = useDispatch();
+  // const [name, setName] = useState(null);
+  // const [userId, setUserId] = useState(null);
+  const userdata = useSelector((state) => state.manageUserStatus.user);
+  const handleSignUp = async (name, email, userId) => {
+    try {
+      await axios.post("http://localhost:8000/api/signUp", {
+        name,
+        email,
+        userId,
+      });
+    } catch (error) {
+      console.error("Error during sign up:", error);
+    }
+  };
+  //get user data
+  const handleLogin = useCallback(async (uid) => {
+    console.log(uid);
+    
+    try {
+      const userData = await axios.get("http://localhost:8000/api/login", {
+        params: { uid } // Correctly passing uid as a query parameter
+      });
+      console.log(userData.data);
+      dispatch(setUser (userData.data));
+      console.log(userData); // Corrected variable name
+    } catch (error) {
+      console.error("Error during login:", error); // Error handling
+    }
+  }, [dispatch]);
 
   // React Hook Form
   const {
@@ -41,6 +70,7 @@ function SignPage() {
         data.email,
         data.password
       );
+      console.log(userCredential.user.uid);
 
       toast.success("Login Successful!");
       reset(); // Reset the form
@@ -65,10 +95,17 @@ function SignPage() {
         data.email,
         data.password
       );
-      console.log("Account Created:", userCredential.user);
+      if (userCredential) {
+        // console.log(userCredential);
+        handleSignUp(data.name, data.email, userCredential.user.uid);
+      }
+      console.log("Account Created:", userCredential);
       toast.success("Account Created Successfully!");
       reset();
-      dispatch(setShowLogin(false)); 
+      dispatch(setShowLogin(false));
+      // Update Redux state
+      dispatch(setLogout());
+      handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         setError("signUpError", {
@@ -77,7 +114,6 @@ function SignPage() {
       } else {
         setError("signUpError", { message: "An unexpected error occurred" });
       }
-      console.error("Firebase Error:", error);
     }
   };
 
@@ -94,7 +130,9 @@ function SignPage() {
         <div className="container">
           <div className="row d-flex">
             <div className="col-6 d-flex  justify-content-center">
-              <h2 className="login-heading">{currState === "Login" ? "Login" : "Sign Up"}</h2>
+              <h2 className="login-heading">
+                {currState === "Login" ? "Login" : "Sign Up"}
+              </h2>
             </div>
             <div className="col-6 d-flex justify-content-end">
               <span
@@ -121,7 +159,7 @@ function SignPage() {
             type="email"
             placeholder="Enter Your Email"
             {...register("email", { required: "Email is required" })}
-            onInput={() => clearErrors()} 
+            onInput={() => clearErrors()}
           />
           <input
             className=" mx-1"
@@ -134,7 +172,7 @@ function SignPage() {
                 message: "Password must be at least 6 characters",
               },
             })}
-            onInput={() => clearErrors()} 
+            onInput={() => clearErrors()}
           />
           {currState === "Sign Up" && errors.signUpError && (
             <div className="text-danger ms-4">{errors.signUpError.message}</div>

@@ -1,25 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
-  loginStatus: "LogOut",
+  loginStatus: "SignUp",
   showLogin: false,
   showProfile: false,
   showPopup: false,
+  user: {},
   list: [],
 };
 export const popupSlice = createSlice({
-  name: 'managePopupStatus',
+  name: "managePopupStatus",
   initialState,
   reducers: {
     setshowPopup: (state, action) => {
-      state.showPopup=true
+      state.showPopup = true;
     },
-    setHiddenPopup: (state,action) => {
-      state.showPopup=false;
+    setHiddenPopup: (state, action) => {
+      state.showPopup = false;
     },
   },
 });
-export const {setHiddenPopup,setshowPopup} =popupSlice.actions;
-export const popupReducer = popupSlice.reducer
+export const { setHiddenPopup, setshowPopup } = popupSlice.actions;
+export const popupReducer = popupSlice.reducer;
 export const loginSlice = createSlice({
   name: "manageLoginStatus",
   initialState,
@@ -54,6 +56,20 @@ export const wishlistSlice = createSlice({
     removelist: (state, action) => {},
   },
 });
+export const userSlice = createSlice({
+  name: "manageUserStatus",
+  initialState,
+  reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    removeUser: (state, action) => {
+      state.user = {};
+    },
+  },
+});
+export const userReducer = userSlice.reducer;
+export const {setUser,removeUser} = userSlice.actions;
 export const wishlistReducer = wishlistSlice.reducer;
 export const { addlist, removelist } = wishlistSlice.actions;
 

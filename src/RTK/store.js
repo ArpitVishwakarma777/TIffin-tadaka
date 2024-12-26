@@ -7,13 +7,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginReducer, { popupReducer } from "../RTK/slices";
 import { profileReducer, wishlistReducer } from "../RTK/slices";
-
+import {userReducer} from '../RTK/slices'
 const store = configureStore({
   reducer: {
     manageLoginStatus: loginReducer,
     manageProfileStatus: profileReducer,
     manageWishlistStatus: wishlistReducer,
-    managePopupStatus:popupReducer
+    managePopupStatus:popupReducer,
+    manageUserStatus:userReducer
   },
 });
 

@@ -124,7 +124,13 @@ export default function Home() {
 
         <div className="carousel-inner">
           <div className="carousel-item1 carousel-item active ">
-            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel1_f3p4jv.png"} className="d-block  h-lg-50 w-100" alt="..." />
+            <img
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel1_f3p4jv.png"
+              }
+              className="d-block  h-lg-50 w-100"
+              alt="..."
+            />
             <div className="caption1 h-50 w">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
@@ -140,21 +146,45 @@ export default function Home() {
             </div>
           </div>
           <div className=" carousel-item2 carousel-item">
-            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel2_uopdug.png"} className="d-block  h-lg-50 w-100" alt="..." />
+            <img
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel2_uopdug.png"
+              }
+              className="d-block  h-lg-50 w-100"
+              alt="..."
+            />
             <div className="caption2 d-none d-md-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
-              <button type="button" class="btn mx-4 px-4 btn-danger">
+              <button
+                onClick={() => {
+                  navigate("/Menu");
+                }}
+                type="button"
+                class="btn mx-4 px-4 btn-danger"
+              >
                 Order Now
               </button>
             </div>
           </div>
           <div className="carousel-item carousel-item3 ">
-            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734965826/carousel3_zvoohu.png"} className="d-block  h-lg-50 w-100" alt="..." />
+            <img
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734965826/carousel3_zvoohu.png"
+              }
+              className="d-block  h-lg-50 w-100"
+              alt="..."
+            />
             <div className="caption3 d-none d-md-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
-              <button type="button" class="btn mx-4 px-4 btn-danger">
+              <button
+                onClick={() => {
+                  navigate("/Menu");
+                }}
+                type="button"
+                class="btn mx-4 px-4 btn-danger"
+              >
                 Order Now
               </button>
             </div>
@@ -186,26 +216,43 @@ export default function Home() {
             <h1 style={{ color: "rgb(218, 165, 32)" }}>What We Offer !</h1>
           </div>
           <div className="col-md-4  my-sm-5 my-md-0 d-flex  flex-column align-items-center justify-content-center">
-            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/helper_image_lczl9b.svg"} alt="" />
+            <img
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/helper_image_lczl9b.svg"
+              }
+              alt=""
+            />
             <h3>Quick & Reliable </h3>
           </div>
           <div className="col-md-4  d-flex flex-column align-items-center  justify-content-center">
-            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image2_wvycp9.svg"} alt="" />
+            <img
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image2_wvycp9.svg"
+              }
+              alt=""
+            />
             <h3>Find Nearby </h3>
           </div>
           <div className="col-md-4 my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
-            <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image3_xdo9dk.svg"} alt="" />
+            <img
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image3_xdo9dk.svg"
+              }
+              alt=""
+            />
             <h3>Find Nearby </h3>
           </div>
         </div>
       </div>
 
-      <div className="d-flex justify-content-center my-sm-4">
-        <h1 className="One-day-special">spna day special</h1>
+      <div className=" d-flex justify-content-center flex-column align-content-center flex-sm-row">
+        <h1 className="One-day-special ms-5  ms-sm-0 ">
+          <span style={{color:'red'}}>Oneday</span> Special
+        </h1>
       </div>
 
       {/* For Cards */}
-      <Cards  />
+      <Cards />
       {/* Advantage Banner */}
 
       {/* <div className="container  mt-lg-2">
@@ -221,7 +268,12 @@ export default function Home() {
             <div className="d-flex flex-column align-items-center">
               <div className="d-flex  align-items-center d-md-block">
                 <div className="d-flex justify-content-center">
-                  <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947445/mobileImage_zcl0hm.svg"} alt="" />
+                  <img
+                    src={
+                      "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947445/mobileImage_zcl0hm.svg"
+                    }
+                    alt=""
+                  />
                 </div>
                 <h1>Download the app </h1>
               </div>
@@ -234,16 +286,32 @@ export default function Home() {
               <br />
               <div className="d-flex justify-content-center align-items-center">
                 <span>
-                  <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/google-play-button_fnx7bh.svg"} alt="" />
+                  <img
+                    src={
+                      "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/google-play-button_fnx7bh.svg"
+                    }
+                    alt=""
+                  />
                 </span>
                 <span>
-                  <img src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/app-store-button_n1npgq.svg"} alt="" />
+                  <img
+                    src={
+                      "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/app-store-button_n1npgq.svg"
+                    }
+                    alt=""
+                  />
                 </span>
               </div>
             </div>
           </div>
           <div className="col-6  d-none d-md-flex d-sm-none justify-content-end h-50 ">
-            <img style={{ width: "70%" }} src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/download-app_b98mjs.avif"} alt="" />
+            <img
+              style={{ width: "70%" }}
+              src={
+                "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/download-app_b98mjs.avif"
+              }
+              alt=""
+            />
           </div>
         </div>
       </div>

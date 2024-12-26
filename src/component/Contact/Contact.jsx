@@ -1,24 +1,28 @@
-import React from "react";
+import React,{memo} from "react";
 import "./Contact.css";
 
 function Contact() {
   const [isLoad, setload] = React.useState(false);
   return (
-    <section className="bg-light py-3 pb-md-5">
+    <section className=" py-3 pb-md-5">
       <div className="container">
+        <div className=" d-flex justify-content-center">
+          <h2 className="fs-1 m-4  ">Contact Us</h2>
+        </div>
+        <div className=" d-flex justify-content-center">
+          <p className="col-9 fs-4 text-dark ">
+            "We take pride in bringing you freshly prepared, homemade meals that
+            are full of flavor and love. Our goal is to ensure you enjoy every
+            bite while receiving the top-notch service you deserve. If you have
+            any questions, concerns, or need assistance, don’t hesitate to
+            connect with us—we’re always happy to help!"
+          </p>
+        </div>
         <div className="row d-flex flex-wrap gy-3 gy-md-4 gy-lg-0 align-items-md-center">
           <div className="col-lg-6">
             <div className="row justify-content-xl-center">
-              <div className="col-12 col-xl-11">
-                <div className=" d-flex justify-content-end">
-                  <h2 className="fs-1 mb-5  ">Contact Us</h2>
-                </div>
-                <p className="lead fs-4 text-secondary mb-5">
-                  We're always on the lookout to work with new clients. If
-                  you're interested in working with us, please get in touch in
-                  one of the following ways.
-                </p>
-                <div className="d-flex mb-5">
+              <div className="col-12 mt-5 col-xl-11">
+                <div className="d-flex my-5">
                   <div className="me-4 text-primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -36,14 +40,14 @@ function Contact() {
                   </div>
                   <div>
                     <h4 className="mb-3">Address</h4>
-                    <address className="mb-0 text-secondary">
+                    <address className="mb-0 text-dark">
                       8014 Edith Blvd NE, Albuquerque, New York, United States
                     </address>
                   </div>
                 </div>
-                <div className="row mb-5">
-                  <div className="col-12 col-sm-6">
-                    <div className="d-flex mb-5 mb-sm-0">
+                <div className="row my-5">
+                  <div className="col-12 col-sm-6 ">
+                    <div className="d-flex  mb-sm-0">
                       <div className="me-4 text-primary">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +74,7 @@ function Contact() {
                     </div>
                   </div>
                 </div>
-                <div className="d-flex">
+                <div className="d-flex flex-wrap my-5">
                   <div className="me-4 text-primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -87,16 +91,12 @@ function Contact() {
                   <div>
                     <h4 className="mb-3">Opening Hours</h4>
                     <div className="d-flex mb-1">
-                      <p className="text-secondary fw-bold mb-0 me-5">
-                        Mon - Fri
-                      </p>
-                      <p className="text-secondary mb-0">9am - 5pm</p>
+                      <p className="text-dark fw-bold mb-0 me-5">Mon - Fri</p>
+                      <p className="text-dark mb-0">9am - 5pm</p>
                     </div>
                     <div className="d-flex">
-                      <p className="text-secondary fw-bold mb-0 me-5">
-                        Sat - Sun
-                      </p>
-                      <p className="text-secondary mb-0">9am - 2pm</p>
+                      <p className="text-dark fw-bold mb-0 me-5">Sat - Sun</p>
+                      <p className="text-dark mb-0">9am - 2pm</p>
                     </div>
                   </div>
                 </div>
@@ -105,16 +105,19 @@ function Contact() {
           </div>
           <div className="col-lg-6 d-flex  align-items-center justify-content-center">
             {isLoad === false && (
-             
-                <div class="spinner-border position-relative  top-100 start-50  " role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-           
+              <div
+                class="spinner-border position-relative  top-100 start-50  "
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
             )}
             <iframe
               className="map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d890.0870227425262!2d77.08867732052424!3d22.340670425536857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397d70da30805abf%3A0x1368c14a9092d58b!2sHarda%2C%20Madhya%20Pradesh%20461331!5e0!3m2!1sen!2sin!4v1733383118109!5m2!1sen!2sin"
-              onLoad={()=>{setload(true)}}
+              onLoad={() => {
+                setload(true);
+              }}
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -125,4 +128,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default memo(Contact);

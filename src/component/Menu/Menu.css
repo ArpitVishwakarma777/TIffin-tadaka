@@ -11,6 +11,9 @@
   .second-title{
     font-size: 2.5rem;
   }
+  .One-day-special{
+    font-size: 2.5rem;
+  }
 
 }
 @media (min-width: 320px) {
@@ -18,10 +21,13 @@
     width: 100vw;
   }
   .second-title{
-    font-size:4rem;
+    font-size:3rem;
   }
   .first-title{
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+  .One-day-special{
+    font-size: 3rem;
   }
 }
 @media (min-width: 576px) {
@@ -29,10 +35,13 @@
 width: 180px;
     }
     .first-title{
-      font-size: 5rem;
+      font-size: 4rem;
     }
     .second-title{
-      font-size: 5rem;
+      font-size: 4rem;
+    }
+    .One-day-special{
+      font-size: 4rem;
     }
 }
 @media (min-width: 768px) {

@@ -27,7 +27,7 @@ function Menu() {
     const text = e.target.innerText;
 
     switch (text) {
-      case "Daily Tiffin":
+      case "One Time Meal":
         navigate("/Menu/Daily");
         break;
       case "Weekly Tiffin":
@@ -145,7 +145,7 @@ function Menu() {
               className={`a ${TiffinBtnColor[0]} fs-3   d-flex justify-content-center align-items-center`}
               style={{ height: "80px" }}
             >
-              Daily Tiffin
+             One Time Meal
             </div>
           </div>
           <div className="col-sm-4 d-flex  mb-1 mb-sm-0 align-items-center flex-column justify-content-center">
