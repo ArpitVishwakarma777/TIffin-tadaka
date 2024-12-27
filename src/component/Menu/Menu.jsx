@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useRef, useEffect } from "react";
 import "./Menu.css";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -11,9 +11,10 @@ function Menu() {
     "bg-success",
     "bg-success",
   ]);
-
+const ref = useRef(null)
   const navigate = useNavigate();
   function handleTiffin(e) {
+   
     const array = [...TiffinBtnColor];
 
     const previousColor = array[e.target.id];
@@ -29,12 +30,15 @@ function Menu() {
     switch (text) {
       case "One Time Meal":
         navigate("/Menu/Daily");
+        ref.current.scrollIntoView({ behavior: 'smooth' })
         break;
       case "Weekly Tiffin":
         navigate("/Menu/Weekly");
+        ref.current.scrollIntoView({ behavior: 'smooth' })
         break;
       case "Monthly Tiffin":
         navigate("/Menu/Monthly");
+        ref.current.scrollIntoView({ behavior: 'smooth' })
         break;
       default:
         console.log("default");
@@ -174,7 +178,7 @@ function Menu() {
       </div>
 
       <div className="container  py-2">
-        <div className="row d-flex flex-wrap ">
+        <div ref={ref} className="row d-flex flex-wrap ">
           <Outlet />
         </div>
       </div>

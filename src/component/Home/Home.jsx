@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Home.css";
 
 import Carousel1 from "../../assets/image/carousel1.png";
@@ -89,6 +90,8 @@ import Cards from "../../Helper/Cards.jsx";
 // ];
 export default function Home() {
   const navigate = useNavigate();
+const user = useSelector(state=>state.manageUserStatus.user)
+console.log('current user: ', user);
 
   return (
     <>

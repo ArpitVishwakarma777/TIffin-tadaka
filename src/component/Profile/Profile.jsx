@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { RxCross1 } from "react-icons/rx";
+import axios from "axios";
 import image from "../../assets/Profile/Arpit.jpg";
 import { FaPencilAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowProfile } from "../../RTK/slices";
+import { setShowProfile, setUser } from "../../RTK/slices";
 
 function Profile() {
   const dispatch = useDispatch();
+  const userDetails = useSelector((state) => state.manageUserStatus.user);
+  const [name, setName] = useState(userDetails.name);
+  const [email, setEmail] = useState(userDetails.email);
+  const [mobile, setMobile] = useState(userDetails.mobile);
+  const [address, setAddress] = useState(userDetails.address);
+  const [profileImage, setProfileImage] = useState(userDetails.img);
+const [uid, setuid] = useState(userDetails.uid)
+  const handleUpdate = async () => {
+    console.log("client uid : ",uid);
+    
+    console.log("Updated rtk:", userDetails);
+    await axios.patch("http://localhost:8000/api/home/profile", {
+     uid,
+      mobile,
+      address,
+      profileImage,
+    });
+  };
+
   const showProfile = useSelector(
     (state) => state.manageProfileStatus.showProfile
   );
-
-  const [name, setName] = useState("Arpit Vishwakarma");
-  const [email, setEmail] = useState("wwArpit@gmail.com");
-  const [mobile, setMobile] = useState("8103137309");
-  const [address, setAddress] = useState("Sontalai,Harda");
-  const [profileImage, setProfileImage] = useState(image);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -24,7 +38,17 @@ function Profile() {
       setProfileImage(URL.createObjectURL(file)); // Update the image source
     }
   };
-
+  const handleUpdateProfileData = async () => {
+    dispatch(
+      setUser({
+        ...userDetails,
+        img: profileImage,
+        address: address,
+        mobile: mobile,
+      })
+    );
+    handleUpdate();
+  };
   return (
     <>
       <div className="profile-popup">
@@ -41,7 +65,7 @@ function Profile() {
                 className="col-6 bg-primary d-flex justify-content-center align-items-center"
               >
                 <img
-                  style={{ height: "130px", paddingTop: "5px" }}
+                  style={{ height: "130px", paddingTop: "0px" }}
                   src={profileImage}
                   alt="profile"
                 />
@@ -49,7 +73,7 @@ function Profile() {
 
               <div className="col-6 d-flex justify-content-between">
                 {/* Hidden file input  */}
-                <input 
+                <input
                   type="file"
                   accept="image/*"
                   style={{ display: "none" }}
@@ -65,8 +89,10 @@ function Profile() {
                 >
                   <FaPencilAlt />
                 </span>
-                <span className="mt-3"
+                <span
+                  className="mt-3"
                   onClick={() => {
+                    handleUpdateProfileData();
                     dispatch(setShowProfile(false));
                   }}
                 >
@@ -79,13 +105,14 @@ function Profile() {
             <div className="d-flex flex-column">
               <div>
                 <label htmlFor="name"> Name</label>
-                <input 
+                <input
+                  disabled
                   id="name"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
-                  className="my-2 ms-4 ms-xl-4 ms-xxl-5 "
+                  className=" my-2 ms-4 ms-xl-4 ms-xxl-5 "
                   type="text"
                   placeholder="Name"
                   required
@@ -93,7 +120,8 @@ function Profile() {
               </div>
               <div>
                 <label htmlFor="email"> Email </label>
-                <input 
+                <input
+                  disabled
                   id="email"
                   value={email}
                   onChange={(e) => {
@@ -107,8 +135,11 @@ function Profile() {
               </div>
               <div>
                 {" "}
-                <label className='me-3' htmlFor="mobile"> Mobile</label>
-                <input 
+                <label className="me-3" htmlFor="mobile">
+                  {" "}
+                  Mobile
+                </label>
+                <input
                   id="mobile"
                   value={mobile}
                   onChange={(e) => {
@@ -116,13 +147,13 @@ function Profile() {
                   }}
                   className="my-2 ms-md-0 ms-xl-0 ms-xxl-4   "
                   type="tel"
-                  placeholder="Mobile number"
+                  placeholder="Enter Mobile number"
                   required
                 />
               </div>
               <div>
                 <label htmlFor="address"> Address</label>
-                <input 
+                <input
                   id="address"
                   value={address}
                   onChange={(e) => {

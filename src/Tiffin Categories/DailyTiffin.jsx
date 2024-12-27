@@ -1,6 +1,6 @@
 import React from 'react'
 import { NewCard} from "../Helper/Cards.jsx";
-
+import {useSelector} from 'react-redux'
 import axios from 'axios';
 function DailyTiffin() {
   const [data,setData]= React.useState([]);
@@ -19,6 +19,9 @@ function DailyTiffin() {
     };
     fetchData(); // Call the fetch function
   }, []);
+  const list = useSelector(state=>state.manageWishlistStatus.list)
+  console.log('list of items : ',list);
+  
   return (
     data.map((card) => {
                 return <NewCard card={card} />;

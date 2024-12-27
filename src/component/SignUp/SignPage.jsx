@@ -16,10 +16,11 @@ import app from "../../firebase";
 
 function SignPage() {
   const [currState, setCurrState] = useState("Sign Up"); // "Login" or "Sign Up"
+  const [userdata, setUserdata] = useState("null");
   const dispatch = useDispatch();
   // const [name, setName] = useState(null);
   // const [userId, setUserId] = useState(null);
-  const userdata = useSelector((state) => state.manageUserStatus.user);
+  // const userdata = useSelector((state) => state.manageUserStatus.user);
   const handleSignUp = async (name, email, userId) => {
     try {
       await axios.post("http://localhost:8000/api/signUp", {
@@ -32,20 +33,21 @@ function SignPage() {
     }
   };
   //get user data
-  const handleLogin = useCallback(async (uid) => {
+  const handleLogin = async (uid) => {
     console.log(uid);
-    
+
     try {
       const userData = await axios.get("http://localhost:8000/api/login", {
-        params: { uid } // Correctly passing uid as a query parameter
+        params: { uid }, // Correctly passing uid as a query parameter
       });
       console.log(userData.data);
-      dispatch(setUser (userData.data));
-      console.log(userData); // Corrected variable name
+      const data = userData.data;
+      dispatch(setUser(data))
+      console.log(userData);
     } catch (error) {
       console.error("Error during login:", error); // Error handling
     }
-  }, [dispatch]);
+  };
 
   // React Hook Form
   const {
@@ -76,6 +78,7 @@ function SignPage() {
       reset(); // Reset the form
       dispatch(setShowLogin(false)); // Close the login modal
       dispatch(setLogout()); // Update Redux state
+      handleLogin(userCredential.user.uid);
     } catch (error) {
       console.log(error.code);
 

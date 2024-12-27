@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { FaBagShopping } from "react-icons/fa6";
 import { IoMdContact } from "react-icons/io";
-import { DicriptionPopup } from "../../Helper/Cards.jsx";
+// import { DicriptionPopup } from "../../Helper/Cards.jsx";
 import {
   setShowLogin,
   setSignUp,
