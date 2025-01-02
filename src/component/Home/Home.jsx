@@ -1,25 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
+
 import "./Home.css";
-
-import Carousel1 from "../../assets/image/carousel1.png";
-import Carousel2 from "../../assets/image/carousel2.png";
-import Carousel3 from "../../assets/image/carousel3.png";
-import Anikesh from "../../assets/image/carousel3.png";
-import Aman from "../../assets/image/carousel3.png";
-import Arpit from "../../assets/image/carousel3.png";
-import Tarun from "../../assets/image/carousel3.png";
-
-import fImage from "../../assets/small banner/helper_image.svg";
-import fImage2 from "../../assets/small banner/helper_image2.svg";
-import fImage3 from "../../assets/small banner/helper_image3.svg";
 import Testimonial from "./Testimonial";
-import mobileImage from "../../assets/small banner/download-app.avif";
-import playStoreButton from "../../assets/small banner/google-play-button.svg";
-import appStoreButton from "../../assets/small banner/google-play.svg";
-
 import Cards from "../../Helper/Cards.jsx";
+import axios from "axios";
+import { setTAddress } from "../../RTK/slices.js";
 // const carddata = [
 //   {
 //     src: Dalbati,
@@ -88,11 +75,25 @@ import Cards from "../../Helper/Cards.jsx";
 //     },
 //   ],
 // ];
-export default function Home() {
-  const navigate = useNavigate();
-const user = useSelector(state=>state.manageUserStatus.user)
-console.log('current user: ', user);
 
+export default function Home() {
+  const dispatch =useDispatch(); 
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.manageUserStatus.user);
+  console.log("current user: ", user);
+  useEffect(() => {
+    const handlegetTAdderss = async () => {
+      const response = await axios
+        .get("http://localhost:8000/api/contact/data")
+        .then((response) => {
+          dispatch(setTAddress(response.data))
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    handlegetTAdderss();
+  }, []);
   return (
     <>
       {/* For Carousels */}
@@ -250,7 +251,7 @@ console.log('current user: ', user);
 
       <div className=" d-flex justify-content-center flex-column align-content-center flex-sm-row">
         <h1 className="One-day-special ms-5  ms-sm-0 ">
-          <span style={{color:'red'}}>Oneday</span> Special
+          <span style={{ color: "red" }}>Oneday</span> Special
         </h1>
       </div>
 

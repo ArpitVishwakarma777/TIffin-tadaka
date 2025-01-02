@@ -2,9 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Cards.css";
 import { Link } from "react-router-dom";
+
+location
 import { useSelector, useDispatch } from "react-redux";
-import { addlist, setshowPopup, setHiddenPopup } from "../RTK/slices";
-import { useLocation } from "react-router-dom";
+import {
+  addlist,
+  setshowPopup,
+  setContentPopup,
+  setHiddenPopup,
+} from "../RTK/slices";
+import { useNavigate
+ } from "react-router-dom";
 // export const dailydata = [
 //   {
 //     id: 0,
@@ -131,6 +139,7 @@ import { useLocation } from "react-router-dom";
 function Cards() {
   const [readMore, setReadMore] = React.useState(false);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -187,24 +196,23 @@ export const NewCard = ({ card }) => {
   const data = useSelector((state) => state.manageWishlistStatus.list);
   const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
   const dispatch = useDispatch();
-  const [PopupId, setPopupId] = useState(null);
-  const location = useLocation();
-  function handleImageClick(e) {
+  const navigate = useNavigate()
+
+  function handleImageClick(card) {
+    dispatch(setContentPopup(card));
     dispatch(setshowPopup());
-    setPopupId(e.target.id);
   }
   return (
     <>
-      {showPopup ? <DicriptionPopup card={card} id={PopupId} /> : null}
-      <div className=" card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3  px-3 py-3 ">
+      <div
+       
+        className=" card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3  px-3 py-3 "
+      >
         <div className="card box-shadow">
-          <img
-            id={card.id}
-            onClick={handleImageClick}
-            src={card.src}
-            className="card-img-top"
-            alt="..."
-          />
+          <img  key={card}
+        onClick={() => {
+          handleImageClick(card);
+        }} src={card.src} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{card.title}</h5>
             <p className={card.textClass}>
@@ -221,15 +229,15 @@ export const NewCard = ({ card }) => {
               <span>
                 {" "}
                 <button
-                  onClick={() => {
-                    // console.log(card)
-
-                    dispatch(addlist(card));
-                  }}
-                  className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5  btn-primary"
-                >
-                  buy now !
-                </button>
+  onClick={() => {
+    navigate('/Menu/Checkout')
+    // console.log(card)
+    dispatch(addlist(card));
+  }}
+  className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5 btn-primary"
+>
+  Buy Now <span className="blink">!</span>
+</button>
               </span>
               <span className="oneday_price ms-xxl-4 ">₹{card.price}</span>
             </div>
@@ -237,24 +245,6 @@ export const NewCard = ({ card }) => {
         </div>
       </div>
     </>
-  );
-};
-
-export const DicriptionPopup = ({ card, id }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <div className="dicriptionPopup">
-      <span>text {id}</span> {/* This will now correctly print the id */}
-      <button
-        className=""
-        onClick={() => {
-          dispatch(setHiddenPopup());
-        }}
-      >
-        ok
-      </button>
-    </div>
   );
 };
 

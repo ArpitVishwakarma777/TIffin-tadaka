@@ -15,27 +15,55 @@ function Profile() {
   const [mobile, setMobile] = useState(userDetails.mobile);
   const [address, setAddress] = useState(userDetails.address);
   const [profileImage, setProfileImage] = useState(userDetails.img);
-const [uid, setuid] = useState(userDetails.uid)
+  const [uid, setuid] = useState(userDetails.uid);
   const handleUpdate = async () => {
-    console.log("client uid : ",uid);
-    
+    console.log("client uid : ", uid);
+
     console.log("Updated rtk:", userDetails);
+
     await axios.patch("http://localhost:8000/api/home/profile", {
-     uid,
+      uid,
       mobile,
       address,
       profileImage,
     });
   };
+  const uploadImageToCloudinary = async (file) => {
+    const url = "https://api.cloudinary.com/v1_1/drzc94rvk/image/upload";
 
+    const formData = new FormData();
+    formData.append("file", file); // Pass the file object from an input field
+    formData.append("upload_preset", "upload_file"); // Optional, set up in your Cloudinary settings
+
+    try {
+      const response = await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Image uploaded successfully:", response.data);
+      return response.data.secure_url;
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+    }
+  };
   const showProfile = useSelector(
     (state) => state.manageProfileStatus.showProfile
   );
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(URL.createObjectURL(file)); // Update the image source
+      const img = URL.createObjectURL(file);
+
+      if (uid) {
+        const imgdata = await uploadImageToCloudinary(file);
+        dispatch(setProfileImage(imgdata));
+      } else {
+        setProfileImage(img);
+      }
+
+      // Update the image source
     }
   };
   const handleUpdateProfileData = async () => {
@@ -47,7 +75,9 @@ const [uid, setuid] = useState(userDetails.uid)
         mobile: mobile,
       })
     );
-    handleUpdate();
+    if (uid) {
+      handleUpdate();
+    }
   };
   return (
     <>

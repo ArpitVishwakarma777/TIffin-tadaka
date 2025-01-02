@@ -42,7 +42,7 @@ function SignPage() {
       });
       console.log(userData.data);
       const data = userData.data;
-      dispatch(setUser(data))
+      dispatch(setUser(data));
       console.log(userData);
     } catch (error) {
       console.error("Error during login:", error); // Error handling
@@ -204,6 +204,7 @@ function SignPage() {
           <p>
             Don't have an account?{" "}
             <span
+              className="change-option"
               onClick={() => {
                 setCurrState("Sign Up");
                 reset();
@@ -216,6 +217,7 @@ function SignPage() {
           <p>
             Already have an account?{" "}
             <span
+              className="change-option"
               onClick={() => {
                 setCurrState("Login");
                 reset();

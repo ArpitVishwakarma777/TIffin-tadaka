@@ -4,8 +4,10 @@ const initialState = {
   loginStatus: "SignUp",
   showLogin: false,
   showProfile: false,
+  tiffinAddress:null,
   showPopup: false,
-  user: {},
+  contentPopup:"asdfgh",
+  user: {img:'https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg'},
   list: [],
 };
 export const popupSlice = createSlice({
@@ -18,9 +20,12 @@ export const popupSlice = createSlice({
     setHiddenPopup: (state, action) => {
       state.showPopup = false;
     },
+    setContentPopup:(state,action)=>{
+      state.contentPopup = action.payload
+    }
   },
 });
-export const { setHiddenPopup, setshowPopup } = popupSlice.actions;
+export const { setHiddenPopup,setContentPopup, setshowPopup } = popupSlice.actions;
 export const popupReducer = popupSlice.reducer;
 export const loginSlice = createSlice({
   name: "manageLoginStatus",
@@ -64,10 +69,23 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     removeUser: (state, action) => {
-      state.user = {};
+      state.user = {
+        img:'https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg'
+      };
     },
   },
 });
+const taddressSlice =  createSlice({
+  name: 'managetAddressStatus',
+  initialState,
+  reducers: {
+    setTAddress:(state,action)=>{
+      state.tiffinAddress= action.payload;
+    }
+  }
+})
+export const {setTAddress} = taddressSlice.actions
+export const taddressReducer=  taddressSlice.reducer;
 export const userReducer = userSlice.reducer;
 export const {setUser,removeUser} = userSlice.actions;
 export const wishlistReducer = wishlistSlice.reducer;

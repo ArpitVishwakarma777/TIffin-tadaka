@@ -1,0 +1,36 @@
+.popup-image{
+    width: 20vw;
+    height: 55vh;
+    border-radius: 15px;
+}
+/* @media (min-width: 1400px) {
+    .dicriptionPopup{
+        height: 65vh;
+    }
+  } */
+
+@media (max-width: 992px) {
+    .col-4 {
+      display: none;
+    }
+  }
+
+@media (max-width: 1300px) { /* Assuming xl breakpoint is 1200px */
+  .text-portion {
+    max-height: 58vh; /* Adjust height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+}
+.dicriptionPopup{
+    background: rgba(249, 247, 247, 0.9);
+   width:80% ;
+    border:2px black solid;
+    border-radius: 20px;
+
+    position: fixed;
+    top:50%;
+    left:50% ;
+     transform: translate(-50%,-50%); 
+  
+   z-index:1000;
+  }

@@ -115,3 +115,7 @@
   color:#527119;
 
 }
+.change-option{
+  cursor: pointer;
+  color: rgb(238, 95, 6);
+}

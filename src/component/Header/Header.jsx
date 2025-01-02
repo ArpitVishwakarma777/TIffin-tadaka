@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
+import { DicriptionPopup } from "../../Helper/DiscriptionPopup.jsx";
 import "./Header.css";
+import { getAuth, signOut } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,8 +12,8 @@ import { IoMdContact } from "react-icons/io";
 import {
   setShowLogin,
   setSignUp,
-  setLogout,
   setShowProfile,
+  removeUser,
 } from "../../RTK/slices.js";
 
 import webLogo from "../../assets/logo/web-logo 1.png";
@@ -37,19 +39,31 @@ export default function Header() {
   );
   const showLogin = useSelector((state) => state.manageLoginStatus.showLogin);
 
+  const handleLogout = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth); // Logs out the user
+      console.log("User logged out successfully");
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   function handleButton(e) {
     e.preventDefault();
     if (loginStatus === "SignUp") {
       dispatch(setShowLogin(true));
     } else {
       dispatch(setSignUp());
+      handleLogout();
+      dispatch(removeUser());
       toast.success("Logout successfully ");
     }
   }
   return (
     <>
       {/* discription box */}
-
+      {showPopup ? <DicriptionPopup/> : null}
       {/* Toast Component */}
       <ToastContainer />
 
@@ -59,7 +73,11 @@ export default function Header() {
         {showProfile === true ? <Profile /> : null}
       </div>
       {/* SignUp Component */}
-      <div className={showLogin === true ||showPopup===true ? "background-blur" : null}>
+      <div
+        className={
+          showLogin === true || showPopup === true ? "background-blur" : null
+        }
+      >
         {" "}
         {showLogin === true ? <SignPage /> : null}
       </div>
@@ -69,6 +87,7 @@ export default function Header() {
           <button
             className="navbar-toggler"
             type="button"
+            onClick={(e) => e.preventDefault()}
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
@@ -104,7 +123,7 @@ export default function Header() {
               </li>
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
-              <div className="contain  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
+              <div className="contain me-4  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
                 <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={25} color="green" />
@@ -112,8 +131,9 @@ export default function Header() {
                 </Link>
                 <br />
               </div>
-              <div className="contain  mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
-                <button className={loginStatus!=="LogOut"&& "d-none"  }
+              <div className="contain  me-5 ms-3 mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
+                <button
+                  // className={loginStatus!=="LogOut"&& "d-none"  }
                   onClick={() => {
                     dispatch(setShowProfile(true));
                   }}
@@ -122,7 +142,7 @@ export default function Header() {
                   <IoMdContact color="green" size={35} />
                 </button>
               </div>
-              <div className="contain  mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
+              <div className="contain    mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button
                   onClick={handleButton}
                   type="button"

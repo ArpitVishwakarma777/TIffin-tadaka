@@ -1,0 +1,12 @@
+.bold {
+    font-weight: 700;
+}
+
+.order-card {
+    box-sizing: border-box;
+    border: 2px solid transparent; /* Reserve space for the border */
+}
+
+.order-card:hover {
+    border: 2px solid red; /* Change border color on hover */
+}

@@ -1,10 +1,20 @@
-import React,{memo} from "react";
+import React, { memo, useEffect } from "react";
 import "./Contact.css";
-
+import {useSelector} from 'react-redux';
 function Contact() {
+  useEffect(() => {
+    const handleGetWebData = async () => {
+      const response = await axios.get("http://localhost:8000/api/contact");
+    };
+    handleGetWebData();
+  });
+  const tiffinAddress = useSelector(state=>state.managetAddressStatus.tiffinAddress)
   const [isLoad, setload] = React.useState(false);
+  console.log("hello : ",);
+  
   return (
     <section className=" py-3 pb-md-5">
+    
       <div className="container">
         <div className=" d-flex justify-content-center">
           <h2 className="fs-1 m-4  ">Contact Us</h2>
@@ -41,7 +51,7 @@ function Contact() {
                   <div>
                     <h4 className="mb-3">Address</h4>
                     <address className="mb-0 text-dark">
-                      8014 Edith Blvd NE, Albuquerque, New York, United States
+                     {tiffinAddress[0].address}, India 
                     </address>
                   </div>
                 </div>
@@ -67,7 +77,10 @@ function Contact() {
                             className="link-secondary text-decoration-none"
                             href="tel:+15057922430"
                           >
-                            (505) 792-2430
+                            (+91)
+                           {
+                            tiffinAddress[0].phone
+                           }
                           </a>
                         </p>
                       </div>
