@@ -1,16 +1,15 @@
-import React from 'react'
-import { NewCard} from "../Helper/Cards.jsx";
-import {useSelector} from 'react-redux'
-import axios from 'axios';
+import React from "react";
+import { NewCard } from "../Helper/Cards.jsx";
+import { useSelector } from "react-redux";
+import axios from "axios";
 function DailyTiffin() {
-  const [data,setData]= React.useState([]);
- React.useEffect(() => {
+  const [data, setData] = React.useState([]);
+  React.useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           "http://localhost:8000/api/menu/oneDayCard"
         );
-       
 
         setData(response.data); // Store the fetched data in state.
       } catch (error) {
@@ -19,14 +18,9 @@ function DailyTiffin() {
     };
     fetchData(); // Call the fetch function
   }, []);
-  const list = useSelector(state=>state.manageWishlistStatus.list)
-  console.log('list of items : ',list);
-  
-  return (
-    data.map((card) => {
-                return <NewCard card={card} />;
-              })
-  )
+  return data.map((card) => {
+    return <NewCard card={card} />;
+  });
 }
 
-export default DailyTiffin
+export default DailyTiffin;

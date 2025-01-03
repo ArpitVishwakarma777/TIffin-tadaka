@@ -3,16 +3,10 @@ import axios from "axios";
 import "./Cards.css";
 import { Link } from "react-router-dom";
 
-location
+location;
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addlist,
-  setshowPopup,
-  setContentPopup,
-  setHiddenPopup,
-} from "../RTK/slices";
-import { useNavigate
- } from "react-router-dom";
+import { setshowPopup, setContentPopup, setHiddenPopup } from "../RTK/slices";
+import { useNavigate } from "react-router-dom";
 // export const dailydata = [
 //   {
 //     id: 0,
@@ -193,10 +187,10 @@ function Cards() {
 }
 export const NewCard = ({ card }) => {
   const [readMore, setReadMore] = React.useState(false);
-  const data = useSelector((state) => state.manageWishlistStatus.list);
-  const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
+
+ 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleImageClick(card) {
     dispatch(setContentPopup(card));
@@ -204,15 +198,17 @@ export const NewCard = ({ card }) => {
   }
   return (
     <>
-      <div
-       
-        className=" card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3  px-3 py-3 "
-      >
+      <div className=" card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3  px-3 py-3 ">
         <div className="card box-shadow">
-          <img  key={card}
-        onClick={() => {
-          handleImageClick(card);
-        }} src={card.src} className="card-img-top" alt="..." />
+          <img
+            key={card}
+            onClick={() => {
+              handleImageClick(card);
+            }}
+            src={card.src}
+            className="card-img-top"
+            alt="..."
+          />
           <div className="card-body">
             <h5 className="card-title">{card.title}</h5>
             <p className={card.textClass}>
@@ -229,15 +225,13 @@ export const NewCard = ({ card }) => {
               <span>
                 {" "}
                 <button
-  onClick={() => {
-    navigate('/Menu/Checkout')
-    // console.log(card)
-    dispatch(addlist(card));
-  }}
-  className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5 btn-primary"
->
-  Buy Now <span className="blink">!</span>
-</button>
+                  onClick={() => {
+                    navigate(`/Menu/Checkout/${card.title}/${card.price}`);
+                  }}
+                  className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5 btn-primary"
+                >
+                  Buy Now <span className="blink">!</span>
+                </button>
               </span>
               <span className="oneday_price ms-xxl-4 ">₹{card.price}</span>
             </div>

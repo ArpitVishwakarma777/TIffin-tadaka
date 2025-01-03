@@ -3,9 +3,7 @@ import "./Menu.css";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 function Menu() {
-  const [onedayBtn, setOnedayBtn] = React.useState(false);
-  const [weeklyBtn, setWeeklyBtn] = React.useState(false);
-  const [monthlyBtn, setMonthlyBtn] = React.useState(false);
+  
   const [TiffinBtnColor, setTiffinBtnColor] = React.useState([
     "bg-success",
     "bg-success",

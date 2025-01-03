@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
       { path: "/Wishlist", element: <Wishlist /> },
-      { path: "/Menu/Checkout", element: <Checkout /> },
+      { path: "/Menu/Checkout/:subscription/:price", element: <Checkout /> },
       {
         path: "/Menu",
         element: <Protected Component={<Menu />} />,

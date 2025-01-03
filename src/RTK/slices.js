@@ -4,11 +4,12 @@ const initialState = {
   loginStatus: "SignUp",
   showLogin: false,
   showProfile: false,
-  tiffinAddress:null,
+  tiffinAddress: null,
   showPopup: false,
-  contentPopup:"asdfgh",
-  user: {img:'https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg'},
-  list: [],
+  contentPopup: "asdfgh",
+  user: {
+    img: "https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg",
+  },
 };
 export const popupSlice = createSlice({
   name: "managePopupStatus",
@@ -20,12 +21,13 @@ export const popupSlice = createSlice({
     setHiddenPopup: (state, action) => {
       state.showPopup = false;
     },
-    setContentPopup:(state,action)=>{
-      state.contentPopup = action.payload
-    }
+    setContentPopup: (state, action) => {
+      state.contentPopup = action.payload;
+    },
   },
 });
-export const { setHiddenPopup,setContentPopup, setshowPopup } = popupSlice.actions;
+export const { setHiddenPopup, setContentPopup, setshowPopup } =
+  popupSlice.actions;
 export const popupReducer = popupSlice.reducer;
 export const loginSlice = createSlice({
   name: "manageLoginStatus",
@@ -51,16 +53,7 @@ export const profileSlice = createSlice({
     },
   },
 });
-export const wishlistSlice = createSlice({
-  name: "manageWishlistStatus",
-  initialState,
-  reducers: {
-    addlist: (state, action) => {
-      state.list.push(action.payload);
-    },
-    removelist: (state, action) => {},
-  },
-});
+
 export const userSlice = createSlice({
   name: "manageUserStatus",
   initialState,
@@ -68,29 +61,29 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    setUserSubscription: (state, action) => {
+      state.user.subscription.push(action.payload);
+    },
     removeUser: (state, action) => {
       state.user = {
-        img:'https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg'
+        img: "https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg",
       };
     },
   },
 });
-const taddressSlice =  createSlice({
-  name: 'managetAddressStatus',
+const taddressSlice = createSlice({
+  name: "managetAddressStatus",
   initialState,
   reducers: {
-    setTAddress:(state,action)=>{
-      state.tiffinAddress= action.payload;
-    }
-  }
-})
-export const {setTAddress} = taddressSlice.actions
-export const taddressReducer=  taddressSlice.reducer;
+    setTAddress: (state, action) => {
+      state.tiffinAddress = action.payload;
+    },
+  },
+});
+export const { setTAddress } = taddressSlice.actions;
+export const taddressReducer = taddressSlice.reducer;
 export const userReducer = userSlice.reducer;
-export const {setUser,removeUser} = userSlice.actions;
-export const wishlistReducer = wishlistSlice.reducer;
-export const { addlist, removelist } = wishlistSlice.actions;
-
+export const { setUserSubscription, setUser, removeUser } = userSlice.actions;
 export const { setLogout, setSignUp, setShowLogin } = loginSlice.actions;
 export const { setShowProfile } = profileSlice.actions;
 export default loginSlice.reducer;

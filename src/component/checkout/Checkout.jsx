@@ -1,73 +1,103 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import {  toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { setUserSubscription } from "../../RTK/slices";
 import "./Checkout.css";
 import { useActionState } from "react";
 function Checkout() {
+  const { subscription, price } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const uid = useSelector((state) => state.manageUserStatus.user.uid);
   const tiffinAddress = useSelector(
     (state) => state.managetAddressStatus.tiffinAddress
   );
-  console.log("tiffin address: ", tiffinAddress);
 
   const [userAddress, setUserAddress] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [orderSummary, setOrderSummary] = useState({
-    mealPlan: "Weekly Subscription",
-    price: 1500,
+    mealPlan: subscription,
+    price: price,
   });
-  const calculateEndDate = (startDate) => {
+  const calculateEndDate = (startDate, category) => {
     const date = new Date(startDate);
 
-    date.setDate(date.getDate() + 30); // Add 30 days to the start date
-    return date.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+    if (category === "monthly") {
+      date.setDate(date.getDate() + 30); // Add 30 days for monthly
+    } else if (category === "weekly") {
+      date.setDate(date.getDate() + 7); // Add 7 days for weekly
+    } else if (category === "oneday") {
+      date.setDate(date.getDate() + 0); // No change for one-day
+    }
+
+    // Format as YYYY-MM-DD
+    return date.toISOString().split("T")[0];
   };
   const handleStartDateChange = (e) => {
     const startDate = e.target.value;
     setStartDate(startDate);
-    setEndDate(calculateEndDate(startDate));
+    // console.log("first: ", subscription);
+
+    if (subscription === "Weekly Subscription") {
+      // console.log("second: ", subscription);
+      setEndDate(calculateEndDate(startDate, "weekly"));
+    } else if (subscription === "Monthly Subscription") {
+      setEndDate(calculateEndDate(startDate, "monthly"));
+    } else{
+      setEndDate(calculateEndDate(startDate, "oneday"));
+    }
   };
+  function generateOrderID() {
+    let randomID = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+    return randomID;
+  }
   const handlePlaceOrder = async () => {
     if (!userAddress || !startDate || !endDate || !paymentMethod) {
       alert("Please fill all the required fields!");
       return;
     } else {
-      try {
-        const response = await axios.patch(
-          "http://localhost:8000/api/menu/order",
-          {
-            uid,
-            userAddress,
-            startDate,
-            endDate,
-            orderSummary,
-            paymentMethod,
-          }
-        );
-        toast.success(response.data)
-        navigate("/Home")
-      } catch (e) {
-        console.log("error on sending order client req: ", e);
-      }
+      const isConfirmed = confirm("Are you ready to place the order");
+      if (isConfirmed) {
 
-      console.log(
-        userAddress,
-        "then\n",
-        startDate,
-        "then\n",
-        endDate,
-        "then\n",
-        paymentMethod,
-        "then\n",
-        orderSummary
-      );
+        try {
+          const orderid =  generateOrderID()
+          console.log("oredr id : ",orderid);
+          
+          const response = await axios.patch(
+            "http://localhost:8000/api/menu/order",
+            {
+              uid,
+              orderid,
+              userAddress,
+              startDate,
+              endDate,
+              orderSummary,
+              paymentMethod,
+            }
+          );
+          dispatch(
+            setUserSubscription({
+              userAddress,
+              startDate,
+              endDate,
+              orderSummary,
+              paymentMethod,
+            })
+          );
+          toast.success(response.data);
+          navigate("/Home");
+        } catch (e) {
+          console.log("error on sending order client req: ", e);
+        }
+      } else {
+        alert("order is cancelled");
+        navigate("/Menu");
+      }
     }
-   
   };
 
   return (
@@ -126,6 +156,7 @@ function Checkout() {
         <input
           id="endDate"
           type="date"
+          disabled
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
           className="form-control"

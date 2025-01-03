@@ -1,7 +1,9 @@
 import React, { memo, useEffect } from "react";
 import "./Contact.css";
 import {useSelector} from 'react-redux';
+import axios from 'axios'
 function Contact() {
+
   useEffect(() => {
     const handleGetWebData = async () => {
       const response = await axios.get("http://localhost:8000/api/contact");
@@ -10,7 +12,7 @@ function Contact() {
   });
   const tiffinAddress = useSelector(state=>state.managetAddressStatus.tiffinAddress)
   const [isLoad, setload] = React.useState(false);
-  console.log("hello : ",);
+ 
   
   return (
     <section className=" py-3 pb-md-5">

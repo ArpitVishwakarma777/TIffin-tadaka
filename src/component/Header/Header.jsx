@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { DicriptionPopup } from "../../Helper/DiscriptionPopup.jsx";
 import "./Header.css";
+
 import { getAuth, signOut } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
@@ -26,6 +27,7 @@ export default function Header() {
   const location = useLocation();
   //Popup data
   const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
+  const orderCount = useSelector((state) => state.manageUserStatus.user?.subscription?.length || 0);
 
   const dispatch = useDispatch();
   const loginStatus = useSelector(
@@ -33,9 +35,6 @@ export default function Header() {
   );
   const showProfile = useSelector(
     (state) => state.manageProfileStatus.showProfile
-  );
-  const listCount = useSelector(
-    (state) => state.manageWishlistStatus.list.length
   );
   const showLogin = useSelector((state) => state.manageLoginStatus.showLogin);
 
@@ -127,7 +126,7 @@ export default function Header() {
                 <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={25} color="green" />
-                  <span className="text-dark">{listCount}</span>
+                  <span className="text-dark">{orderCount}</span>
                 </Link>
                 <br />
               </div>

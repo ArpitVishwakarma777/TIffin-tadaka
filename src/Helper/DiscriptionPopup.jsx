@@ -21,10 +21,10 @@ export function DicriptionPopup() {
             {contentPopup.text[0].title}
           </p>
           <p className="text-success fs-5">{contentPopup.text[0].body}</p>
-          <span className="fs-5 text-danger font-weight-bold">Chapati's:-</span>
+          <span className="fs-5 text-danger font-weight-bold">Staples :-</span>
           <p>{contentPopup.text[0].DailyMenu[0]}</p>
           <span className="fs-5 text-danger font-weight-bold">
-            Vegetables List:-
+            Sides & Mains List:-
           </span>
           <p>{contentPopup.text[0].DailyMenu[1]}</p>
           <span className="fs-5 text-danger font-weight-bold"> Special:- </span>

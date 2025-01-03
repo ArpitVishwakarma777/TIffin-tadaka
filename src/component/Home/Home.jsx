@@ -135,7 +135,7 @@ export default function Home() {
               className="d-block  h-lg-50 w-100"
               alt="..."
             />
-            <div className="caption1 h-50 w">
+            <div className="caption1 d-none d-lg-block h-50 ">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
@@ -157,7 +157,7 @@ export default function Home() {
               className="d-block  h-lg-50 w-100"
               alt="..."
             />
-            <div className="caption2 d-none d-md-block">
+            <div className="caption2 d-none d-lg-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
@@ -179,7 +179,7 @@ export default function Home() {
               className="d-block  h-lg-50 w-100"
               alt="..."
             />
-            <div className="caption3 d-none d-md-block">
+            <div className="caption3 d-none d-lg-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
@@ -235,7 +235,7 @@ export default function Home() {
               }
               alt=""
             />
-            <h3>Find Nearby </h3>
+            <h3>Doorstep Delivery</h3>
           </div>
           <div className="col-md-4 my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
             <img
@@ -244,7 +244,7 @@ export default function Home() {
               }
               alt=""
             />
-            <h3>Find Nearby </h3>
+            <h3>Maintain Tempreture</h3>
           </div>
         </div>
       </div>

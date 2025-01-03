@@ -173,8 +173,12 @@ function Profile() {
                   id="mobile"
                   value={mobile}
                   onChange={(e) => {
-                    setMobile(e.target.value);
+                    const value = e.target.value;
+                    if (value.length <= 10) {
+                      setMobile(value);
+                    }
                   }}
+                  
                   className="my-2 ms-md-0 ms-xl-0 ms-xxl-4   "
                   type="tel"
                   placeholder="Enter Mobile number"
