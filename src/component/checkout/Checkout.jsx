@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { setUserSubscription } from "../../RTK/slices";
+import { setUserSubscription,setUser } from "../../RTK/slices";
+
 import "./Checkout.css";
 import { useActionState } from "react";
 function Checkout() {
@@ -14,6 +15,8 @@ function Checkout() {
   const tiffinAddress = useSelector(
     (state) => state.managetAddressStatus.tiffinAddress
   );
+   
+  const user = useSelector((state) => state.manageUserStatus.user);
 
   const [userAddress, setUserAddress] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -47,55 +50,136 @@ function Checkout() {
       setEndDate(calculateEndDate(startDate, "weekly"));
     } else if (subscription === "Monthly Subscription") {
       setEndDate(calculateEndDate(startDate, "monthly"));
-    } else{
+    } else {
       setEndDate(calculateEndDate(startDate, "oneday"));
     }
   };
   function generateOrderID() {
-    let randomID = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+    let randomID =
+      Math.random().toString(36).substring(2) +
+      Math.random().toString(36).substring(2);
     return randomID;
   }
+
+  //payment integration
+
+  const handleRazorpayPayment = async () => {
+    try {
+      // Create Order
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_URL}/api/menu/createOrder`,
+        {
+          method: "POST",
+
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            amount: orderSummary.price, // Amount in rupees
+            currency: "INR",
+          }),
+        }
+      );
+
+      const { order } = await response.json();
+      console.log("result : ", order);
+      const options = {
+        key: import.meta.env.VITE_APP_RAZORPAY_KEY_ID,
+        amount: order.amount,
+        currency: order.currency,
+        name: "Tiffin Tadaka",
+        description: "Order Payment",
+        order_id: order.id,
+        handler: async (response) => {
+          try {
+            // Verify Payment
+            const verificationResponse = await fetch(
+              `${import.meta.env.VITE_APP_URL}/api/menu/verifyPayment`,
+              {
+                method: "POST",
+
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(response),
+              }
+            );
+
+            const result = await verificationResponse.json();
+            console.log("result : ", result);
+
+            if (result.success) {
+              handlePlaceOrder();
+            } else {
+              toast.error("Payment verification failed!");
+            }
+          } catch (error) {
+            console.error("Payment verification error:", error);
+            toast.error("Error verifying payment.");
+          }
+        },
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: user.mobile,
+        },
+        theme: {
+          color: "#dc2626",
+        },
+      };
+
+      const razorpay = new Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error("Error in Razorpay payment:", error);
+      toast.error("Error initiating payment.");
+    }
+  };
+
+  const hendlePlaceOrderButton = () => {
+    if (!userAddress || !startDate || !endDate || !paymentMethod) {
+      alert("Please fill all the required fields!");
+      return;
+    } else {
+    }
+    if (paymentMethod == "Credit/Debit Card") {
+      handleRazorpayPayment();
+    } else {
+      handlePlaceOrder();
+    }
+  };
+
   const handlePlaceOrder = async () => {
     if (!userAddress || !startDate || !endDate || !paymentMethod) {
       alert("Please fill all the required fields!");
       return;
     } else {
-      const isConfirmed = confirm("Are you ready to place the order");
-      if (isConfirmed) {
+      try {
+        const orderid = generateOrderID();
+        // console.log("order id : ", orderid);
 
-        try {
-          const orderid =  generateOrderID()
-          console.log("oredr id : ",orderid);
-          
-          const response = await axios.patch(
-            "http://localhost:8000/api/menu/order",
-            {
-              uid,
-              orderid,
-              userAddress,
-              startDate,
-              endDate,
-              orderSummary,
-              paymentMethod,
-            }
-          );
-          dispatch(
-            setUserSubscription({
-              userAddress,
-              startDate,
-              endDate,
-              orderSummary,
-              paymentMethod,
-            })
-          );
-          toast.success(response.data);
-          navigate("/Home");
-        } catch (e) {
-          console.log("error on sending order client req: ", e);
-        }
-      } else {
-        alert("order is cancelled");
-        navigate("/Menu");
+        const response = await axios.patch(
+          `${import.meta.env.VITE_APP_URL}/api/menu/order`,
+          {
+            uid,
+            orderid,
+            userAddress,
+            startDate,
+            endDate,
+            orderSummary,
+            paymentMethod,
+          }
+        );
+        dispatch(
+          setUserSubscription({
+            orderid,
+            userAddress,
+            startDate,
+            endDate,
+            orderSummary,
+            paymentMethod,
+          })
+        );
+        toast.success(response.data);
+        navigate("/Home");
+      } catch (e) {
+        console.log("error on sending order client req: ", e);
       }
     }
   };
@@ -192,7 +276,7 @@ function Checkout() {
 
       {/* Place Order Button */}
       <button
-        onClick={handlePlaceOrder}
+        onClick={hendlePlaceOrderButton}
         className="btn btn-success place-order-btn"
       >
         Place Order

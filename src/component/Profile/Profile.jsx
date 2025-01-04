@@ -21,7 +21,7 @@ function Profile() {
 
     console.log("Updated rtk:", userDetails);
 
-    await axios.patch("http://localhost:8000/api/home/profile", {
+    await axios.patch(`${import.meta.env.VITE_APP_URL}/api/home/profile`, {
       uid,
       mobile,
       address,

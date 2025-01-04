@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector ,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./Home.css";
 import Testimonial from "./Testimonial";
@@ -77,16 +77,16 @@ import { setTAddress } from "../../RTK/slices.js";
 // ];
 
 export default function Home() {
-  const dispatch =useDispatch(); 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.manageUserStatus.user);
   console.log("current user: ", user);
   useEffect(() => {
     const handlegetTAdderss = async () => {
       const response = await axios
-        .get("http://localhost:8000/api/contact/data")
+        .get(`${import.meta.env.VITE_APP_URL}/api/contact/data`)
         .then((response) => {
-          dispatch(setTAddress(response.data))
+          dispatch(setTAddress(response.data));
         })
         .catch((error) => {
           console.error(error);
@@ -251,20 +251,64 @@ export default function Home() {
 
       <div className=" d-flex justify-content-center flex-column align-content-center flex-sm-row">
         <h1 className="One-day-special ms-5  ms-sm-0 ">
-          <span style={{ color: "red" }}>Oneday</span> Special
+          <span style={{ color: "red" }}>Tiffin's</span> Overview
         </h1>
       </div>
 
-      {/* For Cards */}
-      <Cards />
-      {/* Advantage Banner */}
-
-      {/* <div className="container  mt-lg-2">
-        <div className="row">
-          <img src={Helper_Template} alt="" />
+      <div className="container-fluid mt-5">
+        <div className="row d-flex  justify-content-between bg-light">
+          <div className="col-6 align-self-center ps-lg-5 fs-5">
+            <div><h3 className=" text-success">Panjabi Flavour</h3>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
+            corrupti dolor doloremque iure quibusdam error, numquam autem
+            nesciunt repellat mollitia at placeat. Qui quaerat in, impedit porro
+            veritatis iusto recusandae.</div>
+          </div>
+          <div className=" d-flex justify-content-center align-items-center col-6 ">
+            <img
+              className="tiffin-discription "
+              src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965822/aloo_parratha_suznnf.jpg"
+              alt=""
+            />
+          </div>
         </div>
-      </div> */}
 
+        <div className="row d-flex  justify-content-between bg-light">
+          <div className=" col-6 d-flex justify-content-center align-items-center ">
+            <img
+              className="tiffin-discription "
+              src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965822/aloo_parratha_suznnf.jpg"
+              alt=""
+            />
+          </div>
+          <div className="col-6 align-self-center fs-5 pe-lg-5">
+           <div> <h3 className=" text-success">Panjabi Flavour</h3>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
+            corrupti dolor doloremque iure quibusdam error, numquam autem
+            nesciunt repellat mollitia at placeat. Qui quaerat in, impedit porro
+            veritatis iusto recusandae.</div>
+          </div>
+        </div>
+        <div className="row d-flex  justify-content-between bg-light">
+          <div className="col-6 align-self-center ps-lg-5  fs-5">
+            <div><h3 className=" text-success">Panjabi Flavour</h3>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
+            corrupti dolor doloremque iure quibusdam error, numquam autem
+            nesciunt repellat mollitia at placeat. Qui quaerat in, impedit porro
+            veritatis iusto recusandae.</div>
+          </div>
+          <div className=" col-6 d-flex justify-content-center align-items-center ">
+            <img
+              className="tiffin-discription "
+              src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965822/aloo_parratha_suznnf.jpg"
+              alt=""
+            />
+          </div> 
+        </div>
+        <div className=" col-12 bg-light pb-5"><span className=" text-danger fs-4 ms-5">Many more items for you ..... </span></div>
+      </div>
+      {/* For Cards */}
+      {/* <Cards /> */}
       {/* Download option template */}
       <div className="container my-5">
         <div className="row d-flex  flex-sm-column-reverse flex-md-row flex-wrap justify-content-center">

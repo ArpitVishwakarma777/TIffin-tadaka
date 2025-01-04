@@ -137,7 +137,7 @@ function Cards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/home/card");
+        const response = await axios.get( `${import.meta.env.VITE_APP_URL}/api/home/card `);
         setData(response.data); // Store the fetched data in state.
       } catch (error) {
         console.error("Error fetching data:", error);

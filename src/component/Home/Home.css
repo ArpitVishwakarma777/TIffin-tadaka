@@ -44,6 +44,8 @@
 .order_now {
   height: 50px;
 }
+
+
 .box-shadow {
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
@@ -291,3 +293,29 @@
   background-clip: text;
   color: transparent;
 } */
+.tiffin-discription{
+  border-radius: 20px;}
+@media(max-width:576px){
+  .tiffin-discription{
+    padding: 0px 10px;
+    width: 200px;
+    height: 200px;
+
+  }
+}
+
+@media(min-width:576px){
+  .tiffin-discription{
+    width: 300px;
+    height: 300px;
+
+  }
+}
+@media(min-width:992px){
+  .tiffin-discription{
+ 
+    width: 350px;
+    height: 350px;
+
+  }
+}

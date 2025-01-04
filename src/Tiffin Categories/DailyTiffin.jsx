@@ -8,7 +8,7 @@ function DailyTiffin() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/menu/oneDayCard"
+          `${import.meta.env.VITE_APP_URL}/api/menu/oneDayCard`
         );
 
         setData(response.data); // Store the fetched data in state.

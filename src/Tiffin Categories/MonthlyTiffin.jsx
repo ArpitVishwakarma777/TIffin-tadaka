@@ -7,7 +7,7 @@ function MonthlyTiffin() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/Menu/monthlyCard"
+          `${import.meta.env.VITE_APP_URL}/api/Menu/monthlyCard`
         );
         console.log(response.data);
         setMonthlyData(response.data);

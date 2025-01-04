@@ -22,7 +22,7 @@ function SignPage() {
 
   const handleSignUp = async (name, email, userId) => {
     try {
-      await axios.post("http://localhost:8000/api/signUp", {
+      await axios.post(`${import.meta.env.VITE_APP_URL}/api/signUp`, {
         name,
         email,
         userId,
@@ -34,7 +34,7 @@ function SignPage() {
 
   const handleLogin = async (uid) => {
     try {
-      const userData = await axios.get("http://localhost:8000/api/login", {
+      const userData = await axios.get(`${import.meta.env.VITE_APP_URL}/api/login`, {
         params: { uid },
       });
       const data = userData.data;
@@ -163,13 +163,14 @@ function SignPage() {
           {errors.signUpError && <div className="text-danger">{errors.signUpError.message}</div>}
           {errors.signInError && <div className="text-danger">{errors.signInError.message}</div>}
         </div>
-        <button type="submit" className="Sign_button" disabled={isLoading}>
-          {isLoading ? "Processing..." : currState === "Sign Up" ? "Create Account" : "Login"}
-        </button>
-        <div className="login-popup-condtation">
+        <div className="login-popup-condtation mt-2">
           <input type="checkbox" required />
           <p>By Continuing, I Agree to the terms of use & privacy policy.</p>
         </div>
+        <button type="submit" className="Sign_button" disabled={isLoading}>
+          {isLoading ? "Processing..." : currState === "Sign Up" ? "Create Account" : "Login"}
+        </button>
+        
         {currState === "Login" ? (
           <p>
             Don't have an account?{" "}

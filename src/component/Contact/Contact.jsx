@@ -6,7 +6,7 @@ function Contact() {
 
   useEffect(() => {
     const handleGetWebData = async () => {
-      const response = await axios.get("http://localhost:8000/api/contact");
+      const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/contact`);
     };
     handleGetWebData();
   });
