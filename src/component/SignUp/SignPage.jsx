@@ -124,7 +124,7 @@ function SignPage() {
           <div className="row d-flex">
             <div className="col-6 d-flex justify-content-center">
               <h2 className="login-heading">
-                {currState === "Login" ? "Login" : "Sign Up"}
+                {currState === "Login" ? "Login" : "SignUp"}
               </h2>
             </div>
             <div className="col-6 d-flex justify-content-end">

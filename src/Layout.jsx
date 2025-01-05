@@ -12,7 +12,7 @@ function Layout() {
     <Provider store = {store}> 
     <Header/>
     <Outlet/>
-    {/* <Footer/> */}
+    <Footer/>
     </Provider>
   )
 }

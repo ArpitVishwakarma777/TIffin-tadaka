@@ -19,7 +19,9 @@
 .order_now {
   height: 50px;
 }
-
+* {
+  font-family: cursive, sans-serif;
+}
 .mainBox {
   background-image: url("/Image/bg-image.jpeg");
 }
@@ -57,14 +59,7 @@
   .card-text3::after {
     content: "A plate with 4-5 soft rotis with crispy gram flour noodles curry and salad.";
   }
-}
-/* @media (max-width:768px) { */
-
-.row {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
+} 
 .card-box {
   transition: transform 0.3s ease; /* Smooth transition for transform */
 }
@@ -250,12 +245,7 @@
   font-size: 14px;
   color: #ffdc12;
 }
-.container-lg {
-  /* background: #a09d9d34; */
-  border: 0px solid;
-  padding: 10px;
-  box-shadow: 15px 20px #ff6300;
-}
+
 
 @media (max-width: 992px) {
   .carousel-item1 img {

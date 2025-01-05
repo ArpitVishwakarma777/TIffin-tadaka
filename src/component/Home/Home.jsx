@@ -309,7 +309,7 @@ export default function Home() {
           }
         })}
 <div className="row"><div className=" col-12 bg-light  pb-5">
-          <span className=" text-danger fs-4 ">
+          <span className=" text-danger fs-4 ms-2 ms-lg-5 ">
             Many more items for you .....
           </span>
         </div></div>
@@ -374,91 +374,7 @@ export default function Home() {
 
       {/*For textimonials*/}
       <Testimonial />
-      {/* <div className="container-md mt-md-2">
-        <div className="row">
-          <div className="col-sm-12">
-            <div
-              id="myCarousel"
-              className="carousel slide"
-              data-ride="carousel"
-              data-interval="5000"
-            >
-              <h2>
-                Collbrate<b></b> with Owner
-              </h2>
-             
-              <ol className="carousel-indicators">
-                <li
-                  data-target="#myCarousel"
-                  data-slide-to={0}
-                  className="active"
-                />
-                <li data-target="#myCarousel" data-slide-to={1} />
-              </ol>
-             
-              <div className="carousel-inner">
-                {testimonialsData.map((data, index) => {
-                  return (
-                    <div
-                      className={`carousel-item ${index === 0 ? "active" : ""}`}
-                    >
-                      <div className="row">
-                        {data.map((innerData, innerIndex) => {
-                          return (
-                            <div className="col-sm-6">
-                              <div className="testimonial">
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipiscing elit. Nam eu sem tempor, varius
-                                  quam at, luctus dui. Mauris magna metus,
-                                  dapibus nec turpis vel, semper malesuada ante.
-                                </p>
-                              </div>
-                              <div className="media">
-                                <img src={innerData.src} className="mr-3" alt />
-                                <div className="media-body">
-                                  <div className="overview">
-                                    <div className="name">
-                                      <b>{innerData.name}</b>
-                                    </div>
-                                    <div className="details">
-                                      {innerData.position}
-                                    </div>
-                                    <div className="star-rating">
-                                      <ul className="list-inline">
-                                        <li className="list-inline-item">
-                                          <i className="fa fa-star" />
-                                        </li>
-                                        <li className="list-inline-item">
-                                          <i className="fa fa-star" />
-                                        </li>
-                                        <li className="list-inline-item">
-                                          <i className="fa fa-star" />
-                                        </li>
-                                        <li className="list-inline-item">
-                                          <i className="fa fa-star" />
-                                        </li>
-                                        <li className="list-inline-item">
-                                          <i className="fa fa-star-o" />
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* <br /> */}
+    
     </>
   );
 }

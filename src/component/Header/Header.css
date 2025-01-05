@@ -1,6 +1,4 @@
-*{
-  
-}
+
 .img {
     height: 5rem;
     width: 15rem;
@@ -15,9 +13,7 @@
   
     background-color: rgb(236, 236, 234);
   }
-  .nav {
-    /* padding-left: 3rem; */
-  }
+ 
   .nav-link {
     font-size: x-large;
     margin: 1rem;

@@ -1,22 +1,21 @@
 import React, { memo, useEffect } from "react";
 import "./Contact.css";
-import {useSelector} from 'react-redux';
-import axios from 'axios'
+import { useSelector } from "react-redux";
+import axios from "axios";
 function Contact() {
-
-  useEffect(() => {
-    const handleGetWebData = async () => {
-      const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/contact`);
-    };
-    handleGetWebData();
-  });
-  const tiffinAddress = useSelector(state=>state.managetAddressStatus.tiffinAddress)
+  // useEffect(() => {
+  //   const handleGetWebData = async () => {
+  //     const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/contact`);
+  //   };
+  //   handleGetWebData();
+  // });
+  const tiffinAddress = useSelector(
+    (state) => state.managetAddressStatus.tiffinAddress || []
+  );
   const [isLoad, setload] = React.useState(false);
- 
-  
+
   return (
     <section className=" py-3 pb-md-5">
-    
       <div className="container">
         <div className=" d-flex justify-content-center">
           <h2 className="fs-1 m-4  ">Contact Us</h2>
@@ -53,7 +52,10 @@ function Contact() {
                   <div>
                     <h4 className="mb-3">Address</h4>
                     <address className="mb-0 text-dark">
-                     {tiffinAddress[0].address}, India 
+                      {tiffinAddress.map((data) => {
+                        return data.address;
+                      })}
+                      , India
                     </address>
                   </div>
                 </div>
@@ -80,9 +82,9 @@ function Contact() {
                             href="tel:+15057922430"
                           >
                             (+91)
-                           {
-                            tiffinAddress[0].phone
-                           }
+                            {tiffinAddress.map((data) => {
+                              return data.phone;
+                            })}
                           </a>
                         </p>
                       </div>
