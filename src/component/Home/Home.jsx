@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -79,9 +79,19 @@ import { setTAddress } from "../../RTK/slices.js";
 export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [overviewData, setOverviewData] = useState([]);
   const user = useSelector((state) => state.manageUserStatus.user);
   console.log("current user: ", user);
   useEffect(() => {
+    const handleGetOverviewData = async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_URL}/api/home/tiffinOverview`
+      );
+      console.log("arpit: ", response.data);
+      setOverviewData(response.data);
+    };
+    console.log("hello bhai");
+
     const handlegetTAdderss = async () => {
       const response = await axios
         .get(`${import.meta.env.VITE_APP_URL}/api/contact/data`)
@@ -92,8 +102,10 @@ export default function Home() {
           console.error(error);
         });
     };
+    handleGetOverviewData();
     handlegetTAdderss();
   }, []);
+
   return (
     <>
       {/* For Carousels */}
@@ -256,56 +268,52 @@ export default function Home() {
       </div>
 
       <div className="container-fluid mt-5">
-        <div className="row d-flex  justify-content-between bg-light">
-          <div className="col-6 align-self-center ps-lg-5 fs-5">
-            <div><h3 className=" text-success">Panjabi Flavour</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-            corrupti dolor doloremque iure quibusdam error, numquam autem
-            nesciunt repellat mollitia at placeat. Qui quaerat in, impedit porro
-            veritatis iusto recusandae.</div>
-          </div>
-          <div className=" d-flex justify-content-center align-items-center col-6 ">
-            <img
-              className="tiffin-discription "
-              src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965822/aloo_parratha_suznnf.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-
-        <div className="row d-flex  justify-content-between bg-light">
-          <div className=" col-6 d-flex justify-content-center align-items-center ">
-            <img
-              className="tiffin-discription "
-              src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965822/aloo_parratha_suznnf.jpg"
-              alt=""
-            />
-          </div>
-          <div className="col-6 align-self-center fs-5 pe-lg-5">
-           <div> <h3 className=" text-success">Panjabi Flavour</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-            corrupti dolor doloremque iure quibusdam error, numquam autem
-            nesciunt repellat mollitia at placeat. Qui quaerat in, impedit porro
-            veritatis iusto recusandae.</div>
-          </div>
-        </div>
-        <div className="row d-flex  justify-content-between bg-light">
-          <div className="col-6 align-self-center ps-lg-5  fs-5">
-            <div><h3 className=" text-success">Panjabi Flavour</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-            corrupti dolor doloremque iure quibusdam error, numquam autem
-            nesciunt repellat mollitia at placeat. Qui quaerat in, impedit porro
-            veritatis iusto recusandae.</div>
-          </div>
-          <div className=" col-6 d-flex justify-content-center align-items-center ">
-            <img
-              className="tiffin-discription "
-              src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965822/aloo_parratha_suznnf.jpg"
-              alt=""
-            />
-          </div> 
-        </div>
-        <div className=" col-12 bg-light pb-5"><span className=" text-danger fs-4 ms-5">Many more items for you ..... </span></div>
+        {overviewData.map((data, index) => {
+          if (index % 2 == 0) {
+            return (
+              <div className="row d-flex  justify-content-between bg-light">
+                <div className="col-6 align-self-center ps-lg-5 fs-5">
+                  <div>
+                    <h3 className=" text-success">{data.overviewType}</h3>
+                    {data.overviewText}
+                  </div>
+                </div>
+                <div className=" d-flex justify-content-center align-items-center col-6 ">
+                  <img
+                    className="tiffin-discription "
+                    src={data.imgsrc}
+                    alt="dish img"
+                  />
+                </div>
+              </div>
+            );
+          } else {
+            return (
+              <div className="row d-flex  justify-content-between bg-light">
+                <div className=" col-6 d-flex justify-content-center align-items-center ">
+                  <img
+                    className="tiffin-discription "
+                    src={data.imgsrc}
+                    alt="dish img"
+                  />
+                </div>
+                <div className="col-6 align-self-center fs-5 pe-lg-5">
+                  <div>
+                    {" "}
+                    <h3 className=" text-success">{data.overviewType}</h3>
+                    {data.overviewText}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        })}
+<div className="row"><div className=" col-12 bg-light  pb-5">
+          <span className=" text-danger fs-4 ">
+            Many more items for you .....
+          </span>
+        </div></div>
+        
       </div>
       {/* For Cards */}
       {/* <Cards /> */}
