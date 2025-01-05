@@ -19,9 +19,7 @@
 .order_now {
   height: 50px;
 }
-* {
-  font-family: cursive, sans-serif;
-}
+
 .mainBox {
   background-image: url("/Image/bg-image.jpeg");
 }
