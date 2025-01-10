@@ -77,6 +77,8 @@ function SignPage() {
       reset();
       dispatch(setShowLogin(false));
       dispatch(setLogout());
+      console.log(userCredential);
+      
       handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/invalid-credential") {

@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -17,12 +15,11 @@ function Protected({ Component }) {
   React.useEffect(() => {
     if (loginStatus === "SignUp") {
       dispatch(setShowLogin(true));
-      navigate('/Home'); // Move navigate here
+      navigate("/Home"); // Move navigate here
     }
   }, [loginStatus, dispatch, navigate]); // Add dependencies
 
   return <>{loginStatus === "SignUp" ? null : Component}</>; // Render null if signed up
 }
-
 
 export default Protected;

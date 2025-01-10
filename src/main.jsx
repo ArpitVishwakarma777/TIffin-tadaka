@@ -21,6 +21,7 @@ import {
 import Protected from "./component/SignUp/Protected.jsx";
 import Checkout from "./component/checkout/Checkout.jsx";
 import ScrollToTop from "./Helper/ScrollToTop.jsx";
+import ResetPassword from '././Helper/ResetPassword.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
     <Layout /></>,
     children: [
       { path: "/", element: <Home /> },
+      // <Route path="/reset-password" element={<ResetPassword />}
+      {path:'/resetPassword',element:<ResetPassword/>},
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
       { path: "/Wishlist", element: <Wishlist /> },

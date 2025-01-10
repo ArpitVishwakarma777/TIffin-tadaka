@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
-import image from "../../assets/Profile/Arpit.jpg";
+import { toast } from "react-toastify";
 import { FaPencilAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { setShowProfile, setUser } from "../../RTK/slices";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 function Profile() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.manageUserStatus.user);
   const [name, setName] = useState(userDetails.name);
@@ -79,6 +82,20 @@ function Profile() {
       handleUpdate();
     }
   };
+  const handlePasswordReset = async () => {
+    const auth = getAuth();
+   
+    try {
+      const response = await sendPasswordResetEmail(auth, email);
+      toast.success("Request send please check Email");
+      navigate("/resetPassword");
+      // window.location.href =
+      // "https://tiffin-tadaka.firebaseapp.com/__/auth/action?mode=resetPassword&oobCode=nB4LinUC7NUHBLYTTTnDpahHgctSySum2jJjg-TDgDEAAAGUUMDaYg&apiKey=AIzaSyDQqGQ_FMuuJZwlEOU0-LZztXbplKRS57c&lang=en";
+      console.log("Password reset email sent successfully:", response);
+    } catch (error) {
+      toast.error("Request is not Send,Please try again");
+    }
+  };
   return (
     <>
       <div className="profile-popup">
@@ -95,6 +112,7 @@ function Profile() {
                 className="col-6 bg-primary d-flex justify-content-center align-items-center"
               >
                 <img
+                  className="img-circle img-responsive"
                   style={{ height: "130px", paddingTop: "0px" }}
                   src={profileImage}
                   alt="profile"
@@ -122,7 +140,6 @@ function Profile() {
                 <span
                   className="mt-3 cursor-pointer"
                   onClick={() => {
-                    handleUpdateProfileData();
                     dispatch(setShowProfile(false));
                   }}
                 >
@@ -178,7 +195,6 @@ function Profile() {
                       setMobile(value);
                     }
                   }}
-                  
                   className="my-2 ms-md-0 ms-xl-0 ms-xxl-4   "
                   type="tel"
                   placeholder="Enter Mobile number"
@@ -206,6 +222,26 @@ function Profile() {
             <input  type="checkbox" required />
             <p>By Continuing, I Agree to the tems-xl-4rms-xxl of use & privacy policy.</p>
           </div> */}
+          <div>
+            <button
+              className="btn saveButton"
+              onClick={() => {
+                dispatch(setShowProfile(false));
+                handlePasswordReset();
+              }}
+            >
+              Reset Password
+            </button>{" "}
+            <button
+              className="btn saveButton "
+              onClick={() => {
+                dispatch(setShowProfile(false));
+                handleUpdateProfileData();
+              }}
+            >
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </>

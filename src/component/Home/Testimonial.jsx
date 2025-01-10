@@ -25,23 +25,23 @@ function Testimonial() {
 
   return (
     <>
-      <section class="testimonial text-center">
-        <div class="container">
-          <div class="heading white-heading">Testimonial</div>
+      <section className="testimonial text-center">
+        <div className="container">
+          <div className="heading white-heading">Testimonial</div>
           <div
             id="testimonial4"
-            class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
+            className="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x"
             data-ride="carousel"
             data-interval="2000"
             data-duration="2000"
           >
-            <div class="carousel-inner" role="listbox">
+            <div className="carousel-inner" role="listbox">
               {data.map((item, index) => (
-                <div class={`carousel-item ${index===0 &&" active"}` }>
-                  <div class="testimonial4_slide">
+                <div className={`carousel-item ${index===0 &&" active"}` }>
+                  <div className="testimonial4_slide">
                     <img
                       src={item.src}
-                      class="img-circle img-responsive"
+                      className="img-circle img-responsive"
                     />
                     <p>
                     {item.feedback}
@@ -52,18 +52,18 @@ function Testimonial() {
               ))}
             </div>
             <a
-              class="carousel-control-prev"
+              className="carousel-control-prev"
               href="#testimonial4"
               data-slide="prev"
             >
-              <span class="carousel-control-prev-icon"></span>
+              <span className="carousel-control-prev-icon"></span>
             </a>
             <a
-              class="carousel-control-next"
+              className="carousel-control-next"
               href="#testimonial4"
               data-slide="next"
             >
-              <span class="carousel-control-next-icon"></span>
+              <span className="carousel-control-next-icon"></span>
             </a>
           </div>
         </div>
