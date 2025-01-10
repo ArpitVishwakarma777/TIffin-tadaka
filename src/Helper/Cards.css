@@ -1,17 +1,7 @@
-.oneday_price{
-    /* border:2px black solid ; */
-  border-radius:20px;
-  background: rgb(241, 241, 124);
-  padding: 7px 11px 7px 11px;
-    
-}
 .card-container {
-    overflow-x: scroll;
-  }
-   /* .card-container::-webkit-scrollbar {
-    width: 0;
-  } */
-  .blink {
+  overflow-x: scroll;
+}
+.blink {
   animation: blink-animation 1s steps(2, start) infinite;
 }
 
@@ -19,4 +9,16 @@
   to {
     visibility: hidden;
   }
+}
+.card-image {
+  position: relative;
+}
+
+.oneday_price {
+  bottom: 14px;
+  right: 15px;
+  position: absolute;
+  border-radius: 20px;
+  background-color: white;
+  padding: 5px 19px 5px 19px;
 }

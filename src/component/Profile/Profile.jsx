@@ -112,7 +112,7 @@ function Profile() {
                 />
                 {/* Pencil Icon triggers the file input  */}
                 <span
-                  className="align-self-end"
+                  className="align-self-end cursor-pointer"
                   onClick={() =>
                     document.getElementById("upload-profile-image").click()
                   }
@@ -120,7 +120,7 @@ function Profile() {
                   <FaPencilAlt />
                 </span>
                 <span
-                  className="mt-3"
+                  className="mt-3 cursor-pointer"
                   onClick={() => {
                     handleUpdateProfileData();
                     dispatch(setShowProfile(false));

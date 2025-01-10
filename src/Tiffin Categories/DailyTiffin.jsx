@@ -10,7 +10,7 @@ function DailyTiffin() {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_URL}/api/menu/oneDayCard`
         );
-
+ 
         setData(response.data); // Store the fetched data in state.
       } catch (error) {
         console.log("Error fetching data:", error);

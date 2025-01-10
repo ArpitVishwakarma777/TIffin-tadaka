@@ -20,11 +20,14 @@ import {
 } from "react-router-dom";
 import Protected from "./component/SignUp/Protected.jsx";
 import Checkout from "./component/checkout/Checkout.jsx";
+import ScrollToTop from "./Helper/ScrollToTop.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <>
+     <ScrollToTop />
+    <Layout /></>,
     children: [
       { path: "/", element: <Home /> },
       { path: "/Home", element: <Home /> },
@@ -41,20 +44,10 @@ const router = createBrowserRouter([
         ],
       },
       { path: "/Contact", element: <Contact /> },
-      // {path:'/Home/:Component',element:<Home/>}
     ],
   },
 ]);
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path ="/" element={<Layout/>}
-//     >
-//       <Route path="" element={<Home/>}/>
-//       <Route path="About" element={<About/>}/>
 
-//     </Route>
-//   )
-// )
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
 );

@@ -5,12 +5,44 @@ const initialState = {
   showLogin: false,
   showProfile: false,
   tiffinAddress: null,
+  addedCarts: [],
   showPopup: false,
   contentPopup: "asdfgh",
   user: {
     img: "https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg",
   },
 };
+export const addCartSlice = createSlice({
+  name: "manageAddCartData",
+  initialState,
+  reducers: {
+    updateCart: (state, action) => {
+      const { id, quantity } = action.payload;
+      const itemToUpdate = state.addedCarts.find((item) => item.id === id);
+      if (itemToUpdate) {
+        itemToUpdate.quantity = quantity;
+      }
+    },
+    addCart: (state, action) => {
+      state.addedCarts.push(action.payload);
+    },
+    removeCart: (state, action) => {
+      state.addedCarts = state.addedCarts.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+    emptyCarts: (state, action) => {
+      state.addedCarts = [];
+    },
+    changeCart: (state, action) => {
+      state.addedCarts = action.payload;
+    },
+  },
+});
+export const addCartReducer = addCartSlice.reducer;
+export const { addCart, updateCart, changeCart, removeCart, emptyCarts } =
+  addCartSlice.actions;
+
 export const popupSlice = createSlice({
   name: "managePopupStatus",
   initialState,
@@ -69,6 +101,9 @@ export const userSlice = createSlice({
         img: "https://res.cloudinary.com/drzc94rvk/image/upload/v1735234416/client_l1mfj3.jpg",
       };
     },
+    removeOrderHistory: (state, action) => {
+      state.user.subscription = [];
+    },
   },
 });
 const taddressSlice = createSlice({
@@ -83,7 +118,7 @@ const taddressSlice = createSlice({
 export const { setTAddress } = taddressSlice.actions;
 export const taddressReducer = taddressSlice.reducer;
 export const userReducer = userSlice.reducer;
-export const { setUserSubscription, setUser, removeUser } = userSlice.actions;
+export const { setUserSubscription, setUser, removeUser,removeOrderHistory } = userSlice.actions;
 export const { setLogout, setSignUp, setShowLogin } = loginSlice.actions;
 export const { setShowProfile } = profileSlice.actions;
 export default loginSlice.reducer;

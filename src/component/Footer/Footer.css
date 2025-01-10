@@ -6,14 +6,20 @@
 }
 
 .btn_footer:hover {
-  background: #f9d903;  border-radius: 30px;
+  background: #f9d903;
+  border-radius: 30px;
 }
-.text-reset{
-text-decoration: none;
+
+:root {
+  --fs-6: "14px";
 }
-:root{
-  --fs-6:'14px'
+.bg-color {
+  background: rgb(236, 236, 234);
 }
-.bg-color{
-  background: rgb(236,236,234);
+.text-reset {
+  text-decoration: none;
+}
+
+.text-reset:hover {
+  text-decoration: underline;
 }

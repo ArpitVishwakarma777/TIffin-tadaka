@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import "./Home.css";
 import Testimonial from "./Testimonial";
-import Cards from "../../Helper/Cards.jsx";
 import axios from "axios";
 import { setTAddress } from "../../RTK/slices.js";
 // const carddata = [

@@ -1,12 +1,48 @@
 .bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .order-card {
-    box-sizing: border-box;
-    border: 2px solid transparent; /* Reserve space for the border */
+  box-sizing: border-box;
+  border: 2px solid transparent; /* Reserve space for the border */
 }
 
 .order-card:hover {
-    border: 2px solid red; /* Change border color on hover */
+  border: 2px solid red; /* Change border color on hover */
+}
+.selectButton1 {
+  border: 2px black solid;
+  border-right: none;
+  border-top-left-radius:30px ;
+  border-bottom-left-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: xx-large;
+}
+.selectButton2 {
+  border: 2px black solid;
+  border-left: none;
+  font-weight: 600;
+  border-top-right-radius:30px ;
+  border-bottom-right-radius: 30px;
+  cursor: pointer;
+  font-size: xx-large;
+}
+@media (max-width:576px) {
+  .selectButton1{
+font-size: x-large;
+  }
+  .selectButton2{
+    font-size: x-large;
+  }
+  
+}
+@media (max-width:442px) {
+  .selectButton1{
+font-size: large;
+  }
+  .selectButton2{
+    font-size: large;
+  }
+  
 }

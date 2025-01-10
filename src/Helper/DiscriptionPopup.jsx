@@ -10,12 +10,12 @@ export function DicriptionPopup() {
 
   return (
     <div className="container-fluid  dicriptionPopup">
-      <div className=" row my-1 ms-2 ms-lg-0 ">
+      <div className=" row d-flex justify-content-center align-items-center  ms-2 ms-lg-0 ">
         <div className="col-4 ">
           <img className="popup-image" src={contentPopup.src} alt="" />
         </div>
-        <div className="text-portion col-12 col-lg-8 ">
-          <h2 className="fs-2">{contentPopup.title}</h2>
+        <div className="text-portion col-12  col-lg-8 ">
+          <h2 className="fs-2 pt-4">{contentPopup.title}</h2>
 
           <p className="text-danger fs-5 text-danger font-weight-bold">
             {contentPopup.text[0].title}

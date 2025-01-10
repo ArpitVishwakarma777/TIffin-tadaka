@@ -10,14 +10,14 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RxCross1 } from "react-icons/rx";
-import { setShowLogin, setLogout, setUser } from "../../RTK/slices";
+import { setShowLogin, setLogout, setUser, changeCart } from "../../RTK/slices";
 import { useDispatch, useSelector } from "react-redux";
 import app from "../../firebase";
 
 function SignPage() {
   const [currState, setCurrState] = useState("Sign Up"); // "Login" or "Sign Up"
   const [userdata, setUserdata] = useState("null");
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleSignUp = async (name, email, userId) => {
@@ -34,11 +34,19 @@ function SignPage() {
 
   const handleLogin = async (uid) => {
     try {
-      const userData = await axios.get(`${import.meta.env.VITE_APP_URL}/api/login`, {
-        params: { uid },
-      });
+      const userData = await axios.get(
+        `${import.meta.env.VITE_APP_URL}/api/login`,
+        {
+          params: { uid },
+        }
+      );
       const data = userData.data;
-      dispatch(setUser(data));
+      {!data.name && toast.error("User data not found ")};
+      dispatch(setUser(data));  
+      dispatch(changeCart(data.addedCarts))
+      // console.log("arpit ke cart : ",data.addedCarts);
+
+      // dispatch(changeCart(data.addedCarts));
     } catch (error) {
       console.error("Error during login:", error);
     }
@@ -69,7 +77,7 @@ function SignPage() {
       reset();
       dispatch(setShowLogin(false));
       dispatch(setLogout());
-    handleLogin(userCredential.user.uid);
+      handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         setError("signInError", { message: "Invalid email or password" });
@@ -90,13 +98,13 @@ function SignPage() {
         data.password
       );
       if (userCredential) {
-         handleSignUp(data.name, data.email, userCredential.user.uid);
+        handleSignUp(data.name, data.email, userCredential.user.uid);
       }
       toast.success("Account Created Successfully!");
       reset();
       dispatch(setShowLogin(false));
       dispatch(setLogout());
-       handleLogin(userCredential.user.uid);
+      handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         setError("signUpError", {
@@ -127,8 +135,11 @@ function SignPage() {
                 {currState === "Login" ? "Login" : "SignUp"}
               </h2>
             </div>
-            <div className="col-6 d-flex justify-content-end">
-              <span onClick={() => dispatch(setShowLogin(false))}>
+            <div className=" col-6 d-flex justify-content-end">
+              <span
+                className="cursor-pointer"
+                onClick={() => dispatch(setShowLogin(false))}
+              >
                 <RxCross1 />
               </span>
             </div>
@@ -140,10 +151,12 @@ function SignPage() {
               className="mx-1"
               type="text"
               placeholder="Enter Your Name"
+              autoComplete="off"
               {...register("name", { required: "Name is required" })}
             />
           )}
           <input
+            autoComplete="off"
             className="mx-1"
             type="email"
             placeholder="Enter Your Email"
@@ -151,26 +164,38 @@ function SignPage() {
             onInput={() => clearErrors()}
           />
           <input
+            autoComplete="off"
             className="mx-1"
             type="password"
             placeholder="Enter Your Password"
             {...register("password", {
               required: "Password is required",
-              minLength: { value: 6, message: "Password must be at least 6 characters" },
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
             })}
             onInput={() => clearErrors()}
           />
-          {errors.signUpError && <div className="text-danger">{errors.signUpError.message}</div>}
-          {errors.signInError && <div className="text-danger">{errors.signInError.message}</div>}
+          {errors.signUpError && (
+            <div className="text-danger">{errors.signUpError.message}</div>
+          )}
+          {errors.signInError && (
+            <div className="text-danger">{errors.signInError.message}</div>
+          )}
         </div>
-        <div className="login-popup-condtation mt-2">
-          <input type="checkbox" required />
+        <div className="login-popup-condtation mt-1">
+          <input autoComplete="off" type="checkbox" required />
           <p>By Continuing, I Agree to the terms of use & privacy policy.</p>
         </div>
         <button type="submit" className="Sign_button" disabled={isLoading}>
-          {isLoading ? "Processing..." : currState === "Sign Up" ? "Create Account" : "Login"}
+          {isLoading
+            ? "Processing..."
+            : currState === "Sign Up"
+            ? "Create Account"
+            : "Login"}
         </button>
-        
+
         {currState === "Login" ? (
           <p>
             Don't have an account?{" "}
@@ -204,5 +229,3 @@ function SignPage() {
 }
 
 export default SignPage;
-
-

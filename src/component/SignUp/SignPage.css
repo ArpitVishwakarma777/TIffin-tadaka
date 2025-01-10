@@ -53,7 +53,7 @@
 .Sign_button {
   border: none;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: white;
   background-color: #ff6347;
   font-size: 16px;
@@ -118,4 +118,7 @@
 .change-option{
   cursor: pointer;
   color: rgb(238, 95, 6);
+}
+.cursor-pointer{
+  cursor: pointer;
 }

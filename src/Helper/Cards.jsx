@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Cards.css";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useLocation } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
-location;
 import { useSelector, useDispatch } from "react-redux";
-import { setshowPopup, setContentPopup, setHiddenPopup } from "../RTK/slices";
+import {
+  setshowPopup,
+  addCart,
+  setContentPopup,
+  setHiddenPopup,
+} from "../RTK/slices";
 import { useNavigate } from "react-router-dom";
+import { useId } from "react";
 // export const dailydata = [
 //   {
 //     id: 0,
@@ -130,98 +137,65 @@ import { useNavigate } from "react-router-dom";
 //     price: 2000,
 //   },
 // ];
-function Cards() {
-  const [readMore, setReadMore] = React.useState(false);
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get( `${import.meta.env.VITE_APP_URL}/api/home/card `);
-        setData(response.data); // Store the fetched data in state.
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData(); // Call the fetch function
-  }, []); // Empty dependency array to run only once
-
-  return (
-    <>
-      <div className="container card-container py-2">
-        <div className="row">
-          {data.map((card) => {
-            return (
-              <div className=" card-box col-sm-4 col-lg-3 col-xs-6 pb-sm-3  px-3 py-3 ">
-                <div className="card box-shadow">
-                  <img src={card.src} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">{card.title}</h5>
-                    <p className={card.textClass}>
-                      {readMore ? card.text : null}
-                      <button
-                        style={{ textDecoration: "none", border: "none" }}
-                        className=" btn-link"
-                        onClick={() => setReadMore(!readMore)}
-                      >
-                        {readMore ? "Read Less" : "Read More"}
-                      </button>
-                    </p>
-                    <div>
-                      <span>
-                        {" "}
-                        <Link to={"/Menu"} className="btn me-5  btn-primary">
-                          buy now !
-                        </Link>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </>
-  );
-}
 export const NewCard = ({ card }) => {
-  const [readMore, setReadMore] = React.useState(false);
-
- 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const [isDisabled, setIsDisabled] = useState(false);
+  console.log("params : ", location.pathname);
+  const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
+  const uid = useSelector((state) => state.manageUserStatus.user.uid);
   function handleImageClick(card) {
     dispatch(setContentPopup(card));
     dispatch(setshowPopup());
   }
+  const handleCart = async (card) => {
+    console.log("i am handle Cart");
+
+    if (card) {
+      console.log("i have an cart");
+
+      const response = await axios
+        .patch(`${import.meta.env.VITE_APP_URL}/api/menu/addToCart`, {
+          card,
+          uid,
+        })
+        .then(() => {
+          toast.success("Item has succesfully added to cart");
+          dispatch(addCart(card));
+        })
+        .catch((error) => {
+          toast.error("Cart is not added, please try again.");
+          console.log("error on client: ", error);
+        });
+    } else {
+      console.log("cart data not found");
+    }
+  };
   return (
     <>
       <div className=" card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3  px-3 py-3 ">
         <div className="card box-shadow">
-          <img
-            key={card}
-            onClick={() => {
-              handleImageClick(card);
-            }}
-            src={card.src}
-            className="card-img-top"
-            alt="..."
-          />
+          <div className="card-image cursor-pointer position-relative">
+            <img
+              key={card}
+              onClick={() => {
+                handleImageClick(card);
+              }}
+              src={card.src}
+              className="card-img-top"
+              alt="..."
+            />
+            <span className={` ${location.pathname!=="/Menu/Daily"&& "bg-warning"} oneday_price ms-xxl-4`}>
+              ₹ {card.price}
+            </span>
+          </div>
+
           <div className="card-body">
             <h5 className="card-title">{card.title}</h5>
-            <p className={card.textClass}>
-              {readMore ? card.text : null}
-              {/* <button
-                style={{ textDecoration: "none", border: "none" }}
-                className=" btn-link"
-                onClick={() => setReadMore(!readMore)}
-              >
-                {readMore ? "Read Less" : "Read More"}
-              </button> */}
-            </p>
-            <div>
+            <p className={card.textClass}></p>
+            <div className="d-flex">
               <span>
                 {" "}
                 <button
@@ -233,7 +207,32 @@ export const NewCard = ({ card }) => {
                   Buy Now <span className="blink">!</span>
                 </button>
               </span>
-              <span className="oneday_price ms-xxl-4 ">₹{card.price}</span>
+              <div
+                className="d-flex justify-content-end"
+                style={{ width: "30%" }}
+              >
+                <span
+                  style={{ cursor: "pointer" }}
+                  className={`${
+                    location.pathname !== "/Menu/Daily" && "d-none"
+                  } buyIcon ${isDisabled && "disabled-class"}`}
+                  onClick={() => {
+                    console.log(addedCarts);
+                    console.log(card.id);
+
+                    // const cart = addedCarts.filter((item)=> item.id==card.id)
+                    const cart = addedCarts.find((item) => item.id === card.id);
+                 if(!cart){
+                  handleCart({ ...card, quantity: 1 });
+                  console.log(cart);
+                 }
+
+                    
+                  }}
+                >
+                  <FaShoppingCart size={30} color="green" />
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -241,5 +240,3 @@ export const NewCard = ({ card }) => {
     </>
   );
 };
-
-export default Cards;

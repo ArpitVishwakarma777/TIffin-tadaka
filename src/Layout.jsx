@@ -9,6 +9,7 @@ import {Provider} from 'react-redux'
 import store from './RTK/store.js'
 function Layout() {
   return (
+    
     <Provider store = {store}> 
     <Header/>
     <Outlet/>

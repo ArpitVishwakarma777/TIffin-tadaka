@@ -70,7 +70,7 @@ export default function Footer() {
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h5 className="text-uppercase fs-4 fw-bold mb-4">
                 <i className="fas fa-gem me-3" />
-                Tiffin Service
+                Tiffin Tadaka
               </h5>
               <p className="fs-5">
                 Here you can use rows and columns to organize your footer

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { DicriptionPopup } from "../../Helper/DiscriptionPopup.jsx";
 import "./Header.css";
-
+import { GoDotFill } from "react-icons/go";
 import { getAuth, signOut } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
@@ -15,6 +15,7 @@ import {
   setSignUp,
   setShowProfile,
   removeUser,
+  emptyCarts,
 } from "../../RTK/slices.js";
 
 import webLogo from "../../assets/logo/web-logo 1.png";
@@ -27,9 +28,12 @@ export default function Header() {
   const location = useLocation();
   //Popup data
   const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
-  const orderCount = useSelector((state) => state.manageUserStatus.user?.subscription?.length || 0);
+  const orderCount = useSelector(
+    (state) => state.manageUserStatus.user?.subscription?.length || 0
+  );
 
   const dispatch = useDispatch();
+  const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
   const loginStatus = useSelector(
     (state) => state.manageLoginStatus.loginStatus
   );
@@ -53,16 +57,26 @@ export default function Header() {
     if (loginStatus === "SignUp") {
       dispatch(setShowLogin(true));
     } else {
-      dispatch(setSignUp());
-      handleLogout();
-      dispatch(removeUser());
-      toast.success("Logout successfully ");
+      const confirmLogout = window.confirm("Do you want to logout?");
+      if (confirmLogout) {
+        dispatch(setSignUp());
+        handleLogout();
+        dispatch(removeUser());
+        dispatch(emptyCarts())
+        toast.success("Logout successfully");
+      }
+      // const confirm = confirm("Do you want to logout?")
+
+      // dispatch(setSignUp());
+      // handleLogout();
+      // dispatch(removeUser());
+      // toast.success("Logout successfully ");
     }
   }
   return (
     <>
       {/* discription box */}
-      {showPopup ? <DicriptionPopup/> : null}
+      {showPopup ? <DicriptionPopup /> : null}
       {/* Toast Component */}
       <ToastContainer />
 
@@ -126,7 +140,10 @@ export default function Header() {
                 <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={25} color="green" />
-                  <span className="text-dark">{orderCount}</span>
+                 
+                  {addedCarts.length !== 0 && <GoDotFill color="red" />}
+
+
                 </Link>
                 <br />
               </div>
@@ -136,7 +153,7 @@ export default function Header() {
                   onClick={() => {
                     dispatch(setShowProfile(true));
                   }}
-                  style={{ border: "none" }}
+                  style={{ border: "none", background: "none" }}
                 >
                   <IoMdContact color="green" size={35} />
                 </button>

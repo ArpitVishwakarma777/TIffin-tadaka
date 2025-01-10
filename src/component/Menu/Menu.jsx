@@ -1,4 +1,4 @@
-import React, { useState,useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Menu.css";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -8,10 +8,9 @@ function Menu() {
     "bg-success",
     "bg-success",
   ]);
-const ref = useRef(null)
+  const ref = useRef(null);
   const navigate = useNavigate();
   function handleTiffin(e) {
-   
     const array = [...TiffinBtnColor];
 
     const previousColor = array[e.target.id];
@@ -27,15 +26,15 @@ const ref = useRef(null)
     switch (text) {
       case "One Time Meal":
         navigate("/Menu/Daily");
-        ref.current.scrollIntoView({ behavior: 'smooth' })
+        ref.current.scrollIntoView({ behavior: "smooth" });
         break;
       case "Weekly Tiffin":
         navigate("/Menu/Weekly");
-        ref.current.scrollIntoView({ behavior: 'smooth' })
+        ref.current.scrollIntoView({ behavior: "smooth" });
         break;
       case "Monthly Tiffin":
         navigate("/Menu/Monthly");
-        ref.current.scrollIntoView({ behavior: 'smooth' })
+        ref.current.scrollIntoView({ behavior: "smooth" });
         break;
       default:
         console.log("default");
@@ -139,17 +138,17 @@ const ref = useRef(null)
           className="row d-flex mb-5 flex-wrap
   "
         >
-          <div className="col-sm-4 mb-1 mb-sm-0 d-flex flex-column align-items-center justify-content-center ">
+          <div className="col-sm-4 cursor-pointer mb-1 mb-sm-0 d-flex flex-column align-items-center justify-content-center ">
             <div
               id="0"
               onClick={handleTiffin}
-              className={`a ${TiffinBtnColor[0]} fs-3   d-flex justify-content-center align-items-center`}
+              className={`a ${TiffinBtnColor[0]} fs-3 ps-sm-4 ps-md-0 d-flex justify-content-center align-items-center`}
               style={{ height: "80px" }}
             >
-             One Time Meal
+              One Time Meal
             </div>
           </div>
-          <div className="col-sm-4 d-flex  mb-1 mb-sm-0 align-items-center flex-column justify-content-center">
+          <div className="col-sm-4 d-flex cursor-pointer mb-1 mb-sm-0 align-items-center flex-column justify-content-center">
             {" "}
             <div
               id="1"
@@ -160,7 +159,7 @@ const ref = useRef(null)
               Weekly Tiffin
             </div>
           </div>
-          <div className="col-sm-4  mb-1 mb-sm-0 d-flex align-items-center flex-column justify-content-center">
+          <div className="col-sm-4  mb-1 cursor-pointer mb-sm-0 d-flex align-items-center flex-column justify-content-center">
             {" "}
             <div
               id="2"

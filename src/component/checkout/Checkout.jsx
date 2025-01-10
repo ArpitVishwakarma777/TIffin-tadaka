@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { setUserSubscription,setUser } from "../../RTK/slices";
-
+import { setUserSubscription, setUser, emptyCarts } from "../../RTK/slices";
 import "./Checkout.css";
 import { useActionState } from "react";
 function Checkout() {
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   const { subscription, price } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,7 +19,7 @@ function Checkout() {
   const tiffinAddress = useSelector(
     (state) => state.managetAddressStatus.tiffinAddress
   );
-   
+
   const user = useSelector((state) => state.manageUserStatus.user);
 
   const [userAddress, setUserAddress] = useState("");
@@ -166,6 +170,18 @@ function Checkout() {
             paymentMethod,
           }
         );
+        console.log('response2 aayega');
+        
+        const response2 = await axios.patch(
+          `${import.meta.env.VITE_APP_URL}/api/menu/handleRemoveAllCarts`,
+         { uid}
+        );
+        if(response.status===200){
+          console.log('under ja raha he');
+          dispatch(emptyCarts());
+        }else{
+          console.log('error in doing empty cart');
+        }
         dispatch(
           setUserSubscription({
             orderid,
@@ -178,6 +194,7 @@ function Checkout() {
         );
         toast.success(response.data);
         navigate("/Home");
+        
       } catch (e) {
         console.log("error on sending order client req: ", e);
       }
@@ -206,7 +223,7 @@ function Checkout() {
         <input
           id="tiffinAddress"
           type="text"
-          value={tiffinAddress[0].address}
+          value={tiffinAddress[0]&& tiffinAddress[0].address}
           disabled
           className="form-control disabled-input"
         />

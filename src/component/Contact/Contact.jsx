@@ -51,7 +51,7 @@ function Contact() {
                   </div>
                   <div>
                     <h4 className="mb-3">Address</h4>
-                    <address className="mb-0 text-dark">
+                    <address className="mb-0 fs-5 text-dark">
                       {tiffinAddress.map((data) => {
                         return data.address;
                       })}
@@ -76,16 +76,13 @@ function Contact() {
                       </div>
                       <div>
                         <h4 className="mb-3">Phone</h4>
-                        <p className="mb-0">
-                          <a
-                            className="link-secondary text-decoration-none"
-                            href="tel:+15057922430"
-                          >
+                        <p className="mb-0 fs-5" >
+                         
                             (+91)
                             {tiffinAddress.map((data) => {
                               return data.phone;
                             })}
-                          </a>
+                         
                         </p>
                       </div>
                     </div>
@@ -106,14 +103,14 @@ function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="mb-3">Opening Hours</h4>
-                    <div className="d-flex mb-1">
-                      <p className="text-dark fw-bold mb-0 me-5">Mon - Fri</p>
-                      <p className="text-dark mb-0">9am - 5pm</p>
+                    <h4 className="mb-3 fs-4">Opening Hours</h4>
+                    <div className="d-flex mb-1 fs-5">
+                      <p className="text-dark fw-bold mb-0 fs-5 me-5">Mon - Fri</p>
+                      <p className="text-dark mb-0 fs-5">9am - 5pm</p>
                     </div>
                     <div className="d-flex">
-                      <p className="text-dark fw-bold mb-0 me-5">Sat - Sun</p>
-                      <p className="text-dark mb-0">9am - 2pm</p>
+                      <p className="text-dark fw-bold fs-5 mb-0 me-5">Sat - Sun</p>
+                      <p className="text-dark mb-0 fs-5">9am - 2pm</p>
                     </div>
                   </div>
                 </div>
