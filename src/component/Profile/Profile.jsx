@@ -87,11 +87,7 @@ function Profile() {
    
     try {
       const response = await sendPasswordResetEmail(auth, email);
-      toast.success("Request send please check Email");
-      navigate("/resetPassword");
-      // window.location.href =
-      // "https://tiffin-tadaka.firebaseapp.com/__/auth/action?mode=resetPassword&oobCode=nB4LinUC7NUHBLYTTTnDpahHgctSySum2jJjg-TDgDEAAAGUUMDaYg&apiKey=AIzaSyDQqGQ_FMuuJZwlEOU0-LZztXbplKRS57c&lang=en";
-      console.log("Password reset email sent successfully:", response);
+      toast.success("Request send, please check Email");
     } catch (error) {
       toast.error("Request is not Send,Please try again");
     }
@@ -104,10 +100,11 @@ function Profile() {
             <div className="row d-flex justify-content-center">
               <div
                 style={{
-                  height: "100px",
-                  width: "100px",
+                  height: "110px",
+                  width: "110px",
                   overflow: "hidden", // Ensures the image stays within the circle
-                  borderRadius: "50%", // Makes the div circular
+                  borderRadius: "50%",
+                  border:"2px solid red" // Makes the div circular
                 }}
                 className="col-6 bg-primary d-flex justify-content-center align-items-center"
               >

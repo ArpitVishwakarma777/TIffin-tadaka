@@ -1,4 +1,3 @@
-import { initializeApp } from "firebase/app";
 const firebaseConfig = {
     apiKey: "AIzaSyDQqGQ_FMuuJZwlEOU0-LZztXbplKRS57c",
     authDomain: "tiffin-tadaka.firebaseapp.com",
