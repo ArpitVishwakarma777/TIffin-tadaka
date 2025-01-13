@@ -12,7 +12,7 @@ function Checkout() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const { subscription, price } = useParams();
+  const { type, subscription, price } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.manageUserStatus.user.uid);
@@ -148,7 +148,28 @@ function Checkout() {
       handlePlaceOrder();
     }
   };
-
+  async function handleRemoveCartDataonDB() {
+    const response2 = await axios.patch(
+      `${import.meta.env.VITE_APP_URL}/api/menu/handleRemoveAllCarts`,
+      { uid }
+    );
+    if (response2.status === 200) {
+      console.log("under ja raha he");
+      dispatch(emptyCarts());
+    } else {
+      console.log("error in doing empty cart");
+    }
+    dispatch(
+      setUserSubscription({
+        orderid,
+        userAddress,
+        startDate,
+        endDate,
+        orderSummary,
+        paymentMethod,
+      })
+    );
+  }
   const handlePlaceOrder = async () => {
     if (!userAddress || !startDate || !endDate || !paymentMethod) {
       alert("Please fill all the required fields!");
@@ -156,7 +177,6 @@ function Checkout() {
     } else {
       try {
         const orderid = generateOrderID();
-        // console.log("order id : ", orderid);
 
         const response = await axios.patch(
           `${import.meta.env.VITE_APP_URL}/api/menu/order`,
@@ -170,31 +190,14 @@ function Checkout() {
             paymentMethod,
           }
         );
-        console.log('response2 aayega');
-        
-        const response2 = await axios.patch(
-          `${import.meta.env.VITE_APP_URL}/api/menu/handleRemoveAllCarts`,
-         { uid}
-        );
-        if(response.status===200){
-          console.log('under ja raha he');
-          dispatch(emptyCarts());
-        }else{
-          console.log('error in doing empty cart');
+        if (type === "AddedCart") {
+          console.log("Wishlist ke order button per click kiyahhe");
+
+          handleRemoveCartDataonDB();
         }
-        dispatch(
-          setUserSubscription({
-            orderid,
-            userAddress,
-            startDate,
-            endDate,
-            orderSummary,
-            paymentMethod,
-          })
-        );
+
         toast.success(response.data);
         navigate("/Home");
-        
       } catch (e) {
         console.log("error on sending order client req: ", e);
       }
@@ -223,7 +226,7 @@ function Checkout() {
         <input
           id="tiffinAddress"
           type="text"
-          value={tiffinAddress[0]&& tiffinAddress[0].address}
+          value={tiffinAddress[0] && tiffinAddress[0].address}
           disabled
           className="form-control disabled-input"
         />

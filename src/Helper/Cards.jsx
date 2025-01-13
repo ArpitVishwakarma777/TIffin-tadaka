@@ -145,7 +145,7 @@ export const NewCard = ({ card }) => {
   const [isDisabled, setIsDisabled] = useState(false);
   console.log("params : ", location.pathname);
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
-  const uid = useSelector((state) => state.manageUserStatus.user.uid);
+  const uid = localStorage.getItem('userId')
   function handleImageClick(card) {
     dispatch(setContentPopup(card));
     dispatch(setshowPopup());
@@ -200,7 +200,7 @@ export const NewCard = ({ card }) => {
                 {" "}
                 <button
                   onClick={() => {
-                    navigate(`/Menu/Checkout/${card.title}/${card.price}`);
+                    navigate(`/Menu/Checkout/${card.title}/${card.title}/${card.price}`);
                   }}
                   className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5 btn-primary"
                 >

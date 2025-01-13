@@ -18,7 +18,7 @@ function Profile() {
   const [mobile, setMobile] = useState(userDetails.mobile);
   const [address, setAddress] = useState(userDetails.address);
   const [profileImage, setProfileImage] = useState(userDetails.img);
-  const [uid, setuid] = useState(userDetails.uid);
+  const uid = localStorage.getItem('userId')
   const handleUpdate = async () => {
     console.log("client uid : ", uid);
 

@@ -32,11 +32,10 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "/", element: <Home /> },
-      // {path:'/resetPassword',element:<ResetPassword/>},
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
       { path: "/Wishlist", element: <Wishlist /> },
-      { path: "/Menu/Checkout/:subscription/:price", element: <Checkout /> },
+      { path: "/Menu/Checkout/:type/:subscription/:price", element: <Checkout /> },
       {
         path: "/Menu",
         element: <Protected Component={<Menu />} />,

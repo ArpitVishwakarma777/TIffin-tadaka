@@ -4,22 +4,19 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { setShowLogin } from "../../RTK/slices";
 
 function Protected({ Component }) {
-  const location = useLocation();
-  const loginStatus = useSelector(
-    (state) => state.manageLoginStatus.loginStatus
-  );
-
+  const uid = localStorage.getItem('userId')
+  console.log("uid is here on menu component");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (loginStatus === "SignUp") {
+    if (!uid) {
       dispatch(setShowLogin(true));
       navigate("/Home"); // Move navigate here
     }
-  }, [loginStatus, dispatch, navigate]); // Add dependencies
+  }, []); // Add dependencies
 
-  return <>{loginStatus === "SignUp" ? null : Component}</>; // Render null if signed up
+  return <>{!uid ? null : Component}</>; // Render null if signed up
 }
 
 export default Protected;

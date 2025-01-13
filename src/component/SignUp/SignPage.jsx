@@ -16,7 +16,6 @@ import app from "../../firebase";
 
 function SignPage() {
   const [currState, setCurrState] = useState("Sign Up"); // "Login" or "Sign Up"
-  const [userdata, setUserdata] = useState("null");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -41,9 +40,13 @@ function SignPage() {
         }
       );
       const data = userData.data;
-      {!data.name && toast.error("User data not found ")};
-      dispatch(setUser(data));  
-      dispatch(changeCart(data.addedCarts))
+      {
+        !data.name && toast.error("User data not found ");
+      }
+      // localStorage.setItem("userCredential", data);
+      dispatch(setUser(data));
+      dispatch(changeCart(data.addedCarts));
+      dispatch(setLogout());
       // console.log("arpit ke cart : ",data.addedCarts);
 
       // dispatch(changeCart(data.addedCarts));
@@ -75,10 +78,14 @@ function SignPage() {
       );
       toast.success("Login Successful!");
       reset();
+      console.log(userCredential.user);
+      console.log("userlocal: ", userCredential.user.uid);
+
+      localStorage.setItem("userId", userCredential.user.uid);
       dispatch(setShowLogin(false));
-      dispatch(setLogout());
-      console.log(userCredential);
-      
+      // dispatch(setLogout());
+      // console.log(userCredential);
+
       handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
@@ -104,8 +111,9 @@ function SignPage() {
       }
       toast.success("Account Created Successfully!");
       reset();
+      localStorage.setItem("userId", userCredential.user.uid);
       dispatch(setShowLogin(false));
-      dispatch(setLogout());
+      // dispatch(setLogout());
       handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -186,7 +194,7 @@ function SignPage() {
             <div className="text-danger">{errors.signInError.message}</div>
           )}
         </div>
-        <div className="login-popup-condtation mt-1">
+        <div className="login-popup-condtation mt-2">
           <input autoComplete="off" type="checkbox" required />
           <p>By Continuing, I Agree to the terms of use & privacy policy.</p>
         </div>

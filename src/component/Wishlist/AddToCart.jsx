@@ -2,7 +2,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import "./AddToCart.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import SingleCart from "./SingleCart.jsx";
+import ShowCarts from "./ShowCarts.jsx";
 import { useEffect } from "react";
 function AddToCart() {
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
@@ -26,7 +26,7 @@ function AddToCart() {
       </div>
     );
   } else {
-    return <SingleCart/>;
+    return <ShowCarts/>;
   }
 }
 

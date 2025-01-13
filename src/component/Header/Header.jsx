@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { DicriptionPopup } from "../../Helper/DiscriptionPopup.jsx";
 import "./Header.css";
+import axios from "axios";
 import { GoDotFill } from "react-icons/go";
 import { getAuth, signOut } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,6 +17,10 @@ import {
   setShowProfile,
   removeUser,
   emptyCarts,
+  setLogout,
+  setUser,
+  changeCart,
+  setTAddress,
 } from "../../RTK/slices.js";
 
 import webLogo from "../../assets/logo/web-logo 1.png";
@@ -24,14 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SignPage from "../SignUp/SignPage.jsx";
 import Profile from "../Profile/Profile.jsx";
 export default function Header() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  //Popup data
   const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
-  const orderCount = useSelector(
-    (state) => state.manageUserStatus.user?.subscription?.length || 0
-  );
-
   const dispatch = useDispatch();
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
   const loginStatus = useSelector(
@@ -42,11 +40,57 @@ export default function Header() {
   );
   const showLogin = useSelector((state) => state.manageLoginStatus.showLogin);
 
+  const uid = localStorage.getItem("userId");
+  useEffect(() => {
+    const uid = localStorage.getItem("userId");
+  
+    const handleLogin = async (uid) => {
+      try {
+        const userData = await axios.get(
+          `${import.meta.env.VITE_APP_URL}/api/login`,
+          {
+            params: { uid },
+          }
+        );
+        const data = userData.data;
+        if (!data.name) {
+          toast.error("User  data not found");
+        }
+        dispatch(setUser (data));
+        dispatch(changeCart(data.addedCarts));
+      } catch (error) {
+        console.error("Error during login:", error);
+      }
+    };
+    const handlegetTAdderss = async () => {
+      const response = await axios
+        .get(`${import.meta.env.VITE_APP_URL}/api/contact/data`)
+        .then((response) => {
+          
+          
+          dispatch(setTAddress(response.data));
+          console.log("adderss is set on rtk");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    if (uid) {
+      console.log("RTK Address management will conduct");
+      handlegetTAdderss()
+      handleLogin(uid);
+      dispatch(setLogout());
+    } else {
+      dispatch(setSignUp());
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   const handleLogout = async () => {
     const auth = getAuth();
     try {
       await signOut(auth); // Logs out the user
       console.log("User logged out successfully");
+      dispatch(setSignUp());
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -54,20 +98,20 @@ export default function Header() {
 
   function handleButton(e) {
     e.preventDefault();
-    if (loginStatus === "SignUp") {
+    if (!uid) {
       dispatch(setShowLogin(true));
     } else {
       const confirmLogout = window.confirm("Do you want to logout?");
       if (confirmLogout) {
-        dispatch(setSignUp());
+        localStorage.removeItem("userId");
         handleLogout();
         dispatch(removeUser());
-        dispatch(emptyCarts())
+        dispatch(emptyCarts());
         toast.success("Logout successfully");
       }
       // const confirm = confirm("Do you want to logout?")
 
-      // dispatch(setSignUp());
+
       // handleLogout();
       // dispatch(removeUser());
       // toast.success("Logout successfully ");
@@ -140,10 +184,7 @@ export default function Header() {
                 <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={25} color="green" />
-                 
                   {addedCarts.length !== 0 && <GoDotFill color="red" />}
-
-
                 </Link>
                 <br />
               </div>

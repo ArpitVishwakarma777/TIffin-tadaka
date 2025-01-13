@@ -5,7 +5,7 @@ import { removeCart, updateCart } from "../../RTK/slices";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-const SingleCart= () => {
+const ShowCarts= () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const uid = useSelector((state) => state.manageUserStatus.user.uid);
@@ -127,7 +127,7 @@ const SingleCart= () => {
               </div>
               <Button
                 onClick={() => {
-                  navigate(`/Menu/Checkout/${"One Time Meal"}/${totalPrice}`);
+                  navigate(`/Menu/Checkout/${"AddedCart"}/${"One Time Meal"}/${totalPrice}`);
                 }}
                 variant="primary"
                 className="mt-3 w-75 "
@@ -142,4 +142,4 @@ const SingleCart= () => {
   );
 };
 
-export default SingleCart;
+export default ShowCarts;

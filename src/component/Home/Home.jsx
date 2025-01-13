@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import Testimonial from "./Testimonial";
 import axios from "axios";
-import { setTAddress } from "../../RTK/slices.js";
+import { changeCart, setTAddress, setUser } from "../../RTK/slices.js";
 // const carddata = [
 //   {
 //     src: Dalbati,
@@ -89,20 +89,11 @@ export default function Home() {
       console.log("arpit: ", response.data);
       setOverviewData(response.data);
     };
-    console.log("hello bhai");
 
-    const handlegetTAdderss = async () => {
-      const response = await axios
-        .get(`${import.meta.env.VITE_APP_URL}/api/contact/data`)
-        .then((response) => {
-          dispatch(setTAddress(response.data));
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
+   
+    // uid && handleLogin(uid);
     handleGetOverviewData();
-    handlegetTAdderss();
+    // handlegetTAdderss();
   }, []);
 
   return (
@@ -307,12 +298,13 @@ export default function Home() {
             );
           }
         })}
-<div className="row"><div className=" col-12 bg-light  pb-5">
-          <span className=" text-danger fs-4 ms-2 ms-lg-5 ">
-            Many more items for you .....
-          </span>
-        </div></div>
-        
+        <div className="row">
+          <div className=" col-12 bg-light  pb-5">
+            <span className=" text-danger fs-4 ms-2 ms-lg-5 ">
+              Many more items for you .....
+            </span>
+          </div>
+        </div>
       </div>
       {/* For Cards */}
       {/* <Cards /> */}
@@ -373,7 +365,6 @@ export default function Home() {
 
       {/*For textimonials*/}
       <Testimonial />
-    
     </>
   );
 }
