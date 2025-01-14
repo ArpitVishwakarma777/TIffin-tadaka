@@ -78,9 +78,8 @@ function SignPage() {
       );
       toast.success("Login Successful!");
       reset();
-      console.log(userCredential.user);
-      console.log("userlocal: ", userCredential.user.uid);
-
+      // console.log(userCredential.user);
+      // console.log("userlocal: ", userCredential.user.uid);
       localStorage.setItem("userId", userCredential.user.uid);
       dispatch(setShowLogin(false));
       // dispatch(setLogout());

@@ -76,9 +76,10 @@ export default function Header() {
           console.error(error);
         });
     };
+    handlegetTAdderss()
     if (uid) {
       console.log("RTK Address management will conduct");
-      handlegetTAdderss()
+      
       handleLogin(uid);
       dispatch(setLogout());
     } else {

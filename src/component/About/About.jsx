@@ -7,19 +7,19 @@ import './About.css'
   useEffect(() => {
    
     const satisfiedClients = () => {
-      if (count < 18) {
+      if (count < 270) {
         setCount(prevCount => prevCount + 1);
       }
     };
 const qualifiedExpert=()=>{
-  if(qualifiedExperts<370){
+  if(qualifiedExperts<18){
     setQualifiedExperts(prevCount => prevCount + 1);
 
   }
 }
     // Set an interval to run the Satisfied Clients function every second
-    const intervalId = setInterval(satisfiedClients, 50);
-  const intervalId2 = setInterval(qualifiedExpert, 5);
+    const intervalId = setInterval(satisfiedClients, 5);
+  const intervalId2 = setInterval(qualifiedExpert, 50);
     // Clear the interval when the component unmounts or when count reaches 18
     return () => {
       clearInterval(intervalId);
