@@ -53,7 +53,7 @@ function SignPage() {
       console.error("Error during login:", error);
     }
   };
-log
+
   const {
     register,
     handleSubmit,
