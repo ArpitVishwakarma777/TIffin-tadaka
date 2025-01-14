@@ -6,87 +6,19 @@ import "./Home.css";
 import Testimonial from "./Testimonial";
 import axios from "axios";
 import { changeCart, setTAddress, setUser } from "../../RTK/slices.js";
-// const carddata = [
-//   {
-//     src: Dalbati,
-//     title: "Dal-Bati",
-//     textClass: "card_text1",
-//     text: " A plate with 5 ghee-soaked Batis, served with a bowl of hot Dal and fresh salad.",
-//   },
-//   {
-//     src: Paratha,
-//     title: "Dahi-Paratha",
-//     textClass: "card_text2",
-//     text: "(Panjabi Tad)A serving of 5 soft parathas with fresh yogurt and flavorful spices.",
-//   },
-//   {
-//     src: Sev,
-//     title: "sev-veg & more",
-//     textClass: "card_text3",
-//     text: "A plate with 4-5 soft rotis, extra crispy gram flour noodles curry,and salad.",
-//   },
-//   {
-//     src: Poori,
-//     title: "Poori special",
-//     textClass: "card_text4",
-//     text: " Enjoy 5 fluffy puris paired with a flavorful potato curry and a side of fresh salad.",
-//   },
-//   {
-//     src: FullThal,
-//     title: "Full-thali",
-//     textClass: "card_text5",
-//     text: " India flavors in one plate Roti, Sabji, Dahi, Salad, and more complete thali.",
-//   },
-//   {
-//     src: MakkaChapati,
-//     title: "Chapati special",
-//     textClass: "card_text3",
-//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-//   },
-//   {
-//     src: MakkaChapati,
-//     title: "Chapati special",
-//     textClass: "card_text3",
-//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-//   },
-//   {
-//     src: MakkaChapati,
-//     title: "Chapati special",
-//     textClass: "card_text3",
-//     text: "Taste tradition with 4 Makki di Roti and full plat Sarson da Saag- test of panjabi",
-//   },
-// ];
-// const testimonialsData = [
-//   [
-//     { src: Anikesh, name: "Anikesh", position: "Owner" },
-//     {
-//       src: Aman,
-//       name: "Aman",
-//       position: "Owner",
-//     },
-//   ],
-//   [
-//     { src: Arpit, name: "Arpit", position: "Owner" },
-//     {
-//       src: Tarun,
-//       name: "Tarun",
-//       position: "Owner",
-//     },
-//   ],
-// ];
 
 export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [overviewData, setOverviewData] = useState([]);
   const user = useSelector((state) => state.manageUserStatus.user);
-  console.log("current user: ", user);
+  
   useEffect(() => {
     const handleGetOverviewData = async () => {
       const response = await axios.get(
         `${import.meta.env.VITE_APP_URL}/api/home/tiffinOverview`
       );
-      console.log("arpit: ", response.data);
+
       setOverviewData(response.data);
     };
 
@@ -303,9 +235,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* For Cards */}
-      {/* <Cards /> */}
-      {/* Download option template */}
       <div className="container my-5">
         <div className="row d-flex  flex-sm-column-reverse flex-md-row flex-wrap justify-content-center">
           <div className=" col-sm-12 col-xs-12 col-md-6 d-flex justify-content-lg-center align-items-md-center">
