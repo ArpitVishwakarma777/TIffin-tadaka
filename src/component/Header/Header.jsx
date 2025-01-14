@@ -43,7 +43,7 @@ export default function Header() {
   const uid = localStorage.getItem("userId");
   useEffect(() => {
     const uid = localStorage.getItem("userId");
-  
+
     const handleLogin = async (uid) => {
       try {
         const userData = await axios.get(
@@ -56,7 +56,7 @@ export default function Header() {
         if (!data.name) {
           toast.error("User  data not found");
         }
-        dispatch(setUser (data));
+        dispatch(setUser(data));
         dispatch(changeCart(data.addedCarts));
       } catch (error) {
         console.error("Error during login:", error);
@@ -66,31 +66,27 @@ export default function Header() {
       const response = await axios
         .get(`${import.meta.env.VITE_APP_URL}/api/contact/data`)
         .then((response) => {
-          
-          console.log("abhishek:",response.data);
-          
           dispatch(setTAddress(response.data));
-          console.log("adderss is set on rtk");
         })
         .catch((error) => {
           console.error(error);
         });
     };
-    handlegetTAdderss()
+    handlegetTAdderss();
     if (uid) {
       console.log("RTK Address management will conduct");
-      
+
       handleLogin(uid);
       dispatch(setLogout());
     } else {
       dispatch(setSignUp());
     }
-  }, []); 
+  }, []);
 
   const handleLogout = async () => {
     const auth = getAuth();
     try {
-      await signOut(auth); 
+      await signOut(auth);
       console.log("User logged out successfully");
       dispatch(setSignUp());
     } catch (error) {
@@ -111,7 +107,6 @@ export default function Header() {
         dispatch(emptyCarts());
         toast.success("Logout successfully");
       }
-
     }
   }
   return (
@@ -187,7 +182,6 @@ export default function Header() {
               </div>
               <div className="contain  me-5 ms-3 mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button
-                 
                   onClick={() => {
                     dispatch(setShowProfile(true));
                   }}
@@ -212,4 +206,3 @@ export default function Header() {
     </>
   );
 }
-
