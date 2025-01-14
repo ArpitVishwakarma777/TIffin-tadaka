@@ -67,6 +67,7 @@ export default function Header() {
         .get(`${import.meta.env.VITE_APP_URL}/api/contact/data`)
         .then((response) => {
           
+          console.log("abhishek:",response.data);
           
           dispatch(setTAddress(response.data));
           console.log("adderss is set on rtk");
