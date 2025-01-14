@@ -145,17 +145,16 @@ export const NewCard = ({ card }) => {
   const [isDisabled, setIsDisabled] = useState(false);
   console.log("params : ", location.pathname);
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
-  const uid = localStorage.getItem('userId')
+  const uid = localStorage.getItem("userId");
   function handleImageClick(card) {
     dispatch(setContentPopup(card));
     dispatch(setshowPopup());
   }
   const handleCart = async (card) => {
-    console.log("i am handle Cart");
+   
 
     if (card) {
-      console.log("i have an cart");
-
+      
       const response = await axios
         .patch(`${import.meta.env.VITE_APP_URL}/api/menu/addToCart`, {
           card,
@@ -187,7 +186,11 @@ export const NewCard = ({ card }) => {
               className="card-img-top"
               alt="..."
             />
-            <span className={` ${location.pathname!=="/Menu/Daily"&& "bg-warning"} oneday_price ms-xxl-4`}>
+            <span
+              className={` ${
+                location.pathname !== "/Menu/Daily" && "bg-warning"
+              } oneday_price ms-xxl-4`}
+            >
               ₹ {card.price}
             </span>
           </div>
@@ -200,7 +203,9 @@ export const NewCard = ({ card }) => {
                 {" "}
                 <button
                   onClick={() => {
-                    navigate(`/Menu/Checkout/${card.title}/${card.title}/${card.price}`);
+                    navigate(
+                      `/Menu/Checkout/${card.title}/${card.title}/${card.price}`
+                    );
                   }}
                   className="btn me-xxl-5 me-4 me-md-2 me-lg-5 me-xl-5 btn-primary"
                 >
@@ -217,17 +222,12 @@ export const NewCard = ({ card }) => {
                     location.pathname !== "/Menu/Daily" && "d-none"
                   } buyIcon ${isDisabled && "disabled-class"}`}
                   onClick={() => {
-                    console.log(addedCarts);
-                    console.log(card.id);
+                  
 
-                    // const cart = addedCarts.filter((item)=> item.id==card.id)
                     const cart = addedCarts.find((item) => item.id === card.id);
-                 if(!cart){
-                  handleCart({ ...card, quantity: 1 });
-                  console.log(cart);
-                 }
-
-                    
+                    if (!cart) {
+                      handleCart({ ...card, quantity: 1 });
+                    }
                   }}
                 >
                   <FaShoppingCart size={30} color="green" />

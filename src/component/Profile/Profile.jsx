@@ -18,7 +18,7 @@ function Profile() {
   const [mobile, setMobile] = useState(userDetails.mobile);
   const [address, setAddress] = useState(userDetails.address);
   const [profileImage, setProfileImage] = useState(userDetails.img);
-  const uid = localStorage.getItem('userId')
+  const uid = localStorage.getItem("userId");
   const handleUpdate = async () => {
     console.log("client uid : ", uid);
 
@@ -35,8 +35,8 @@ function Profile() {
     const url = "https://api.cloudinary.com/v1_1/drzc94rvk/image/upload";
 
     const formData = new FormData();
-    formData.append("file", file); // Pass the file object from an input field
-    formData.append("upload_preset", "upload_file"); // Optional, set up in your Cloudinary settings
+    formData.append("file", file);
+    formData.append("upload_preset", "upload_file");
 
     try {
       const response = await axios.post(url, formData, {
@@ -65,8 +65,6 @@ function Profile() {
       } else {
         setProfileImage(img);
       }
-
-      // Update the image source
     }
   };
   const handleUpdateProfileData = async () => {
@@ -84,7 +82,7 @@ function Profile() {
   };
   const handlePasswordReset = async () => {
     const auth = getAuth();
-   
+
     try {
       const response = await sendPasswordResetEmail(auth, email);
       toast.success("Request send, please check Email");
@@ -102,9 +100,9 @@ function Profile() {
                 style={{
                   height: "110px",
                   width: "110px",
-                  overflow: "hidden", // Ensures the image stays within the circle
+                  overflow: "hidden",
                   borderRadius: "50%",
-                  border:"2px solid red" // Makes the div circular
+                  border: "2px solid red",
                 }}
                 className="col-6 bg-primary d-flex justify-content-center align-items-center"
               >
@@ -214,11 +212,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          {/* <button className="Sign_button">hello</button>
-          <div className="profile-popup-condtation">
-            <input  type="checkbox" required />
-            <p>By Continuing, I Agree to the tems-xl-4rms-xxl of use & privacy policy.</p>
-          </div> */}
+
           <div>
             <button
               className="btn saveButton"

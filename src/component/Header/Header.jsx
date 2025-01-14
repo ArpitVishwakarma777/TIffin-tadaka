@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { FaBagShopping } from "react-icons/fa6";
 import { IoMdContact } from "react-icons/io";
-// import { DicriptionPopup } from "../../Helper/Cards.jsx";
+
 import {
   setShowLogin,
   setSignUp,
@@ -85,12 +85,12 @@ export default function Header() {
     } else {
       dispatch(setSignUp());
     }
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []); 
 
   const handleLogout = async () => {
     const auth = getAuth();
     try {
-      await signOut(auth); // Logs out the user
+      await signOut(auth); 
       console.log("User logged out successfully");
       dispatch(setSignUp());
     } catch (error) {
@@ -111,12 +111,7 @@ export default function Header() {
         dispatch(emptyCarts());
         toast.success("Logout successfully");
       }
-      // const confirm = confirm("Do you want to logout?")
 
-
-      // handleLogout();
-      // dispatch(removeUser());
-      // toast.success("Logout successfully ");
     }
   }
   return (
@@ -192,7 +187,7 @@ export default function Header() {
               </div>
               <div className="contain  me-5 ms-3 mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button
-                  // className={loginStatus!=="LogOut"&& "d-none"  }
+                 
                   onClick={() => {
                     dispatch(setShowProfile(true));
                   }}
@@ -217,3 +212,4 @@ export default function Header() {
     </>
   );
 }
+

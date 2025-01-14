@@ -90,10 +90,7 @@ export default function Home() {
       setOverviewData(response.data);
     };
 
-   
-    // uid && handleLogin(uid);
     handleGetOverviewData();
-    // handlegetTAdderss();
   }, []);
 
   return (
@@ -368,3 +365,4 @@ export default function Home() {
     </>
   );
 }
+

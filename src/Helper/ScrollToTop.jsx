@@ -1,17 +1,3 @@
-// import { useEffect } from "react";
-// import { useLocation } from "react-router-dom";
-
-// const ScrollToTop = () => {
-//   const { pathname } = useLocation();
-
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, [pathname]);
-
-//   return null;
-// };
-
-// export default ScrollToTop;
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -24,7 +10,6 @@ const ScrollToTop = () => {
       !pathname.includes("/Menu/Monthly") &&
       !pathname.includes("/Menu/Weekly")
     ) {
-      // Ignore scroll for this route
       window.scrollTo(0, 0);
     }
   }, [pathname]);

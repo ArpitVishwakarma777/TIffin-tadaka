@@ -26,6 +26,7 @@ export default function Footer() {
           </span>
         </div>
         <div>
+         
           <Link
             href
             className="rounded-circle btn btn_footer btn-outline btn-floating m-1"

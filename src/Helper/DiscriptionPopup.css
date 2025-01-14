@@ -3,11 +3,7 @@
     height: 50vh;
     border-radius: 15px;
 }
-/* @media (min-width: 1400px) {
-    .dicriptionPopup{
-        height: 65vh;
-    }
-  } */
+
 
 @media (max-width: 992px) {
     .col-4 {
@@ -15,10 +11,10 @@
     }
   }
 
-@media (max-width: 1300px) { /* Assuming xl breakpoint is 1200px */
+@media (max-width: 1300px) {
   .text-portion {
-    max-height: 58vh; /* Adjust height as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 58vh; 
+    overflow-y: auto; 
   }
 }
 .dicriptionPopup{

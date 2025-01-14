@@ -11,12 +11,12 @@ function DailyTiffin() {
           `${import.meta.env.VITE_APP_URL}/api/menu/oneDayCard`
         );
  
-        setData(response.data); // Store the fetched data in state.
+        setData(response.data); 
       } catch (error) {
         console.log("Error fetching data:", error);
       }
     };
-    fetchData(); // Call the fetch function
+    fetchData();
   }, []);
   return data.map((card) => {
     return <NewCard card={card} />;

@@ -17,15 +17,15 @@ const qualifiedExpert=()=>{
 
   }
 }
-    // Set an interval to run the Satisfied Clients function every second
+    
     const intervalId = setInterval(satisfiedClients, 5);
   const intervalId2 = setInterval(qualifiedExpert, 50);
-    // Clear the interval when the component unmounts or when count reaches 18
+  
     return () => {
       clearInterval(intervalId);
       clearInterval(intervalId2);
     };
-  }, [count,qualifiedExperts]); // Dependency array includes count to re-run effect when count changes
+  }, [count,qualifiedExperts]);
 
   return (
     
@@ -77,8 +77,6 @@ const qualifiedExpert=()=>{
     </div>
   </div>
 </section>
-
-
   );
 }
 export default memo(About)

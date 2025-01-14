@@ -11,17 +11,14 @@ function Testimonial() {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_URL}/api/home/testimonial/customer`
         );
-        // console.log(response.data);
-
-        setData(response.data); // Store the fetched data in state.
+     
+        setData(response.data); 
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData(); // Call the fetch function
-  }, []); // Empty dependency array to run only once
-
-  // console.log(data);
+    fetchData(); 
+  }, []); 
 
   return (
     <>
@@ -73,3 +70,4 @@ function Testimonial() {
 }
 
 export default Testimonial;
+

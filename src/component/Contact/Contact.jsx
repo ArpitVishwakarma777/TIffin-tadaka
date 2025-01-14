@@ -3,12 +3,7 @@ import "./Contact.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
 function Contact() {
-  // useEffect(() => {
-  //   const handleGetWebData = async () => {
-  //     const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/contact`);
-  //   };
-  //   handleGetWebData();
-  // });
+ 
   const tiffinAddress = useSelector(
     (state) => state.managetAddressStatus.tiffinAddress || []
   );
