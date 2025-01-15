@@ -190,7 +190,7 @@ function Profile() {
                       setMobile(value);
                     }
                   }}
-                  className="my-2 ms-xs-5  ms-md-0 ms-xl-0 ms-xxl-4   "
+                  className="my-2 ms-md-0 ms-xl-0 ms-xxl-4   "
                   type="tel"
                   placeholder="Enter Mobile number"
                   required
@@ -204,7 +204,7 @@ function Profile() {
                   onChange={(e) => {
                     setAddress(e.target.value);
                   }}
-                  className="my-2 ms-xs-5   me-xl-3 ms-xxl-4 "
+                  className="my-2  me-xl-3 ms-xxl-4 "
                   type="text"
                   placeholder="Enter Address"
                   required

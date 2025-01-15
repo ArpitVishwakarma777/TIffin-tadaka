@@ -30,6 +30,7 @@ function Checkout() {
     mealPlan: subscription,
     price: price,
   });
+  const [currentLocation,setCurrentLocation] = useState('')
   const calculateEndDate = (startDate, category) => {
     const date = new Date(startDate);
 
@@ -64,7 +65,41 @@ function Checkout() {
       Math.random().toString(36).substring(2);
     return randomID;
   }
+  //handle current location
+  const fetchAddress = async (latitude, longitude) => {
+    const API_KEY = "5e1d726b451146eba43f2d0269e6b17d"; // Replace with your actual API key
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`;
 
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.results && data.results[0]) {
+        setUserAddress(data.results[0].formatted); // Get the formatted address
+      } else {
+        alert("Unable to retrieve address.");
+      }
+    } catch (error) {
+      console.error("Error fetching address:", error.message);
+    }
+  };
+  const handleGetLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // setCurrentLocation(`Latitude: ${latitude}, Longitude: ${longitude}`);
+          fetchAddress(latitude,longitude)
+        },
+        (error) => {
+          console.error("Error fetching location: ", error.message);
+          alert("Unable to fetch location. Please enable location services.");
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  };
   //payment integration
 
   const handleRazorpayPayment = async () => {
@@ -154,7 +189,6 @@ function Checkout() {
       { uid }
     );
     if (response2.status === 200) {
-      console.log("under ja raha he");
       dispatch(emptyCarts());
     } else {
       console.log("error in doing empty cart");
@@ -191,13 +225,23 @@ function Checkout() {
           }
         );
         if (type === "AddedCart") {
-          console.log("Wishlist ke order button per click kiyahhe");
-
           handleRemoveCartDataonDB();
+        }else{
+          toast.success(response.data);
+          navigate("/Home");
+          dispatch(
+            setUserSubscription({
+              orderid,
+              userAddress,
+              startDate,
+              endDate,
+              orderSummary,
+              paymentMethod,
+            })
+          );
         }
 
-        toast.success(response.data);
-        navigate("/Home");
+        
       } catch (e) {
         console.log("error on sending order client req: ", e);
       }
@@ -219,7 +263,7 @@ function Checkout() {
           className="form-control"
         ></textarea>
       </div>
-
+<button onClick={handleGetLocation}>Fill current location</button>
       {/* Tiffin Service Address */}
       <div className="form-group">
         <label htmlFor="tiffinAddress">Tiffin Service Address:</label>
@@ -243,8 +287,33 @@ function Checkout() {
         </p>
       </div>
 
+      <div
+        className={`${
+          subscription === "Weekly Subscription" ||
+          subscription == "Monthly Subscription"
+            ? "d-none"
+            : ""
+        } form-group`}
+      >
+        <label htmlFor="startDate">Tiffin Date:</label>
+        <input
+          id="startDate"
+          type="date"
+          value={startDate}
+          onChange={handleStartDateChange}
+          className="form-control"
+        />
+      </div>
+
       {/* Date of Buying and Ending */}
-      <div className="form-group">
+      <div
+        className={`${
+          subscription === "Weekly Subscription" ||
+          subscription === "Monthly Subscription"
+            ? ""
+            : "d-none"
+        } form-group`}
+      >
         <label htmlFor="startDate">Start Date:</label>
         <input
           id="startDate"
@@ -255,7 +324,14 @@ function Checkout() {
         />
       </div>
 
-      <div className="form-group">
+      <div
+        className={`${
+          subscription === "Weekly Subscription" ||
+          subscription === "Monthly Subscription"
+            ? ""
+            : "d-none"
+        } form-group`}
+      >
         <label htmlFor="endDate">End Date:</label>
         <input
           id="endDate"

@@ -21,11 +21,15 @@ function SignPage() {
 
   const handleSignUp = async (name, email, userId) => {
     try {
-      await axios.post(`${import.meta.env.VITE_APP_URL}/api/signUp`, {
-        name,
-        email,
-        userId,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_APP_URL}/api/signUp`,
+        {
+          name,
+          email,
+          userId,
+        }
+      );
+      return res;
     } catch (error) {
       toast.error(error);
       console.error("Error during sign up:", error);
@@ -99,8 +103,20 @@ function SignPage() {
         data.password
       );
       if (userCredential) {
-        handleSignUp(data.name, data.email, userCredential.user.uid);
-        handleLogin(userCredential.user.uid);
+        const name = data.name;
+      
+        
+        const email = data.email;
+        const userId = userCredential.user.uid;
+        const res = await axios.post(
+          `${import.meta.env.VITE_APP_URL}/api/signUp`,
+          {
+            name,
+            email,
+            userId,
+          }
+        );
+        res && handleLogin(userId)
       }
       reset();
       localStorage.setItem("userId", userCredential.user.uid);
