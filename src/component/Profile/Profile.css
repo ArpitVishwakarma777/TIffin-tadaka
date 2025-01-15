@@ -1,81 +1,80 @@
-@media (min-width: 1200px) {
+/* General Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Center the popup for mobile view */
   .profile-popup {
-    position: fixed;
-    top: 40%;
-    left: 88%;
-    transform: translate(-50%, -50%);
-    display: grid;
-    z-index: 1000;
-  }
-}
-@media (max-width: 1200px) {
-  .profile-popup {
-    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: grid;
-    z-index: 1000;
+    width: 90%; /* Use a larger width for mobile */
+    padding: 10px; /* Add some padding for better spacing */
+  }
+
+  .profile-popup-container {
+    width: 100%; /* Make container take full width */
+    padding: 15px; /* Add padding for better usability */
+    font-size: 12px; /* Reduce font size for mobile */
+  }
+
+  .profile-popup-inputs input {
+    font-size: 12px; /* Adjust input font size for mobile */
+    padding: 5px; /* Reduce padding for input fields */
+  }
+
+  .profile-popup-container .btn {
+    width: 100%; /* Buttons take full width */
+    font-size: 14px;
+    padding: 10px;
+    margin: 10px 0; /* Add margin for spacing between buttons */
+  }
+
+  .profile-popup label {
+    font-size: medium; /* Adjust label size */
+  }
+
+  .profile-popup-container img {
+    height: 80px; /* Adjust profile image size */
+    width: 80px;
   }
 }
 
-  
+/* Smaller Screens (e.g., Phones) */
+@media (max-width: 576px) {
+  /* Profile Popup Styling */
+  .profile-popup {
+    width: 95%; /* Full width for smaller screens */
+    padding: 10px;
+  }
 
-/* Container for the popup */
-.profile-popup-container {
-  width: clamp(380px, 23vw, 400px);
-  background-color: rgb(204, 212, 204);
-  color: #808080;
-  gap: 24px;
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-}
+  /* Input fields */
+  .profile-popup-inputs input {
+    font-size: 10px; /* Smaller font size for compact inputs */
+    padding: 5px; /* Compact padding */
+  }
 
+  /* Profile Image */
+  .profile-popup-container img {
+    height: 70px;
+    width: 70px;
+  }
 
-.profile-popup-titel h2 {
-  font-size: 2rem;
-}
+  /* Labels */
+  label {
+    font-size: small;
+  }
 
-/* Input fields */
-.profile-popup-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+  /* Buttons */
+  .saveButton {
+    font-size: 12px; /* Smaller button text */
+    padding: 8px; /* Compact padding for buttons */
+  }
 
-.profile-popup-inputs input {
-  border: 1px solid #ddd;
-  outline: none;
-  padding: 7px;
-  border-radius: 8px;
-  font-size: 14px;
-}
+  .profile-popup-container .btn {
+    width: 100%;
+    margin: 5px 0; /* Spacing for stacked buttons */
+  }
 
-
-/* Link section */
-
-.profile-popup-inputs span:hover {
-  text-decoration: underline;
-}
-.mx-1 {
-  margin-right: 0.25rem !important;
-  margin-left: 1.25rem !important;
-}
-/* body {
-    overflow: hidden; 
-} */
-
-label {
-  font-weight: 500;
-  font-size: large;
-  color: black;
-}
- 
-.saveButton{
-  background-color:rgba(0, 0, 0,0.3);
-}
-.saveButton:hover{
-  background-color:rgba(0, 0, 0,0.6);
+  /* Hide text for smaller areas */
+  .profile-popup-titel h2 {
+    font-size: 1.5rem; /* Smaller heading size */
+  }
 }
