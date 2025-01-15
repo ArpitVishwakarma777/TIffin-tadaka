@@ -41,7 +41,7 @@ function SignPage() {
         }
       );
     
-      
+
      const data = userData.data;
       
       dispatch(setUser(data));
@@ -53,7 +53,6 @@ function SignPage() {
       console.error("Error during login:", error);
     }
   };
-
   const {
     register,
     handleSubmit,
@@ -75,6 +74,7 @@ function SignPage() {
         data.email,
         data.password
       );
+      userCredential
       toast.success("Login Successful!");
       reset();
           localStorage.setItem("userId", userCredential.user.uid);
