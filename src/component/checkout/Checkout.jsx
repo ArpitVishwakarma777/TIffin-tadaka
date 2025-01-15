@@ -67,8 +67,8 @@ function Checkout() {
   }
   //handle current location
   const fetchAddress = async (latitude, longitude) => {
-    const API_KEY = "5e1d726b451146eba43f2d0269e6b17d"; // Replace with your actual API key
-    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`;
+   
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${VITE_OPENCAGE_KEY}`;
 
     try {
       const response = await fetch(url);
