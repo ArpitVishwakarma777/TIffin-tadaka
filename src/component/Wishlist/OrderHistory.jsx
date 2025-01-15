@@ -18,7 +18,7 @@ function OrderHistory() {
           uid,
         }
       );
-      console.log("response: ", response.data.message);
+     
       dispatch(removeOrderHistory());
       toast.success("History removed");
     } catch (e) {

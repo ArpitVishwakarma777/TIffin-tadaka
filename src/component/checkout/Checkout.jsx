@@ -119,7 +119,7 @@ function Checkout() {
       );
 
       const { order } = await response.json();
-      console.log("result : ", order);
+     
       const options = {
         key: import.meta.env.VITE_APP_RAZORPAY_KEY_ID,
         amount: order.amount,

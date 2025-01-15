@@ -3,7 +3,7 @@ import "./Testimonial.css";
 import axios from "axios";
 function Testimonial() {
   const [data, setData] = useState([]);
-  console.log("re-render");
+ 
 
   useEffect(() => {
     const fetchData = async () => {

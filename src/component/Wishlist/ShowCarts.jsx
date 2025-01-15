@@ -10,7 +10,7 @@ const ShowCarts= () => {
   const navigate = useNavigate();
   const uid = useSelector((state) => state.manageUserStatus.user.uid);
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
-  console.log("have carts : ", addedCarts);
+ 
   const shippingCost = 5.0;
 
   const handleRemoveCart = async (item) => {

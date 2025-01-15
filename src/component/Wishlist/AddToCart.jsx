@@ -6,7 +6,7 @@ import ShowCarts from "./ShowCarts.jsx";
 import { useEffect } from "react";
 function AddToCart() {
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
-  console.log("have carts : ", addedCarts);
+
   if (addedCarts.length === 0) {
     return (
       <div className="container">

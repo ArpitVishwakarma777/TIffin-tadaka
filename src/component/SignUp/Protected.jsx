@@ -5,7 +5,7 @@ import { setShowLogin } from "../../RTK/slices";
 
 function Protected({ Component }) {
   const uid = localStorage.getItem('userId')
-  console.log("uid is here on menu component");
+ 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

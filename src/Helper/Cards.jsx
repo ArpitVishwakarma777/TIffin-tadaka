@@ -143,7 +143,7 @@ export const NewCard = ({ card }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDisabled, setIsDisabled] = useState(false);
-  console.log("params : ", location.pathname);
+ 
   const addedCarts = useSelector((state) => state.manageAddCartData.addedCarts);
   const uid = localStorage.getItem("userId");
   function handleImageClick(card) {
