@@ -11,7 +11,7 @@ function Checkout() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
+  const [isLoading, setIsLoading] = useState(false);
   const { type, subscription, price } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function Checkout() {
     mealPlan: subscription,
     price: price,
   });
-  const [currentLocation,setCurrentLocation] = useState('')
+  const [currentLocation, setCurrentLocation] = useState("");
   const calculateEndDate = (startDate, category) => {
     const date = new Date(startDate);
 
@@ -89,7 +89,7 @@ function Checkout() {
         (position) => {
           const { latitude, longitude } = position.coords;
           // setCurrentLocation(`Latitude: ${latitude}, Longitude: ${longitude}`);
-          fetchAddress(latitude,longitude)
+          fetchAddress(latitude, longitude);
         },
         (error) => {
           console.error("Error fetching location: ", error.message);
@@ -175,8 +175,8 @@ function Checkout() {
     if (!userAddress || !startDate || !endDate || !paymentMethod) {
       alert("Please fill all the required fields!");
       return;
-    } else {
     }
+    setIsLoading("true");
     if (paymentMethod == "Credit/Debit Card") {
       handleRazorpayPayment();
     } else {
@@ -193,6 +193,7 @@ function Checkout() {
     } else {
       console.log("error in doing empty cart");
     }
+    const orderid = generateOrderID();
     dispatch(
       setUserSubscription({
         orderid,
@@ -211,7 +212,6 @@ function Checkout() {
     } else {
       try {
         const orderid = generateOrderID();
-
         const response = await axios.patch(
           `${import.meta.env.VITE_APP_URL}/api/menu/order`,
           {
@@ -226,24 +226,24 @@ function Checkout() {
         );
         if (type === "AddedCart") {
           handleRemoveCartDataonDB();
-        }else{
-          toast.success(response.data);
-          navigate("/Home");
-          dispatch(
-            setUserSubscription({
-              orderid,
-              userAddress,
-              startDate,
-              endDate,
-              orderSummary,
-              paymentMethod,
-            })
-          );
         }
+        toast.success(response.data);
 
-        
+        navigate("/Home");
+        dispatch(
+          setUserSubscription({
+            orderid,
+            userAddress,
+            startDate,
+            endDate,
+            orderSummary,
+            paymentMethod,
+          })
+        );
       } catch (e) {
         console.log("error on sending order client req: ", e);
+      } finally {
+        setIsLoading("false");
       }
     }
   };
@@ -263,7 +263,7 @@ function Checkout() {
           className="form-control"
         ></textarea>
       </div>
-<button onClick={handleGetLocation}>Fill current location</button>
+      <button onClick={handleGetLocation}>Fill current location</button>
       {/* Tiffin Service Address */}
       <div className="form-group">
         <label htmlFor="tiffinAddress">Tiffin Service Address:</label>
@@ -374,8 +374,13 @@ function Checkout() {
       <button
         onClick={hendlePlaceOrderButton}
         className="btn btn-success place-order-btn"
+        disabled={isLoading}
       >
-        Place Order
+        {isLoading ? (
+          <div className="spinner-border" role="status" />
+        ) : (
+          "Place Order"
+        )}
       </button>
     </div>
   );
