@@ -27,7 +27,7 @@ function SignPage() {
         userId,
       });
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
       console.error("Error during sign up:", error);
     }
   };
@@ -40,16 +40,14 @@ function SignPage() {
           params: { uid },
         }
       );
-    
 
-     const data = userData.data;
-      
+      const data = userData.data;
+
       dispatch(setUser(data));
       dispatch(changeCart(data.addedCarts));
       dispatch(setLogout());
-    
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
       console.error("Error during login:", error);
     }
   };
@@ -74,12 +72,12 @@ function SignPage() {
         data.email,
         data.password
       );
-      userCredential
+      userCredential;
       toast.success("Login Successful!");
       reset();
-          localStorage.setItem("userId", userCredential.user.uid);
+      localStorage.setItem("userId", userCredential.user.uid);
       dispatch(setShowLogin(false));
-   
+
       handleLogin(userCredential.user.uid);
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
@@ -102,13 +100,12 @@ function SignPage() {
       );
       if (userCredential) {
         handleSignUp(data.name, data.email, userCredential.user.uid);
+        handleLogin(userCredential.user.uid);
       }
-      toast.success("Account Created Successfully!");
       reset();
       localStorage.setItem("userId", userCredential.user.uid);
       dispatch(setShowLogin(false));
-      
-      handleLogin(userCredential.user.uid);
+      toast.success("Account Created Successfully!");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         setError("signUpError", {
@@ -118,7 +115,7 @@ function SignPage() {
         setError("signUpError", { message: "An unexpected error occurred" });
       }
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
