@@ -25,7 +25,7 @@ function OrderHistory() {
       console.log(e);
     }
   };
-  console.log("orders : ", orders);
+
   if(uid){
   if (orders.length===0||!orders) {
     return (
