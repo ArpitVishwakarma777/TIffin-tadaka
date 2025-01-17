@@ -176,7 +176,7 @@ export default function Header() {
               <div className="contain me-4  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
                 <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
-                  <FaBagShopping size={25} color="green" />
+                  <FaBagShopping size={27} color="green" />
                   {addedCarts.length !== 0 && <GoDotFill color="red" />}
                 </Link>
                 <br />

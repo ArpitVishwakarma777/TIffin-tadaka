@@ -190,14 +190,14 @@ export default function Home() {
         {overviewData.map((data, index) => {
           if (index % 2 == 0) {
             return (
-              <div className="row d-flex  justify-content-between bg-light">
-                <div className="col-6 align-self-center ps-lg-5 fs-5">
-                  <div>
-                    <h3 className=" text-success">{data.overviewType}</h3>
+              <div className="row pt-5 d-flex  justify-content-between flex-column-reverse flex-sm-row  bg-light">
+                <div className="col-sm-6 col-12 align-self-center ps-lg-5 fs-5">
+                  <div className="text-center">
+                    <h3 className="text-center text-success">{data.overviewType}</h3>
                     {data.overviewText}
                   </div>
                 </div>
-                <div className=" d-flex justify-content-center align-items-center col-6 ">
+                <div className=" d-flex justify-content-center align-items-center col-sm-6 col-12 ">
                   <img
                     className="tiffin-discription "
                     src={data.imgsrc}
@@ -208,18 +208,18 @@ export default function Home() {
             );
           } else {
             return (
-              <div className="row d-flex  justify-content-between bg-light">
-                <div className=" col-6 d-flex justify-content-center align-items-center ">
+              <div className="row d-flex pt-5  justify-content-between flex-row flex-xs-column   bg-light">
+                <div className=" col-sm-6 col-12 d-flex justify-content-center align-items-center ">
                   <img
                     className="tiffin-discription "
                     src={data.imgsrc}
                     alt="dish img"
                   />
                 </div>
-                <div className="col-6 align-self-center fs-5 pe-lg-5">
-                  <div>
+                <div className="col-sm-6 col-12 align-self-center fs-5 pe-lg-5">
+                  <div className="text-center">
                     {" "}
-                    <h3 className=" text-success">{data.overviewType}</h3>
+                    <h3 className="text-center text-success">{data.overviewType}</h3>
                     {data.overviewText}
                   </div>
                 </div>
