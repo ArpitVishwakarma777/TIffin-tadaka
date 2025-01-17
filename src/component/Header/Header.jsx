@@ -130,7 +130,7 @@ export default function Header() {
         {" "}
         {showLogin === true ? <SignPage /> : null}
       </div>
-      <NavLink className=" text-decoration-none navbar navbar-expand-lg navbar-light bg-white  ">
+      <nav className=" text-decoration-none navbar navbar-expand-lg navbar-light bg-white shadow">
         <div className="container-fluid box ">
           <img className="img" src={webLogo} alt />
           <button
@@ -143,6 +143,7 @@ export default function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
+            
             <span className="navbar-toggler-icon" />
           </button>
           <div
@@ -202,7 +203,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </NavLink>
+      </nav>
     </>
   );
 }

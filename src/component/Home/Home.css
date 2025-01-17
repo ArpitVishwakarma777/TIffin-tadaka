@@ -273,12 +273,7 @@
 .helper_template {
   background: #e7e2e2;
 }
-/* .radial-text-gradient {
-  background: radial-gradient(circle, red, yellow);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-} */
+
 .tiffin-discription{
   border-radius: 20px;}
 @media(max-width:576px){
