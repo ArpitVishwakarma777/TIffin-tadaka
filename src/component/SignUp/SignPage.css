@@ -119,18 +119,9 @@
   cursor: pointer;
   color: rgb(238, 95, 6);
 }
-.cursor-pointer{
-  cursor: pointer;
-}
-.password-input-container {
-  position: relative;
-  display: inline-block;
-  width: 100%; /* Adjust width as needed */
-}
 
 
 .toggle-password-btn {
-
   top: 50%;
   right: 10px;
   transform: translateY(-50%);

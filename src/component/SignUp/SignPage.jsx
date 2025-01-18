@@ -180,7 +180,7 @@ function SignPage() {
             {...register("email", { required: "Email is required" })}
             onInput={() => clearErrors()}
           />
-          <div className="password-input-container">
+          <div className=" position-relative password-input-container">
             <input
               autoComplete="off"
               className="password-input mx-1"
