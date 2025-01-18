@@ -18,6 +18,7 @@ function SignPage() {
   const [currState, setCurrState] = useState("Sign Up"); // "Login" or "Sign Up"
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignUp = async (name, email, userId) => {
     try {
@@ -104,8 +105,7 @@ function SignPage() {
       );
       if (userCredential) {
         const name = data.name;
-      
-        
+
         const email = data.email;
         const userId = userCredential.user.uid;
         const res = await axios.post(
@@ -116,7 +116,7 @@ function SignPage() {
             userId,
           }
         );
-        res && handleLogin(userId)
+        res && handleLogin(userId);
       }
       reset();
       localStorage.setItem("userId", userCredential.user.uid);
@@ -180,20 +180,29 @@ function SignPage() {
             {...register("email", { required: "Email is required" })}
             onInput={() => clearErrors()}
           />
-          <input
-            autoComplete="off"
-            className="mx-1"
-            type="password"
-            placeholder="Enter Your Password"
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
-              },
-            })}
-            onInput={() => clearErrors()}
-          />
+          <div className="password-input-container">
+            <input
+              autoComplete="off"
+              className="password-input mx-1"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter Your Password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+              onInput={() => clearErrors()}
+            />
+            <button
+              type="button"
+              className="toggle-password-btn   cursor-pointer position-absolute"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
           {errors.signUpError && (
             <div className="text-danger">{errors.signUpError.message}</div>
           )}

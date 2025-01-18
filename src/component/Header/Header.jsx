@@ -173,7 +173,7 @@ export default function Header() {
               </li>
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
-              <div className="contain me-4  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
+              <div className="contain me-0  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
                 <Link to="/Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={27} color="green" />

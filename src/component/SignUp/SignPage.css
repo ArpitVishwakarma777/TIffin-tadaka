@@ -122,3 +122,26 @@
 .cursor-pointer{
   cursor: pointer;
 }
+.password-input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Adjust width as needed */
+}
+
+
+.toggle-password-btn {
+
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+}
+
+.toggle-password-btn:hover {
+  color: #0056b3;
+}
+
+
