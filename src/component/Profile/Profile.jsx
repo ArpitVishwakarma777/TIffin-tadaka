@@ -3,7 +3,7 @@ import "./Profile.css";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaCameraRotate } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import { setShowProfile, setUser } from "../../RTK/slices";
 import { Link, useNavigate } from "react-router-dom";
@@ -108,7 +108,7 @@ function Profile() {
               >
                 <img
                   className="img-circle img-responsive"
-                  style={{ height: "150px", paddingTop: "13px" }}
+                  style={{ height: "135px", paddingTop: "0px" }}
                   src={profileImage}
                   alt="profile"
                 />
@@ -130,7 +130,8 @@ function Profile() {
                     document.getElementById("upload-profile-image").click()
                   }
                 >
-                  <FaPencilAlt />
+                <FaCameraRotate size={25} />
+
                 </span>
                 <span
                   className="mt-3 cursor-pointer"
