@@ -27,7 +27,7 @@ function Menu() {
       case "One Time Meal":
         navigate("/Menu/Daily");
         ref.current.scrollIntoView({ behavior: "smooth" });
-        break;
+        break; 
       case "Weekly Tiffin":
         navigate("/Menu/Weekly");
         ref.current.scrollIntoView({ behavior: "smooth" });
@@ -51,7 +51,7 @@ function Menu() {
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%,-50%)",
+            transform: "translate(-40%,-50%)",
           }}
           className="text-white"
         >
