@@ -108,7 +108,7 @@ function Profile() {
               >
                 <img
                   className="img-circle img-responsive"
-                  style={{ height: "130px", paddingTop: "0px" }}
+                  style={{ height: "150px", paddingTop: "13px" }}
                   src={profileImage}
                   alt="profile"
                 />
