@@ -146,7 +146,7 @@ function Profile() {
           <div className="profile-popup-inputs">
             <div className="d-flex flex-column">
               <div>
-                <label htmlFor="name"> Name</label>
+                <label htmlFor="name" className="col-3"> Name</label>
                 <input
                   disabled
                   id="name"
@@ -154,14 +154,14 @@ function Profile() {
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
-                  className=" my-2 ms-4 ms-xl-4 ms-xxl-5 "
+                  className="col-7 my-2 ms-4 ms-xl-4 ms-xxl-5 "
                   type="text"
                   placeholder="Name"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="email"> Email </label>
+                <label className="col-3" htmlFor="email"> Email </label>
                 <input
                   disabled
                   id="email"
@@ -169,7 +169,7 @@ function Profile() {
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
-                  className="my-2 ms-4 ms-xl-4 ms-xxl-5  "
+                  className="col-7 my-2 ms-4 ms-xl-4 ms-xxl-5"
                   type="email"
                   placeholder="Email"
                   required
@@ -177,11 +177,11 @@ function Profile() {
               </div>
               <div>
                 {" "}
-                <label className="me-3" htmlFor="mobile">
+                <label className="col-3" htmlFor="mobile">
                   {" "}
                   Mobile
                 </label>
-                <input
+                <input 
                   id="mobile"
                   value={mobile}
                   onChange={(e) => {
@@ -190,21 +190,21 @@ function Profile() {
                       setMobile(value);
                     }
                   }}
-                  className="my-2 ms-md-0 ms-xl-0 ms-xxl-4   "
+                  className="col-7 my-2 ms-4 ms-xl-4 ms-xxl-5"
                   type="tel"
                   placeholder="Enter Mobile number"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="address"> Address</label>
+                <label className="col-3" htmlFor="address"> Address</label>
                 <input
                   id="address"
                   value={address}
                   onChange={(e) => {
                     setAddress(e.target.value);
                   }}
-                  className="my-2  me-xl-3 ms-xxl-4 "
+                  className=" col-7 my-2 ms-4 ms-xl-4 ms-xxl-5  "
                   type="text"
                   placeholder="Enter Address"
                   required

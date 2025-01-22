@@ -193,7 +193,7 @@ export default function Home() {
               <div className="row pt-5 d-flex  justify-content-between flex-column-reverse flex-sm-row  bg-light">
                 <div className="col-sm-6 col-12 align-self-center ps-lg-5 fs-5">
                   <div className="text-center">
-                    <h3 className="text-center text-success">{data.overviewType}</h3>
+                    <h3 className="text-center  pt-2 text-success">{data.overviewType}</h3>
                     {data.overviewText}
                   </div>
                 </div>
@@ -219,7 +219,7 @@ export default function Home() {
                 <div className="col-sm-6 col-12 align-self-center fs-5 pe-lg-5">
                   <div className="text-center">
                     {" "}
-                    <h3 className="text-center text-success">{data.overviewType}</h3>
+                    <h3 className="text-center  pt-2 text-success">{data.overviewType}</h3>
                     {data.overviewText}
                   </div>
                 </div>

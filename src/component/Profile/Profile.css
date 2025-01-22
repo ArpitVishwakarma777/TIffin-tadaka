@@ -23,7 +23,7 @@
 
 /* Container for the popup */
 .profile-popup-container {
-  width: clamp(380px, 23vw, 400px);
+  width: clamp(330px, 23vw, 400px);
   background-color: rgb(204, 212, 204);
   color: #808080;
   gap: 24px;
