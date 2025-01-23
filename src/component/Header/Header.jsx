@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { DicriptionPopup } from "../../Helper/DiscriptionPopup.jsx";
 import "./Header.css";
 import axios from "axios";
@@ -23,7 +23,7 @@ import {
   setTAddress,
 } from "../../RTK/slices.js";
 
-import webLogo from "../../assets/logo/web-logo 1.png";
+
 import "bootstrap/dist/js/bootstrap.bundle";
 import { useDispatch, useSelector } from "react-redux";
 import SignPage from "../SignUp/SignPage.jsx";
@@ -132,7 +132,7 @@ export default function Header() {
       </div>
       <nav className=" text-decoration-none navbar navbar-expand-lg navbar-light bg-white shadow">
         <div className="container-fluid box ">
-          <img className="img" src={webLogo} alt />
+          <img className="img" src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965197/web-logo_1_bxr7ro.png" alt />
           <button
             className="navbar-toggler"
             type="button"

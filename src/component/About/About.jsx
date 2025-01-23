@@ -1,5 +1,5 @@
 import React,{useState,useEffect, memo} from 'react'
-import AboutImage from '../../assets/small banner/About_image.jpg'
+
 import './About.css'
  function About() {
   const [count, setCount] = useState(0);
