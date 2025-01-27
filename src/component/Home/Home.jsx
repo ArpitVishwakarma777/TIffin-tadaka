@@ -145,7 +145,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="container-fluid py-5  my-5 helper_template ">
+      <div className="container-fluid py-5 my-5 helper_template ">
         <div className="row d-flex   flex-wrap ">
           <div className=" d-flex my-lg-3 justify-content-center">
             <h1 style={{ color: "rgb(218, 165, 32)" }}>What We Offer !</h1>
