@@ -9,7 +9,7 @@ export function DicriptionPopup() {
   console.log(contentPopup);
 
   return (
-    <div className="container-fluid  dicriptionPopup">
+    <div className="container-fluid shadow dicriptionPopup">
       <div className=" row d-flex justify-content-center align-items-center  ms-2 ms-lg-0 ">
         <div className="col-4 ">
           <img className="popup-image" src={contentPopup.src} alt="" />

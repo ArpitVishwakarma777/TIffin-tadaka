@@ -182,7 +182,7 @@ export default function Home() {
 
       <div className=" d-flex justify-content-center flex-column align-content-center flex-sm-row">
         <h1 className="One-day-special ms-5  ms-sm-0 ">
-          <span style={{ color: "red" }}>Tiffin's</span> Overview
+          <span style={{ color: "red", textAlign:"center" }}>Tiffin's</span> Overview
         </h1>
       </div>
 

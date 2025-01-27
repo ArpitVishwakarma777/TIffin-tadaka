@@ -32,6 +32,7 @@ function Testimonial() {
             data-interval="2000"
             data-duration="2000"
           >
+            
             <div className="carousel-inner" role="listbox">
               {data.map((item, index) => (
                 <div className={`carousel-item ${index===0 &&" active"}` }>

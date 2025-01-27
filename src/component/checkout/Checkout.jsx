@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
@@ -69,6 +69,7 @@ function Checkout() {
   const fetchAddress = async (latitude, longitude) => {
    
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${import.meta.env.VITE_OPENCAGE_KEY}`;
+console.log(latitude," ",longitude);
 
     try {
       const response = await fetch(url);
@@ -95,7 +96,7 @@ function Checkout() {
           console.error("Error fetching location: ", error.message);
           alert("Unable to fetch location. Please enable location services.");
         }
-      );
+      ,{ enableHighAccuracy: true });
     } else {
       alert("Geolocation is not supported by your browser.");
     }
@@ -263,7 +264,7 @@ function Checkout() {
           className="form-control"
         ></textarea>
       </div>
-      <button onClick={handleGetLocation}>Fill current location</button>
+      <button className=" border-0 text-success my-1 rounded" onClick={handleGetLocation}>Fill current location</button>
       {/* Tiffin Service Address */}
       <div className="form-group">
         <label htmlFor="tiffinAddress">Tiffin Service Address:</label>
