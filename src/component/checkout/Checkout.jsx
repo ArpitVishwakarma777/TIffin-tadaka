@@ -320,6 +320,7 @@ console.log(latitude," ",longitude);
           id="startDate"
           type="date"
           value={startDate}
+          min={new Date().toISOString().split("T")[0]}
           onChange={handleStartDateChange}
           className="form-control"
         />
