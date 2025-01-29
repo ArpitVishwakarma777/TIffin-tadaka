@@ -60,7 +60,7 @@
 }
 
 .caption1 p {
-  font-weight: 900;
+  font-weight: 700;
   font-size: xx-large;
 }
 @media (max-width: 320px) {
@@ -76,9 +76,14 @@
 }
 
 .caption2 p {
-  font-weight: 900;
+  font-weight: 700;
   font-size: xx-large;
 }
+.caption3 p {
+  font-weight: 700;
+  font-size: xx-large;
+}
+
 
 /* For carousel text3 */
 
@@ -106,19 +111,11 @@
   }
 }
 @media (max-width: 1150px) {
-  .caption3 {
-    display: none;
-  }
-  .caption2 {
-    display: none;
-  }
-  .caption1 {
-    display: none;
-  }
+ 
   .caption1 {
     color: white;
     position: absolute;
-    left: 55%;
+    left: 52%;
     top: 30%;
   }
   .caption2 {
@@ -127,19 +124,105 @@
     left: 15%;
     bottom: 30%;
   }
-  .caption3 {
+  .caption3 { 
     color: rgb(91, 22, 22);
     position: absolute;
     left: 53%;
     bottom: 30%;
   }
 }
-
-.caption3 p {
-  font-weight: 900;
-  font-size: xx-large;
+@media (max-width:992px) {
+ .caption1 p {
+  font-weight: 700;
+  font-size: x-large;
+}
+ .caption2 p {
+  font-weight: 700;
+  font-size: x-large;
+}
+ .caption3 p {
+  font-weight: 700;
+  font-size: x-large;
+}
+  .caption1 {
+    color: white;
+    position: absolute;
+    left: 51%;
+    top: 33%;
+  }
+  .caption2 {
+    color: white;
+    position: absolute;
+    left: 15%;
+    bottom: 30%;
+  }
+  .caption3 { 
+    color: rgb(91, 22, 22);
+    position: absolute;
+    left: 51%;
+    bottom: 30%;
+  }
 }
 
+@media (max-width:691px ) {
+    .carousel-item1  img{
+      filter: blur(3px); 
+    }
+  .carousel-item2  img{filter: blur(3px); }
+  .carousel-item3  img{filter: blur(3px); }
+  .caption1 {
+    color: white;
+    position: absolute;
+    left: 36vw;
+    top: 33%;
+  }
+  .caption2 {
+    color: white;
+    position: absolute;
+    left: 15vw;
+    bottom: 30%;
+  }
+  .caption3 { 
+    color: rgb(91, 22, 22);
+    position: absolute;
+    left: 35vw;
+    bottom: 30%;
+  }
+}
+@media (max-width: 549px) {
+ 
+  .caption1 {
+    left: 15vw;
+    top: 35%;
+  }
+  .caption2 {
+   left: 15vw;
+    bottom: 30%;
+  }
+  .caption3 { 
+    left: 15vw;
+    bottom: 30%;
+  }
+}
+@media (max-width: 400px) {
+  .caption1 p {
+    font-size: large;
+  }
+  .caption2 p {font-size: large;}
+  .caption3 p {font-size: large;}
+  .caption1 {
+    left: 10vw;
+    top: 35%;
+  }
+  .caption2 {
+   left: 10vw;
+    bottom: 24%;
+  }
+  .caption3 { 
+    left: 10vw; 
+    bottom: 24%;
+  }
+}
 .carousel .carousel-item {
   color: #999;
   overflow: hidden;
@@ -236,27 +319,27 @@
 
 @media (max-width: 992px) {
   .carousel-item1 img {
-    height: 475px;
+    height: 400px;
   }
   .carousel-item2 img {
-    height: 475px;
+    height: 400px;
   }
   .carousel-item3 img {
-    height: 475px;
+    height: 400px;
   }
 }
 @media (max-width: 375px) {
-  .carousel-item1 img {
-    height: 425px;
+  .carousel-item1  img {
+    height: 300px;
   }
   .w-100 {
     width: 140% !important;
   }
   .carousel-item2 img {
-    height: 425px;
+    height: 300px;
   }
   .carousel-item3 img {
-    height: 425px;
+    height: 300px;
   }
 }
 .helper_template {

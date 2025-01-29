@@ -63,10 +63,10 @@ export default function Home() {
               src={
                 "https://res.cloudinary.com/drzc94rvk/image/upload/v1734965828/carousel1_f3p4jv.png"
               }
-              className="d-block  h-lg-50 w-100"
+              className="d-block  h-lg-50  w-100"
               alt="..."
             />
-            <div className="caption1 d-none d-lg-block h-50 ">
+            <div className="caption1  d-block h-50 ">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
@@ -88,7 +88,7 @@ export default function Home() {
               className="d-block  h-lg-50 w-100"
               alt="..."
             />
-            <div className="caption2 d-none d-lg-block">
+            <div className="caption2  d-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
@@ -110,7 +110,7 @@ export default function Home() {
               className="d-block  h-lg-50 w-100"
               alt="..."
             />
-            <div className="caption3 d-none d-lg-block">
+            <div className="caption3  d-block">
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
