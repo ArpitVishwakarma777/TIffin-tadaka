@@ -130,6 +130,7 @@ export default function Header() {
         {" "}
         {showLogin === true ? <SignPage /> : null}
       </div>
+     
       <nav className=" text-decoration-none navbar navbar-expand-lg navbar-light bg-white shadow p-0">
         <div className="container-fluid box py-2 ">
           <img className="img" src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965197/web-logo_1_bxr7ro.png" alt />

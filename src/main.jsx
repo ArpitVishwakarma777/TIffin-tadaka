@@ -11,7 +11,7 @@ import Menu from "./component/Menu/Menu.jsx";
 import DailyTiffin from "./Tiffin Categories/DailyTiffin.jsx";
 import WeeklyTiffin from "./Tiffin Categories/WeeklyTiffin.jsx";
 import MonthlySubscription from "./Tiffin Categories/MonthlyTiffin.jsx";
-
+import ForgotPassword from "./Helper/ForgotPassword.jsx";
 import {
   Route,
   RouterProvider,
@@ -35,6 +35,7 @@ const router = createBrowserRouter([
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
       { path: "/Wishlist", element: <Wishlist /> },
+      { path: "/ForgotPassword", element: <ForgotPassword /> },
       { path: "/Menu/Checkout/:type/:subscription/:price", element: <Checkout /> },
       {
         path: "/Menu",

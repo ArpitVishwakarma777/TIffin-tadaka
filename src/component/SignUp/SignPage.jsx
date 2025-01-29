@@ -10,16 +10,17 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RxCross1 } from "react-icons/rx";
-import { setShowLogin, setLogout, setUser, changeCart } from "../../RTK/slices";
+import { setShowLogin, setLogout, setUser, changeCart, setSignUp } from "../../RTK/slices";
 import { useDispatch, useSelector } from "react-redux";
 import app from "../../firebase";
+import {  useNavigate } from "react-router-dom";
 
 function SignPage() {
   const [currState, setCurrState] = useState("Sign Up"); // "Login" or "Sign Up"
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-
+const navigate = useNavigate()
   const handleSignUp = async (name, email, userId) => {
     try {
       const res = await axios.post(
@@ -210,7 +211,7 @@ function SignPage() {
             <div className="text-danger">{errors.signInError.message}</div>
           )}
         </div>
-        <div className="login-popup-condtation mt-2">
+        <div className="login-popup-condtation mt-0">
           <input autoComplete="off" type="checkbox" required />
           <p>By Continuing, I Agree to the terms of use & privacy policy.</p>
         </div>
@@ -223,18 +224,27 @@ function SignPage() {
         </button>
 
         {currState === "Login" ? (
-          <p>
-            Don't have an account?{" "}
-            <span
-              className="change-option"
-              onClick={() => {
-                setCurrState("Sign Up");
-                reset();
-              }}
-            >
-              Sign Up
+          <>
+            <span onClick={()=>{
+              dispatch(setShowLogin(false));
+              navigate('/ForgotPassword')
+              
+            }} style={{ cursor: 'pointer' }} className="text-primary">
+              Forgot Password ?
             </span>
-          </p>
+            <p>
+              Don't have an account?
+              <span
+                className="change-option"
+                onClick={() => {
+                  setCurrState("Sign Up");
+                  reset();
+                }}
+              >
+                Sign Up
+              </span>
+            </p>
+          </>
         ) : (
           <p>
             Already have an account?{" "}
