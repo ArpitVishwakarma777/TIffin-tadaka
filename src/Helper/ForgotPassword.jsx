@@ -31,7 +31,7 @@ navigate('/Home')
   };
   return (
     <>
-      <div className=" d-flex justify-content-center  ">
+      <div className=" d-flex justify-content-center py-5  ">
         <div className=" forgotpassword-box py-5 d-flex flex-column align-items-center">
           <svg
             aria-label="Trouble logging in?"
