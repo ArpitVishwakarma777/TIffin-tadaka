@@ -9,14 +9,19 @@ import {
   FaGoogle,
   FaInstagram,
 } from "react-icons/fa";
+import { handleButton } from "../Header/Header.jsx";
 import { RiInstagramFill } from "react-icons/ri";
 import "./Footer.css";
 import { setShowProfile } from "../../RTK/slices";
 export default function Footer() {
   const dispatch = useDispatch();
+  const loginStatus = useSelector(
+    (state) => state.manageLoginStatus.loginStatus
+  );
   const tiffinAddress = useSelector(
     (state) => state.managetAddressStatus.tiffinAddress || []
   );
+  const uid = localStorage.getItem("userId");
   return (
     <footer className="text-center text-lg-start bg-color text-muted">
       <section className="d-flex justify-content-center text-align-center justify-content-lg-around p-4 border-bottom">
@@ -26,7 +31,6 @@ export default function Footer() {
           </span>
         </div>
         <div>
-         
           <Link
             href
             className="rounded-circle btn btn_footer btn-outline btn-floating m-1"
@@ -65,7 +69,7 @@ export default function Footer() {
           </Link>
         </div>
       </section>
-      <section >
+      <section>
         <div className="container-lg container-fluid text-center text-md-start mt-5">
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -119,12 +123,17 @@ export default function Footer() {
 
               <p>
                 <Link to="/Wishlist" className="text-reset fs-5">
-                  Orders
+                  Wishlist
                 </Link>
               </p>
               <p>
-                <Link to="" className="text-reset fs-5">
-                  Settings
+                <Link
+                  onClick={(e) => {
+                    handleButton(e, uid, dispatch);
+                  }}
+                  className="text-reset fs-5"
+                >
+                  {loginStatus}
                 </Link>
               </p>
               <p>

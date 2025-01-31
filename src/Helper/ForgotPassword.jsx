@@ -70,7 +70,7 @@ navigate('/Home')
           <form onSubmit={handleSubmit(handlePasswordReset)} action="">
           <div className="d-flex flex-column align-items-center">
           <input
-              className="my-4 py-2 px-2 rounded text-align-center border border-2"
+              className="my-4 py-2 px-2 shadow  rounded text-align-center border border-2"
              {...register("email",{required:"email is required"})}
               placeholder="Please Enter Email"
               type="email"

@@ -28,6 +28,23 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import { useDispatch, useSelector } from "react-redux";
 import SignPage from "../SignUp/SignPage.jsx";
 import Profile from "../Profile/Profile.jsx";
+
+export function handleButton(e,uid,dispatch) {
+  e.preventDefault();
+  if (!uid) {
+    dispatch(setShowLogin(true));
+  } else {
+    const confirmLogout = window.confirm("Do you want to logout?");
+    if (confirmLogout) {
+      localStorage.removeItem("userId");
+      handleLogout();
+      dispatch(removeUser());
+      dispatch(emptyCarts());
+      toast.success("Logout successfully");
+    }
+  }
+}
+
 export default function Header() {
   const showPopup = useSelector((state) => state.managePopupStatus.showPopup);
   const dispatch = useDispatch();
@@ -95,21 +112,7 @@ export default function Header() {
     }
   };
 
-  function handleButton(e) {
-    e.preventDefault();
-    if (!uid) {
-      dispatch(setShowLogin(true));
-    } else {
-      const confirmLogout = window.confirm("Do you want to logout?");
-      if (confirmLogout) {
-        localStorage.removeItem("userId");
-        handleLogout();
-        dispatch(removeUser());
-        dispatch(emptyCarts());
-        toast.success("Logout successfully");
-      }
-    }
-  }
+  
   return (
     <>
       {/* discription box */}
@@ -133,7 +136,7 @@ export default function Header() {
       </div>
      
       <nav className=" text-decoration-none navbar navbar-expand-lg navbar-light bg-white shadow p-0">
-        <div className="container-fluid box py-2 ">
+        <div className="container-fluid box py-1 ">
           <img className="img" src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965197/web-logo_1_bxr7ro.png" alt />
           <button
             className="navbar-toggler"
@@ -175,7 +178,7 @@ export default function Header() {
               </li>
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
-              <div className="contain me-5  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
+              <div className="contain d-none d-lg-block me-5  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
                 <Link to="/Wishlist" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={27} color="green" />
@@ -183,7 +186,7 @@ export default function Header() {
                 </Link>
                 <br />
               </div>
-              <div className="contain  me-5 ms-3 mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
+              <div className="contain d-none d-lg-block me-5 ms-3 mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile"
                   onClick={() => {
                     dispatch(setShowProfile(true));
@@ -193,9 +196,9 @@ export default function Header() {
                   <IoMdContact color="green" size={35} />
                 </button>
               </div>
-              <div className="contain    mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
+              <div className="contain d-none d-lg-block   mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button
-                  onClick={handleButton}
+                  onClick={(e)=>{handleButton(e,uid,dispatch)}}
                   type="button"
                   className="btn_sign btn-outline-success"
                 >

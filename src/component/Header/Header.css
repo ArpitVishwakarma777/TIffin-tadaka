@@ -33,6 +33,7 @@
 
 .btn_sign {
   height: 2.1rem;
+  padding: 2px 9px 2px 9px;
   font-weight: 500;
   border-radius: 1.2rem;
 }
