@@ -22,3 +22,24 @@
   background-color: white;
   padding: 5px 19px 5px 19px;
 }
+/* Custom styles for the tooltip */
+.tooltip-custom {
+  background-color: #333; /* Dark background for contrast */
+  color: white;
+  border-radius: 10px;
+   /* Larger padding for bigger tooltip */
+  font-size: 8px; /* Increased font size */
+  font-weight: 600; /* Bold font */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+ 
+  word-wrap: break-word; /* Ensures long text breaks into multiple lines */
+  width: 20px; /* Fixed width for the tooltip */
+  height: 35px;
+}
+
+/* Tooltip arrow */
+.tooltip-custom[data-popper-placement^="top"] .tooltip-arrow {
+  border-top-color: #333; /* Match the background color */
+}

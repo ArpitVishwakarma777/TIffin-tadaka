@@ -42,6 +42,7 @@ export default function Header() {
 
   const uid = localStorage.getItem("userId");
   useEffect(() => {
+   
     const uid = localStorage.getItem("userId");
 
     const handleLogin = async (uid) => {
@@ -175,7 +176,7 @@ export default function Header() {
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
               <div className="contain me-5  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
-                <Link to="/Wishlist" style={{ textDecoration: "none" }}>
+                <Link to="/Wishlist" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Wishlist" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={27} color="green" />
                   {addedCarts.length !== 0 && <GoDotFill color="red" />}
@@ -183,7 +184,7 @@ export default function Header() {
                 <br />
               </div>
               <div className="contain  me-5 ms-3 mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
-                <button
+                <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile"
                   onClick={() => {
                     dispatch(setShowProfile(true));
                   }}
