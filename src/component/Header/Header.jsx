@@ -122,7 +122,9 @@ export default function Header() {
 
       {/* Profile Component */}
 
-      <div className={showProfile === true ? "background-blur" : null}>
+      <div onClick={()=>{
+        dispatch(setShowProfile(false))
+      }} className={showProfile === true ? "Empty-background" : null}>
         {showProfile === true ? <Profile /> : null}
       </div>
       {/* SignUp Component */}

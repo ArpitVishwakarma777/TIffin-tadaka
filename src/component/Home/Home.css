@@ -1,10 +1,7 @@
 .mainBox {
   background-image: url("/src/assets/image/bg-image.jpeg");
 }
-.blurBox {
-  height: 50vh;
-  opacity: 0.7;
-}
+
 .textBox {
   z-index: 1;
 }
@@ -25,7 +22,7 @@
 }
 .blurBox {
   height: 50vh;
-  opacity: 0.7;
+  opacity: 0;
 }
 
 .textBox {
@@ -368,4 +365,13 @@
     width: 350px;
     height: 350px;
   }
+}
+
+.tiffin-discription{  position: relative; /* Positioning for proper adjustment */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+}
+.tiffin-discription:hover{
+  transform: translateY(-15px); /* Moves the element 10px upwards */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8); /* Adds a shadow for better hover effect */
+
 }

@@ -67,9 +67,10 @@ function Checkout() {
   }
   //handle current location
   const fetchAddress = async (latitude, longitude) => {
-   
-    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${import.meta.env.VITE_OPENCAGE_KEY}`;
-console.log(latitude," ",longitude);
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${
+      import.meta.env.VITE_OPENCAGE_KEY
+    }`;
+    console.log(latitude, " ", longitude);
 
     try {
       const response = await fetch(url);
@@ -95,8 +96,9 @@ console.log(latitude," ",longitude);
         (error) => {
           console.error("Error fetching location: ", error.message);
           alert("Unable to fetch location. Please enable location services.");
-        }
-      ,{ enableHighAccuracy: true });
+        },
+        { enableHighAccuracy: true }
+      );
     } else {
       alert("Geolocation is not supported by your browser.");
     }
@@ -120,7 +122,7 @@ console.log(latitude," ",longitude);
       );
 
       const { order } = await response.json();
-     
+      order && setIsLoading(false);
       const options = {
         key: import.meta.env.VITE_APP_RAZORPAY_KEY_ID,
         amount: order.amount,
@@ -142,7 +144,6 @@ console.log(latitude," ",longitude);
             );
 
             const result = await verificationResponse.json();
-            console.log("result : ", result);
 
             if (result.success) {
               handlePlaceOrder();
@@ -225,12 +226,14 @@ console.log(latitude," ",longitude);
             paymentMethod,
           }
         );
+        navigate("/Home");
         if (type === "AddedCart") {
           handleRemoveCartDataonDB();
         }
+        
         toast.success(response.data);
 
-        navigate("/Home");
+       
         dispatch(
           setUserSubscription({
             orderid,
@@ -244,7 +247,7 @@ console.log(latitude," ",longitude);
       } catch (e) {
         console.log("error on sending order client req: ", e);
       } finally {
-        setIsLoading("false");
+        setIsLoading(false);
       }
     }
   };
@@ -264,7 +267,12 @@ console.log(latitude," ",longitude);
           className="form-control"
         ></textarea>
       </div>
-      <button className=" border-0 text-success my-1 rounded" onClick={handleGetLocation}>Fill current location</button>
+      <button
+        className="border text-primary my-1 rounded"
+        onClick={handleGetLocation}
+      >
+        Use current location
+      </button>
       {/* Tiffin Service Address */}
       <div className="form-group">
         <label htmlFor="tiffinAddress">Tiffin Service Address:</label>

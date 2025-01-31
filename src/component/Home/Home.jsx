@@ -241,7 +241,7 @@ export default function Home() {
             <div className="d-flex flex-column align-items-center">
               <div className="d-flex  align-items-center d-md-block">
                 <div className="d-flex justify-content-center">
-                  <img
+                  <img className=""
                     src={
                       "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947445/mobileImage_zcl0hm.svg"
                     }
