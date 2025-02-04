@@ -74,7 +74,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4 px-4 btn-danger"
+                class="btn mx-4 fw-bold  px-4 btn-danger"
               >
                 Order Now
               </button>
@@ -96,7 +96,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4 px-4 btn-danger"
+                class="btn mx-4 fw-bold  px-4 btn-danger"
               >
                 Order Now
               </button>
@@ -118,7 +118,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4 px-4 btn-danger"
+                class="btn mx-4 fw-bold  px-4 btn-danger"
               >
                 Order Now
               </button>
@@ -144,13 +144,12 @@ export default function Home() {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-
       <div className="container-fluid py-5 my-5 helper_template ">
         <div className="row d-flex   flex-wrap ">
           <div className=" d-flex my-lg-3 justify-content-center">
             <h1 style={{ color: "rgb(218, 165, 32)" }}>What We Offer !</h1>
           </div>
-          <div className="col-md-4  my-sm-5 my-md-0 d-flex  flex-column align-items-center justify-content-center">
+          <div className="col-md-4 my-3 my-sm-5 my-md-0 d-flex flex-column align-items-center justify-content-center">
             <img
               src={
                 "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/helper_image_lczl9b.svg"
@@ -168,7 +167,7 @@ export default function Home() {
             />
             <h3>Doorstep Delivery</h3>
           </div>
-          <div className="col-md-4 my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
+          <div className="col-md-4 my-3  my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
             <img
               src={
                 "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/helper_image3_xdo9dk.svg"
@@ -241,7 +240,7 @@ export default function Home() {
             <div className="d-flex flex-column align-items-center">
               <div className="d-flex  align-items-center d-md-block">
                 <div className="d-flex justify-content-center">
-                  <img className=""
+                  <img style={{cursor:"pointer"}}
                     src={
                       "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947445/mobileImage_zcl0hm.svg"
                     }
@@ -259,7 +258,7 @@ export default function Home() {
               <br />
               <div className="d-flex justify-content-center align-items-center">
                 <span>
-                  <img
+                  <img style={{cursor:"pointer"}}
                     src={
                       "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947444/google-play-button_fnx7bh.svg"
                     }
@@ -267,7 +266,7 @@ export default function Home() {
                   />
                 </span>
                 <span>
-                  <img
+                  <img style={{cursor:"pointer"}}
                     src={
                       "https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/app-store-button_n1npgq.svg"
                     }

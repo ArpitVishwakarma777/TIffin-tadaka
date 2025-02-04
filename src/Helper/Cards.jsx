@@ -54,7 +54,7 @@ export const NewCard = ({ card }) => {
       <div className="card-box col-xl-3 col-md-4 col-sm-6 col-xs-6 pb-sm-3 px-3 py-3">
         <div className="card box-shadow">
           <div className="card-image cursor-pointer position-relative">
-            <img
+            <img style={{cursor:"pointer"}}
               key={card.id}
               onClick={() => {
                 handleImageClick(card);

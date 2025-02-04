@@ -43,7 +43,7 @@ function Menu() {
   return (
     <>
       <div
-        style={{ position: "relative", overflow: "hidden", height: "220px" }}
+        style={{ position: "relative", overflow: "hidden", height: "300px" }}
       >
         <span
           style={{
@@ -143,7 +143,7 @@ function Menu() {
               id="0"
               onClick={handleTiffin}
               className={`a ${TiffinBtnColor[0]} fs-3 ps-sm-4 ps-md-0 d-flex justify-content-center align-items-center`}
-              style={{ height: "80px" }}
+              style={{ height: "80px",cursor:'pointer' }}
             >
               One Time Meal
             </div>
@@ -154,7 +154,7 @@ function Menu() {
               id="1"
               onClick={handleTiffin}
               className={`a ${TiffinBtnColor[1]} fs-3 d-flex justify-content-center align-items-center `}
-              style={{ height: "80px" }}
+              style={{ height: "80px",cursor:'pointer' }}
             >
               Weekly Tiffin
             </div>
@@ -165,7 +165,7 @@ function Menu() {
               id="2"
               onClick={handleTiffin}
               className={`a ${TiffinBtnColor[2]} fs-3 d-flex justify-content-center align-items-center`}
-              style={{ height: "80px" }}
+              style={{ height: "80px",cursor:'pointer' }}
             >
               Monthly Tiffin
             </div>

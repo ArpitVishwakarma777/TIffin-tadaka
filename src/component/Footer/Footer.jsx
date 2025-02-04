@@ -12,9 +12,20 @@ import {
 import { handleButton } from "../Header/Header.jsx";
 import { RiInstagramFill } from "react-icons/ri";
 import "./Footer.css";
-import { setShowProfile } from "../../RTK/slices";
+import { setShowProfile, setSignUp } from "../../RTK/slices";
+import { getAuth, signOut } from "firebase/auth";
 export default function Footer() {
   const dispatch = useDispatch();
+  const handleLogout = async () => {
+      const auth = getAuth();
+      try {
+        await signOut(auth);
+        console.log("User logged out successfully");
+        dispatch(setSignUp());
+      } catch (error) {
+        console.error("Error during logout:", error);
+      }
+    };
   const loginStatus = useSelector(
     (state) => state.manageLoginStatus.loginStatus
   );
@@ -123,13 +134,13 @@ export default function Footer() {
 
               <p>
                 <Link to="/Wishlist" className="text-reset fs-5">
-                  Wishlist
+                  Cart items  
                 </Link>
               </p>
               <p>
                 <Link
                   onClick={(e) => {
-                    handleButton(e, uid, dispatch);
+                    handleButton(e, uid, dispatch,handleLogout);
                   }}
                   className="text-reset fs-5"
                 >

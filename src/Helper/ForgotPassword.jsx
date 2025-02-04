@@ -23,7 +23,8 @@ const dispatch = useDispatch()
 
     try {
       const response = await sendPasswordResetEmail(auth, data.email);
-      toast.success("Request send, please check Email");
+      console.log("response : ",response);
+      toast.success("Password reset email sent if the email exists.");
 navigate('/Home')
     } catch (error) {
       toast.error("Request is not Send,Please try again");

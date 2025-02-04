@@ -29,7 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SignPage from "../SignUp/SignPage.jsx";
 import Profile from "../Profile/Profile.jsx";
 
-export function handleButton(e,uid,dispatch) {
+export function handleButton(e,uid,dispatch,handleLogout) {
   e.preventDefault();
   if (!uid) {
     dispatch(setShowLogin(true));
@@ -122,9 +122,7 @@ export default function Header() {
 
       {/* Profile Component */}
 
-      <div onClick={()=>{
-        dispatch(setShowProfile(false))
-      }} className={showProfile === true ? "Empty-background" : null}>
+      <div className={showProfile === true ? "Empty-background" : null}>
         {showProfile === true ? <Profile /> : null}
       </div>
       {/* SignUp Component */}
@@ -138,7 +136,7 @@ export default function Header() {
       </div>
      
       <nav className=" text-decoration-none navbar navbar-expand-lg navbar-light bg-white shadow p-0">
-        <div className="container-fluid box py-1 ">
+        <div className="container-fluid box py-2 ">
           <img className="img" src="https://res.cloudinary.com/drzc94rvk/image/upload/v1734965197/web-logo_1_bxr7ro.png" alt />
           <button
             className="navbar-toggler"
@@ -180,8 +178,8 @@ export default function Header() {
               </li>
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
-              <div className="contain d-none d-lg-block me-5  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3  ">
-                <Link to="/Wishlist" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Wishlist" style={{ textDecoration: "none" }}>
+              <div className="contain d-none d-lg-block me-5  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3">
+                <Link to="/Wishlist" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add item" style={{ textDecoration: "none" }}>
                   {" "}
                   <FaBagShopping size={27} color="green" />
                   {addedCarts.length !== 0 && <GoDotFill color="red" />}
@@ -200,7 +198,7 @@ export default function Header() {
               </div>
               <div className="contain d-none d-lg-block   mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button
-                  onClick={(e)=>{handleButton(e,uid,dispatch)}}
+                  onClick={(e)=>{handleButton(e,uid,dispatch,handleLogout)}}
                   type="button"
                   className="btn_sign btn-outline-success"
                 >

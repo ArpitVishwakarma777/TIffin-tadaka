@@ -13,6 +13,7 @@ function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.manageUserStatus.user);
+  const [edit, setEdit] = useState(true);
   const [name, setName] = useState(userDetails.name);
   const [email, setEmail] = useState(userDetails.email);
   const [mobile, setMobile] = useState(userDetails.mobile);
@@ -108,7 +109,7 @@ function Profile() {
               >
                 <img
                   className="img-circle img-responsive"
-                  style={{ height: "135px", paddingTop: "0px" }}
+                  style={{ height: "120px", paddingTop: "5px" }}
                   src={profileImage}
                   alt="profile"
                 />
@@ -130,8 +131,7 @@ function Profile() {
                     document.getElementById("upload-profile-image").click()
                   }
                 >
-                <FaCameraRotate size={25} />
-
+                  <FaCameraRotate size={25} />
                 </span>
                 <span
                   className="mt-3 cursor-pointer"
@@ -145,9 +145,22 @@ function Profile() {
             </div>
           </div>
           <div className="profile-popup-inputs">
+            <div className="text-end">
+              <button className="rounded text-success px-4"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEdit(false);
+                }}
+              >
+                Edit
+              </button>
+            </div>
             <div className="d-flex flex-column">
               <div>
-                <label htmlFor="name" className="col-3"> Name</label>
+                <label htmlFor="name" className="col-3">
+                  {" "}
+                  Name
+                </label>
                 <input
                   disabled
                   id="name"
@@ -162,7 +175,10 @@ function Profile() {
                 />
               </div>
               <div>
-                <label className="col-3" htmlFor="email"> Email </label>
+                <label className="col-3" htmlFor="email">
+                  {" "}
+                  Email{" "}
+                </label>
                 <input
                   disabled
                   id="email"
@@ -182,7 +198,8 @@ function Profile() {
                   {" "}
                   Mobile
                 </label>
-                <input 
+                <input
+                  disabled={edit}
                   id="mobile"
                   value={mobile}
                   onChange={(e) => {
@@ -198,8 +215,12 @@ function Profile() {
                 />
               </div>
               <div>
-                <label className="col-3" htmlFor="address"> Address</label>
+                <label className="col-3" htmlFor="address">
+                  {" "}
+                  Address
+                </label>
                 <input
+                  disabled={edit}
                   id="address"
                   value={address}
                   onChange={(e) => {
@@ -225,6 +246,7 @@ function Profile() {
               Reset Password
             </button>{" "}
             <button
+              hidden={edit}
               className="btn saveButton "
               onClick={() => {
                 dispatch(setShowProfile(false));

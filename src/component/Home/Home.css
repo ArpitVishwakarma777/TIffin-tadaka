@@ -367,11 +367,11 @@
   }
 }
 
-.tiffin-discription{  position: relative; /* Positioning for proper adjustment */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+.tiffin-discription{  position: relative; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 .tiffin-discription:hover{
-  transform: translateY(-15px); /* Moves the element 10px upwards */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8); /* Adds a shadow for better hover effect */
+  transform: translateY(-10px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8); 
 
 }
