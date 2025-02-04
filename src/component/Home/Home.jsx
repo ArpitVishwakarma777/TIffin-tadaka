@@ -32,7 +32,7 @@ export default function Home() {
         id="carouselExampleCaptions"
         className="carousel slide"
         data-bs-ride="carousel"
-        data-bs-interval="2500"
+        data-bs-interval="3500"
       >
         <div className="carousel-indicators">
           <button
@@ -74,7 +74,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4 fw-bold  px-4 btn-danger"
+                class="btn mx-4 py-2 fw-bold fs-4  animated-button px-4 btn-danger"
               >
                 Order Now
               </button>
@@ -92,14 +92,15 @@ export default function Home() {
               <p>"Bringing the taste of home </p>
               <p> one tiffin at a time."</p>
               <button
-                onClick={() => {
-                  navigate("/Menu");
-                }}
-                type="button"
-                class="btn mx-4 fw-bold  px-4 btn-danger"
-              >
-                Order Now
-              </button>
+  onClick={() => {
+    navigate("/Menu");
+  }}
+  type="button"
+  className="btn mx-4  py-2 fw-bold fs-4 px-4 btn-danger animated-button"
+>
+  Order Now
+</button>
+
             </div>
           </div>
           <div className="carousel-item carousel-item3 ">
@@ -118,7 +119,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4 fw-bold  px-4 btn-danger"
+                class="btn mx-4  py-2 fw-bold fs-4 animated-button px-4 btn-danger"
               >
                 Order Now
               </button>

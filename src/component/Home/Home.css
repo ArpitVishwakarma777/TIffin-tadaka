@@ -180,7 +180,7 @@
     bottom: 30%;
   }
   .caption3 { 
-    color: rgb(91, 22, 22);
+    color: rgb(255, 255, 255);
     position: absolute;
     left: 35vw;
     bottom: 30%;
@@ -374,4 +374,13 @@
   transform: translateY(-10px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8); 
 
+}
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.animated-button{
+  border-radius: 30px;
 }
