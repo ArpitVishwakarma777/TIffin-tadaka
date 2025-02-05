@@ -1,0 +1,8 @@
+.information{
+    font-size: x-large;
+}
+@media (max-width:448px){
+    .information{
+        font-size: large;
+    }  
+}

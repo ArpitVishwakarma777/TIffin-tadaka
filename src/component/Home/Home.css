@@ -208,16 +208,16 @@
   .caption2 p {font-size: large;}
   .caption3 p {font-size: large;}
   .caption1 {
-    left: 10vw;
+    left: 12vw;
     top: 35%;
   }
   .caption2 {
-   left: 10vw;
-    bottom: 24%;
+   left: 12vw;
+    bottom: 21%;
   }
   .caption3 { 
-    left: 10vw; 
-    bottom: 24%;
+    left: 12vw; 
+    bottom: 21%;
   }
 }
 .carousel .carousel-item {
@@ -375,12 +375,11 @@
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8); 
 
 }
-.animated-button {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
+
 
 .animated-button{
   border-radius: 30px;
+}
+.animated-button:hover{
+  border:2px solid white
 }

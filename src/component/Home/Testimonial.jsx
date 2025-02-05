@@ -41,7 +41,7 @@ function Testimonial() {
                       src={item.src}
                       className="img-circle img-responsive"
                     />
-                    <p>
+                    <p className="">
                     {item.feedback}
                     </p>
                     <h4>{item.name}</h4>

@@ -21,6 +21,7 @@ import {
 import Protected from "./component/SignUp/Protected.jsx";
 import Checkout from "./component/checkout/Checkout.jsx";
 import ScrollToTop from "./Helper/ScrollToTop.jsx";
+import AdminPage from "./Admin/AdminPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "/", element: <Home /> },
+      
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
       { path: "/Wishlist", element: <Wishlist /> },
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
       { path: "/Contact", element: <Contact /> },
     ],
   },
+  {path:"/admin/*",element:<AdminPage/>}
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

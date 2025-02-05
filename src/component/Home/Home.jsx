@@ -67,16 +67,16 @@ export default function Home() {
               alt="..."
             />
             <div className="caption1  d-block h-50 ">
-              <p>"Bringing the taste of home </p>
-              <p> one tiffin at a time."</p>
+                <p>"Bringing the taste of home </p>
+                <p> one tiffin at a time."</p>
               <button
                 onClick={() => {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4 py-2 fw-bold fs-4  animated-button px-4 btn-danger"
+                className ="  mx-4 py-2 fw-bold fs-4  animated-button px-4 btn-danger"
               >
-                Order Now
+                Order Now <span className="blink">!</span>
               </button>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function Home() {
   type="button"
   className="btn mx-4  py-2 fw-bold fs-4 px-4 btn-danger animated-button"
 >
-  Order Now
+  Order Now <span className="blink">!</span>
 </button>
 
             </div>
@@ -121,7 +121,7 @@ export default function Home() {
                 type="button"
                 class="btn mx-4  py-2 fw-bold fs-4 animated-button px-4 btn-danger"
               >
-                Order Now
+                Order Now <span className="blink">!</span>
               </button>
             </div>
           </div>
