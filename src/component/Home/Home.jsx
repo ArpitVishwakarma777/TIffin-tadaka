@@ -74,7 +74,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                className ="  mx-4 py-2 fw-bold fs-4  animated-button px-4 btn-danger"
+                className ="mx-4 py-2 fw-bold fs-4  animated-button px-4 btn-danger"
               >
                 Order Now <span className="blink">!</span>
               </button>
@@ -96,7 +96,7 @@ export default function Home() {
     navigate("/Menu");
   }}
   type="button"
-  className="btn mx-4  py-2 fw-bold fs-4 px-4 btn-danger animated-button"
+  className=" mx-4  py-2 fw-bold fs-4 px-4 btn-danger animated-button"
 >
   Order Now <span className="blink">!</span>
 </button>
@@ -119,7 +119,7 @@ export default function Home() {
                   navigate("/Menu");
                 }}
                 type="button"
-                class="btn mx-4  py-2 fw-bold fs-4 animated-button px-4 btn-danger"
+                class=" mx-4  py-2 fw-bold fs-4 animated-button px-4 btn-danger"
               >
                 Order Now <span className="blink">!</span>
               </button>

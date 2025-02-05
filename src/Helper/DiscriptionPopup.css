@@ -6,7 +6,7 @@
 
 
 @media (max-width: 992px) {
-    .col-4 {
+    .discription-img {
       display: none;
     }
   }
@@ -16,6 +16,12 @@
     max-height: 58vh; 
     overflow-y: auto; 
   }
+  .popup-image{
+    width: 25vw;
+    height: 40vh;
+    border-radius: 15px;
+}
+
 }
 .dicriptionPopup{
     background: white;

@@ -11,7 +11,8 @@ export function DicriptionPopup() {
   return (
     <div className="container-fluid  dicriptionPopup">
       <div className=" row d-flex justify-content-center align-items-center  ms-2 ms-lg-0 ">
-        <div className="col-4 ">
+        <div className=" discription-img col-4 ">
+
           <img className="popup-image" src={contentPopup.src} alt="" />
         </div>
         <div className="text-portion col-12  col-lg-8 ">

@@ -111,7 +111,7 @@ export default function Footer() {
                   Home
                 </Link>
                 <Link to="/Home" className="text-reset fs-5">
-                  <IoHomeSharp size={25} className="d-inline d-md-none" />
+                  <IoHomeSharp size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" className="d-inline d-md-none" />
                 </Link>
               </p>
               <p className="d-inline mx-4 mx-sm-0 d-sm-block ">
@@ -119,7 +119,7 @@ export default function Footer() {
                   Tiffin
                 </Link>
                 <Link to="/Menu" className="text-reset fs-5">
-                  <IoMdRestaurant size={25} className="d-inline d-md-none" />
+                  <IoMdRestaurant size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tiffins" className="d-inline d-md-none" />
                 </Link>
               </p>
               <p className="d-inline mx-4 mx-sm-0 d-sm-block ">
@@ -130,7 +130,7 @@ export default function Footer() {
                   About
                 </Link>
                 <Link to="/About" className="text-reset fs-5">
-                  <MdInfo size={25} className="d-inline d-md-none" />
+                  <MdInfo size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="About" className="d-inline d-md-none" />
                 </Link>
               </p>
               <p className="d-inline mx-4 mx-sm-0 d-sm-block ">
@@ -141,7 +141,7 @@ export default function Footer() {
                   Contact Us
                 </Link>
                 <Link to="/Contact" className="text-reset fs-5">
-                  <MdContactPhone size={25} className="d-inline d-md-none" />
+                  <MdContactPhone size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contact" className="d-inline d-md-none" />
                 </Link>
               </p>
             </div>
@@ -159,7 +159,7 @@ export default function Footer() {
                 <Link
                   onClick={() => {
                     dispatch(setShowProfile(true));
-                  }}
+                  }} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile"
                   className="d-inline d-md-none text-reset fs-5"
                 >
                   <CgProfile  size={25} />
@@ -176,7 +176,7 @@ export default function Footer() {
                   to="/Wishlist"
                    className="d-inline d-md-none text-reset fs-5"
                 >
-                  <FaBagShopping size={25} />
+                  <FaBagShopping size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cart items"/>
                 </Link>
               </p>
               <p className="d-inline mx-4 mx-sm-0 d-sm-block ">
@@ -195,9 +195,9 @@ export default function Footer() {
                    className="d-inline d-md-none text-reset fs-5"
                 >
                   {loginStatus === "SignUp" ? (
-                    <RiLoginBoxLine size={25} />
+                    <RiLoginBoxLine size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="SignUp" />
                   ) : (
-                    <RiLogoutBoxLine size={25}/>
+                    <RiLogoutBoxLine size={25} data-bs-toggle="tooltip" data-bs-placement="bottom" title="LogOut"/>
                   )}
                 </Link>
               </p>
