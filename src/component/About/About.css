@@ -1,3 +1,7 @@
-.img-fluid{
-height:95vh;
-} 
+@media (min-width:992px){
+    .img-fluid{
+        height:70vh;
+        width: 80%;
+        } 
+        
+}

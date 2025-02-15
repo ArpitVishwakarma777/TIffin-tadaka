@@ -41,16 +41,14 @@ const qualifiedExpert=()=>{
   </div>
   <div className="container">
     <div className="row gy-4 gy-lg-0 d-flex flex-wrap align-items-lg-center">
-      <div className="col-lg-6">
-        <img className="img-fluid rounded border w-100 border-dark" src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/About_image_h3fswk.jpg"} alt="About Us" />
+      <div className="col-lg-6 text-center">
+        <img className="img-fluid rounded border  border-dark" src={"https://res.cloudinary.com/drzc94rvk/image/upload/v1734947443/About_image_h3fswk.jpg"} alt="About Us" />
       </div>
-
-
       <div className="col-lg-6 ">
         <div className="row justify-content-lg-end">
           <div className="col-12 col-lg-11">
             <div className="about-wrapper">
-              <p className=" fs-4 mb-4 mb-md-5">As a socially responsible entity, we are deeply committed to positively impacting the communities we serve and the world at large. Through various initiatives and partnerships, we actively contribute to environmental sustainability, social welfare, and educational advancement.</p>
+              <p className="fs-4 mb-4 mb-md-5">As a socially responsible entity, we are deeply committed to positively impacting the communities we serve and the world at large. Through various initiatives and partnerships, we actively contribute to environmental sustainability, social welfare, and educational advancement.</p>
               <div className="row gy-4
               d-flex flex-wrap mb-4 mb-md-5">
                 <div className=" col-lg-6">
