@@ -126,6 +126,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
         <button
           className="carousel-control-prev"
           type="button"
@@ -148,7 +149,7 @@ export default function Home() {
       <div className="container-fluid py-5 my-5 helper_template ">
         <div className="row d-flex   flex-wrap ">
           <div className=" d-flex my-lg-3 justify-content-center">
-            <h1 style={{ color: "rgb(218, 165, 32)" }}>What We Offer !</h1>
+            <h1 style={{ color:'#ff5c5c' }} className="primary-size">What We Offer !</h1>
           </div>
           <div className="col-md-4 my-3 my-sm-5 my-md-0 d-flex flex-column align-items-center justify-content-center">
             <img
@@ -157,7 +158,7 @@ export default function Home() {
               }
               alt=""
             />
-            <h3>Quick & Reliable </h3>
+            <h2>Quick & Reliable </h2>
           </div>
           <div className="col-md-4  d-flex flex-column align-items-center  justify-content-center">
             <img
@@ -166,7 +167,7 @@ export default function Home() {
               }
               alt=""
             />
-            <h3>Doorstep Delivery</h3>
+            <h2>Doorstep Delivery</h2>
           </div>
           <div className="col-md-4 my-3  my-sm-5 my-md-0   d-flex align-items-center  flex-column justify-content-center">
             <img
@@ -175,13 +176,13 @@ export default function Home() {
               }
               alt=""
             />
-            <h3>Maintain Tempreture</h3>
+            <h2>Maintain Tempreture</h2>
           </div>
         </div>
       </div>
 
-      <div className=" d-flex justify-content-center flex-column align-content-center flex-sm-row">
-        <h1 className="One-day-special ms-5  ms-sm-0 ">
+      <div className="d-flex justify-content-center flex-column align-content-center flex-sm-row">
+        <h1 className="primary-size ms-5 ms-sm-0 ">
           <span style={{ color: "red", textAlign:"center" }}>Tiffin's</span> Overview
         </h1>
       </div>
@@ -193,8 +194,8 @@ export default function Home() {
               <div className="row pt-5 d-flex  justify-content-between flex-column-reverse flex-sm-row  bg-light">
                 <div className="col-sm-6 col-12 align-self-center ps-lg-5 fs-5">
                   <div className="text-center">
-                    <h3 className="text-center  pt-2 text-success">{data.overviewType}</h3>
-                    {data.overviewText}
+                    <h2 className="text-center  pt-2 text-success">{data.overviewType}</h2>
+                    <h4>{data.overviewText}</h4>
                   </div>
                 </div>
                 <div className=" d-flex justify-content-center align-items-center col-sm-6 col-12 ">
@@ -219,8 +220,8 @@ export default function Home() {
                 <div className="col-sm-6 col-12 align-self-center fs-5 pe-lg-5">
                   <div className="text-center">
                     {" "}
-                    <h3 className="text-center  pt-2 text-success">{data.overviewType}</h3>
-                    {data.overviewText}
+                    <h2 className="text-center  pt-2 text-success">{data.overviewType}</h2>
+                    <h4>{data.overviewText}</h4>
                   </div>
                 </div>
               </div>
@@ -229,7 +230,7 @@ export default function Home() {
         })}
         <div className="row">
           <div className=" col-12 bg-light  pb-5">
-            <span className=" text-danger fs-4 ms-2 ms-lg-5 ">
+            <span className=" text-danger fs-3 ms-2 ms-lg-5 ">
               Many more items for you .....
             </span>
           </div>
@@ -251,10 +252,10 @@ export default function Home() {
                 <h1>Download the app </h1>
               </div>
               <div className="d-flex py-2  align-items-center">
-                <span>
+                <h4 className="">
                   {" "}
                   Order Indian food online from the comfort of your home.{" "}
-                </span>
+                </h4>
               </div>
               <br />
               <div className="d-flex justify-content-center align-items-center">

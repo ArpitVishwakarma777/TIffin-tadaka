@@ -5,7 +5,7 @@ import "./index.css";
 import Home from "./component/Home/Home.jsx";
 import About from "./component/About/About.jsx";
 import Contact from "./component/Contact/Contact.jsx";
-import Wishlist from "./component/Wishlist/Wishlist.jsx";
+import CartItem from "./component/Cart/CartItem.jsx";
 import Layout from "./Layout.jsx";
 import Menu from "./component/Menu/Menu.jsx";
 import DailyTiffin from "./Tiffin Categories/DailyTiffin.jsx";
@@ -27,18 +27,21 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
         <Layout />
       </>
     ),
     children: [
       { path: "/", element: <Home /> },
-      
+
       { path: "/Home", element: <Home /> },
       { path: "/About", element: <About /> },
-      { path: "/Wishlist", element: <Wishlist /> },
+      { path: "/CartItem", element: <CartItem /> },
       { path: "/ForgotPassword", element: <ForgotPassword /> },
-      { path: "/Menu/Checkout/:type/:subscription/:price", element: <Checkout /> },
+      {
+        path: "/Menu/Checkout/:type/:subscription/:price",
+        element: <Checkout />,
+      },
       {
         path: "/Menu",
         element: <Protected Component={<Menu />} />,
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
       { path: "/Contact", element: <Contact /> },
     ],
   },
-  {path:"/admin/*",element:<AdminPage/>}
+  { path: "/admin/*", element: <AdminPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

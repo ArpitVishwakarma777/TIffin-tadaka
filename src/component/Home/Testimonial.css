@@ -172,7 +172,7 @@ margin: 30px auto;
 text-align: center;
 position: relative;
 }
-.testimonial4_header h4{
+.testimonial4_header h3{
 color: #ffffff;
 font-size: 30px;
 font-weight: 600;
@@ -217,9 +217,9 @@ text-align: center;
   line-height: 1.4;
   margin: 40px 0 20px 0;
 }
-.testimonial4_slide h4 {
+.testimonial4_slide h3 {
 color: #ffffff;
-font-size: 22px;
+
 }
 
 .testimonial .carousel {

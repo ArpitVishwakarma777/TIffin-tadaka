@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import OrderHistory from "./OrderHistory";
 import AddToCart from "./AddToCart";
 // import Item from "./Item.jsx";
-import "./Wishlist.css";
+import "./CartItem.css";
 import { useSelector, useDispatch } from "react-redux";
-function Wishlist() {
+function CartItem() {
   const [activeButton, setActiveButton] = useState("Added Carts");
   return (
     <>
@@ -38,4 +38,4 @@ function Wishlist() {
   );
 }
 
-export default Wishlist;
+export default CartItem;

@@ -42,26 +42,29 @@ function Menu() {
   }
   return (
     <>
-      <div
-        style={{ position: "relative", overflow: "hidden", height: "300px" }}
+      <div className="container-fluid p-0"
+        style={{ position: "relative", overflow: "hidden", height: "315px" }}
       >
+
         <span
           style={{
-            fontSize: "3.5rem",
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-40%,-50%)",
+            
           }}
-          className="text-white"
+          className="text-white primary-size"
         >
           Our Menu
         </span>
-        <img
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        <img  className=" w-100"
           src={
             "https://res.cloudinary.com/drzc94rvk/image/upload/v1734967920/Menu_Template_e2dmd6.png"
           }
+          
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+
           alt="banner"
         />
       </div>
@@ -77,12 +80,12 @@ function Menu() {
         </span>
 
         <div className="d-flex justify-content-center flex-column flex-sm-row">
-          <span style={{ fontFamily: "Ubuntu" }} className=" second-title me-3">
+          <span style={{ }} className=" second-title me-3">
             Indian{" "}
           </span>
           <span
             className="second-title"
-            style={{ fontFamily: "Ubuntu", color: "red" }}
+            style={{  color: "red" }}
           >
             {" "}
             Foods
@@ -99,10 +102,10 @@ function Menu() {
             Welcome to{" "}
             <span className="fw-bold text-warning">Tiffin Tadaka</span> Discover
             our carefully crafted menu featuring fresh, homemade, and delicious
-            meals. We offer a variety of vegetarian and non-vegetarian options,
+            meals. <span className="d-none d-sm-block">We offer a variety of vegetarian and non-vegetarian options,
             along with special diet plans and customizable meal packages to suit
             your needs. . Order now and enjoy healthy, homely food delivered
-            straight to your doorstep!
+            straight to your doorstep!</span>
           </p>
           <div
             style={{ width: "280px", height: "258px" }}
@@ -120,14 +123,14 @@ function Menu() {
       </div>
       <div className=" mb-4 pb-1 d-flex  justify-content-center flex-column align-items-center flex-sm-row">
         <span
-          style={{ color: "red", fontFamily: "Ubuntu" }}
+          style={{ color: "red", }}
           className="first-title me-3 "
         >
           Tiffin{" "}
         </span>
         <span
           className="first-title"
-          style={{ fontFamily: "Ubuntu", color: "darkGreen  " }}
+          style={{  color: "darkGreen  " }}
         >
           {" "}
           Category

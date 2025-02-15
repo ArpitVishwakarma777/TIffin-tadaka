@@ -34,14 +34,44 @@ export function handleButton(e,uid,dispatch,handleLogout) {
   if (!uid) {
     dispatch(setShowLogin(true));
   } else {
-    const confirmLogout = window.confirm("Do you want to logout?");
-    if (confirmLogout) {
-      localStorage.removeItem("userId");
+    toast(
+      ({ closeToast }) => (
+        <div className="d-flex flex-column gap-2">
+          <p className="text-dark fw-medium">
+            Are you sure you want to log out?
+          </p>
+          <div className="d-flex justify-content-end gap-3">
+            <button
+              className="btn btn-warning text-dark"
+              onClick={() => {
+                closeToast();
+                // Perform logout
+               localStorage.removeItem("userId");
       handleLogout();
       dispatch(removeUser());
       dispatch(emptyCarts());
-      toast.success("Logout successfully");
-    }
+      toast.success("Logout successfully"); }}
+            >
+              Yes
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={closeToast}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        position: "top-center",
+        autoClose: false, // Disable auto-close for confirmation
+        closeOnClick: false,
+        draggable: false,
+        hideProgressBar: true,
+      }
+    );
+    
   }
 }
 
@@ -157,31 +187,31 @@ export default function Header() {
           >
             <ul className="navbar-nav me-lg-auto  mb-2 mb-lg-0">
               <li className="nav-item ms-xxl-4">
-                <NavLink className="nav-link fs-3 " aria-current="page" to="/">
+                <NavLink className="nav-link fs-2 " aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item ms-xxl-4">
-                <NavLink className="nav-link fs-3" to="/Menu">
+                <NavLink className="nav-link fs-2" to="/Menu">
                   Menu
                 </NavLink>
               </li>
               <li className="nav-item ms-xxl-4">
-                <NavLink className="nav-link fs-3" to="/About">
+                <NavLink className="nav-link fs-2" to="/About">
                   About
                 </NavLink>
               </li>
               <li className="nav-item ms-xxl-4">
-                <NavLink className="nav-link fs-3" to="/Contact" tabIndex={-1}>
+                <NavLink className="nav-link fs-2" to="/Contact" tabIndex={-1}>
                   Contact Us
                 </NavLink>
               </li>
             </ul>
             <div className="action_bar d-flex align-items-lg-center  text-align-center">
               <div className="contain d-none d-lg-block me-5  mx-xl-4  mx-lg-2 mx-sm-5 mx-xs-3">
-                <Link to="/Wishlist" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add item" style={{ textDecoration: "none" }}>
+                <Link to="/CartItem" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cart Item" style={{ textDecoration: "none" }}>
                   {" "}
-                  <FaBagShopping size={27} color="green" />
+                  <FaBagShopping size={30} color="green" />
                   {addedCarts.length !== 0 && <GoDotFill color="red" />}
                 </Link>
                 <br />
@@ -193,15 +223,16 @@ export default function Header() {
                   }}
                   style={{ border: "none", background: "none" }}
                 >
-                  <IoMdContact color="green" size={35} />
+                  <IoMdContact color="green" size={38} />
                 </button>
               </div>
               <div className="contain d-none d-lg-block   mx-xl-4  mx-lg-2  mx-sm-5 mx-xs-3 ">
                 <button
                   onClick={(e)=>{handleButton(e,uid,dispatch,handleLogout)}}
                   type="button"
-                  className="btn_sign btn-outline-success"
+                  className="btn_sign btn-outline-success fs-5"
                 >
+                  
                   {loginStatus}
                 </button>
               </div>

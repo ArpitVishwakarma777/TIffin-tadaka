@@ -3,7 +3,6 @@ import "./Contact.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
 function Contact() {
- 
   const tiffinAddress = useSelector(
     (state) => state.managetAddressStatus.tiffinAddress || []
   );
@@ -13,16 +12,17 @@ function Contact() {
     <section className=" py-3 pb-md-5">
       <div className="container">
         <div className=" d-flex justify-content-center">
-          <h2 className="fs-1 m-4  ">Contact Us</h2>
+          <h2 className="primary-size m-4  ">Contact Us</h2>
         </div>
-        <div className=" d-flex justify-content-center">
-          <p className="col-9 fs-4 text-dark ">
-            "We take pride in bringing you freshly prepared, homemade meals that
-            are full of flavor and love. Our goal is to ensure you enjoy every
-            bite while receiving the top-notch service you deserve. If you have
-            any questions, concerns, or need assistance, don’t hesitate to
-            connect with us—we’re always happy to help!"
+<div className="row justify-content-md-center">
+        <div className="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+          <p className=" mb-5 text-center  fs-3">
+            We believe in the power of teamwork and collaboration. Our diverse
+            experts work tirelessly to deliver innovative solutions tailored to
+            our clients' needs.
           </p>
+          <hr className="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle" />
+        </div>
         </div>
         <div className="row d-flex flex-wrap gy-3 gy-md-4 gy-lg-0 align-items-md-center">
           <div className="col-lg-6">
@@ -45,8 +45,8 @@ function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="mb-3">Address</h4>
-                    <address className="mb-0 fs-5 text-dark">
+                    <h4 className="mb-3 fw-bold fs-3 ">Address</h4>
+                    <address className="mb-0 fs-4 text-dark">
                       {tiffinAddress.map((data) => {
                         return data.address;
                       })}
@@ -70,14 +70,12 @@ function Contact() {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="mb-3">Phone</h4>
-                        <p className="mb-0 fs-5" >
-                         
-                            (+91)
-                            {tiffinAddress.map((data) => {
-                              return data.phone;
-                            })}
-                         
+                        <h4 className="mb-3 fw-bold fs-3">Phone</h4>
+                        <p className="mb-0 fs-4">
+                          (+91)
+                          {tiffinAddress.map((data) => {
+                            return data.phone;
+                          })}
                         </p>
                       </div>
                     </div>
@@ -98,14 +96,18 @@ function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="mb-3 fs-4">Opening Hours</h4>
-                    <div className="d-flex mb-1 fs-5">
-                      <p className="text-dark fw-bold mb-0 fs-5 me-5">Mon - Fri</p>
-                      <p className="text-dark mb-0 fs-5">9am - 5pm</p>
+                    <h4 className="mb-3 fw-bold fs-3">Opening Hours</h4>
+                    <div className="d-flex mb-1 ">
+                      <p className="text-dark fw-bold mb-0 fs-4 me-5">
+                        Mon - Fri
+                      </p>
+                      <p className="text-dark mb-0 fs-4">9am - 5pm</p>
                     </div>
                     <div className="d-flex">
-                      <p className="text-dark fw-bold fs-5 mb-0 me-5">Sat - Sun</p>
-                      <p className="text-dark mb-0 fs-5">9am - 2pm</p>
+                      <p className="text-dark fw-bold fs-4 mb-0 me-5">
+                        Sat - Sun
+                      </p>
+                      <p className="text-dark mb-0 fs-4">9am - 2pm</p>
                     </div>
                   </div>
                 </div>
