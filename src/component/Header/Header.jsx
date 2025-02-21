@@ -89,6 +89,24 @@ export default function Header() {
 
   const uid = localStorage.getItem("userId");
   useEffect(() => {
+    const handleNavLinkClick = () => {
+      if (window.innerWidth < 992) { // Collapse only if screen width < 992px (Mobile/Tablet)
+        const navbarCollapse = document.getElementById("navbarSupportedContent");
+        if (navbarCollapse.classList.contains("show")) { // Only close if it's open
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+          bsCollapse.hide();
+        }
+      }
+    };
+  
+    const navLinks = document.querySelectorAll(".nav-link");
+    navLinks.forEach((link) => link.addEventListener("click", handleNavLinkClick));
+  
+    return () => {
+      navLinks.forEach((link) => link.removeEventListener("click", handleNavLinkClick));
+    };
+  }, []);
+  useEffect(() => {
    
     const uid = localStorage.getItem("userId");
 

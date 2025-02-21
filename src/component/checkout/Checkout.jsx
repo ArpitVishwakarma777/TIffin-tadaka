@@ -24,13 +24,15 @@ function Checkout() {
 
   const [userAddress, setUserAddress] = useState("");
   const [startDate, setStartDate] = useState("");
+  const [time, setTime] = useState(["Morning", "Evening", "Next Morning"]);
+  const [startingTime, setStartingTime] = useState("");
   const [endDate, setEndDate] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [orderSummary, setOrderSummary] = useState({
     mealPlan: subscription,
     price: price,
   });
-  const [currentLocation, setCurrentLocation] = useState("");
+  
   const calculateEndDate = (startDate, category) => {
     const date = new Date(startDate);
 
@@ -45,10 +47,24 @@ function Checkout() {
     // Format as YYYY-MM-DD
     return date.toISOString().split("T")[0];
   };
+  const configureForSameDate = () => {
+    const now = new Date();
+    const currentTime = now.getHours();
+    currentTime > 15 && setTime(["Next Morning"]);
+    currentTime < 15 && setTime(["Evening", "Next Morning"]);
+  };
+  const configureForOtherDate = async () => {
+    setTime(["Morning", "Evening"]);
+  };
+
   const handleStartDateChange = (e) => {
     const startDate = e.target.value;
+    const date = new Date();
+    const today = date.toISOString().split("T")[0];
+    {
+      today === startDate ? configureForSameDate() : configureForOtherDate();
+    }
     setStartDate(startDate);
-    // console.log("first: ", subscription);
 
     if (subscription === "Weekly Subscription") {
       // console.log("second: ", subscription);
@@ -200,6 +216,7 @@ function Checkout() {
       setUserSubscription({
         orderid,
         userAddress,
+        startingTime,
         startDate,
         endDate,
         orderSummary,
@@ -220,7 +237,7 @@ function Checkout() {
             uid,
             orderid,
             userAddress,
-            startDate,
+            startDate,startingTime,
             endDate,
             orderSummary,
             paymentMethod,
@@ -230,15 +247,15 @@ function Checkout() {
         if (type === "AddedCart") {
           handleRemoveCartDataonDB();
         }
-        
+
         toast.success(response.data);
 
-       
         dispatch(
           setUserSubscription({
             orderid,
             userAddress,
             startDate,
+            startingTime,
             endDate,
             orderSummary,
             paymentMethod,
@@ -259,6 +276,13 @@ function Checkout() {
       {/* User Address */}
       <div className="form-group">
         <label htmlFor="userAddress">Your Address:</label>
+        <button
+          className="border text-primary my-1 ms-2 rounded"
+          onClick={handleGetLocation}
+        >
+          Use current location
+        </button>
+
         <textarea
           id="userAddress"
           placeholder="Enter your delivery address"
@@ -267,12 +291,7 @@ function Checkout() {
           className="form-control"
         ></textarea>
       </div>
-      <button
-        className="border text-primary my-1 rounded"
-        onClick={handleGetLocation}
-      >
-        Use current location
-      </button>
+
       {/* Tiffin Service Address */}
       <div className="form-group">
         <label htmlFor="tiffinAddress">Tiffin Service Address:</label>
@@ -353,6 +372,22 @@ function Checkout() {
           className="form-control"
         />
       </div>
+      <div className="form-group">
+        <label htmlFor="startingTime">Starting time:</label>
+        <select required  
+          className="form-select"
+          aria-label="Default select example"
+          onChange={(e) => {
+            setStartingTime(e.target.value);
+          }}
+        >
+          {time.map((value, index) => (
+            <option key={index} value={value}>
+              {value}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {/* Payment Method */}
       <div className="form-group">
@@ -366,7 +401,9 @@ function Checkout() {
               value="Credit/Debit Card"
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
-            <label htmlFor="card">Credit/Debit Card</label>
+            <label className="ms-2" htmlFor="card">
+              Credit/Debit Card
+            </label>
           </div>
           <div>
             <input
@@ -376,7 +413,9 @@ function Checkout() {
               value="Cash on Delivery"
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
-            <label htmlFor="cod">Cash on Delivery</label>
+            <label className="ms-2" htmlFor="cod">
+              Cash on Delivery
+            </label>
           </div>
         </div>
       </div>

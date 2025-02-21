@@ -51,7 +51,7 @@ function OrderHistory() {
       return (
         <div className="container">
           <div className="d-flex justify-content-end">
-            <i
+            <i 
               onClick={() => {
                 toast(
                   ({ closeToast }) => (
@@ -87,7 +87,7 @@ function OrderHistory() {
                     }
                   );
               
-            }} className="fas fa-trash-alt me-3 pb-5" />
+            }} style={{cursor:"pointer"}} className="fas fa-trash-alt me-3 mb-5" />
         </div>
         <div className="row  d-flex justify-content-center flex-wrap   ">
           {orders.map((order, index) => {
@@ -112,6 +112,10 @@ function OrderHistory() {
                   <div className="d-flex mb-2 justify-content-between">
                     <span className="bold">Start Date:</span>
                     <span> {order.startDate}</span>
+                  </div>
+                  <div className="d-flex mb-2 justify-content-between">
+                    <span className="bold">Starting Time</span>
+                    <span> {order.startingTime}</span>
                   </div>
                   <div className="d-flex mb-2 justify-content-between">
                     <span className="bold">End Date:</span>

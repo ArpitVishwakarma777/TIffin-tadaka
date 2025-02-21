@@ -81,7 +81,7 @@ function Contact() {
                     </div>
                   </div>
                 </div>
-                <div className="d-flex flex-wrap my-5">
+                <div className="d-flex my-5">
                   <div className="me-4 text-primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -115,14 +115,14 @@ function Contact() {
             </div>
           </div>
           <div className="col-lg-6 d-flex  align-items-center justify-content-center">
-            {isLoad === false && (
+            {/* {isLoad === false && (
               <div
-                class="spinner-border position-relative  top-100 start-50  "
+                class="spinner-border position-relative "
                 role="status"
               >
                 <span class="visually-hidden">Loading...</span>
               </div>
-            )}
+            )} */}
             <iframe
               className="map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d890.0870227425262!2d77.08867732052424!3d22.340670425536857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397d70da30805abf%3A0x1368c14a9092d58b!2sHarda%2C%20Madhya%20Pradesh%20461331!5e0!3m2!1sen!2sin!4v1733383118109!5m2!1sen!2sin"
